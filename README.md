@@ -6,16 +6,19 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+<!--
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+-->
 
 
 <!-- PROJECT LOGO -->
+<!--
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
@@ -35,7 +38,7 @@
     <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
   </p>
 </p>
-
+-->
 
 
 <!-- TABLE OF CONTENTS -->
@@ -60,22 +63,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+<!--
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
+-->
 
-책을 읽고싶은 당신에게! 읽은 책을 기록하고, 책 읽는 습관을 형성할 수 있도록 도와줍니다.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+읽은 책을 기록하고, 책 읽는 습관을 형성할 수 있도록 도와줍니다.
 
 ### Built With
-
-Bookie is built with...
 
 #### Frameworks
 - [UIKit]()
@@ -90,6 +84,7 @@ Bookie is built with...
 
 #### Architecture
 - MVC
+- (will be) MVVM
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -103,13 +98,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+[![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=Gmail&logoColor=white)](mailto:parkjekyun@gmail.com)
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+<!--
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [Choose an Open Source License](https://choosealicense.com)
@@ -121,7 +115,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 * [Sticky Kit](http://leafo.net/sticky-kit)
 * [JVectorMap](http://jvectormap.com)
 * [Font Awesome](https://fontawesome.com)
-
+-->
 
 
 
