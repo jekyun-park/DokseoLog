@@ -11,10 +11,10 @@
 		227A23112A860C3F00BE461E /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* LibraryViewController.swift */; };
 		227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* HabitsViewController.swift */; };
 		227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23142A860C7C00BE461E /* SettingsViewController.swift */; };
+		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C052A6EBF83001CF1B3 /* AppDelegate.swift */; };
 		22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */; };
 		22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C092A6EBF84001CF1B3 /* HomeViewController.swift */; };
-		22990C102A6EBF84001CF1B3 /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		22990C122A6EBF8B001CF1B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22990C112A6EBF8B001CF1B3 /* Assets.xcassets */; };
 		22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */; };
 		22990C202A6EBF8C001CF1B3 /* BookieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C1F2A6EBF8C001CF1B3 /* BookieTests.swift */; };
@@ -334,8 +334,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */,
 				227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */,
-				22990C102A6EBF84001CF1B3 /* Bookie.xcdatamodeld in Sources */,
 				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
 				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
@@ -508,12 +508,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Bookie/Bookie.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Bookie/Support/Bookie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4KXY85MB9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Bookie/Info.plist;
+				INFOPLIST_FILE = Bookie/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -537,12 +537,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Bookie/Bookie.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Bookie/Support/Bookie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4KXY85MB9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Bookie/Info.plist;
+				INFOPLIST_FILE = Bookie/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
