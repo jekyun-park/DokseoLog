@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A230E2A860C3600BE461E /* SearchViewController.swift */; };
-		227A23112A860C3F00BE461E /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* LibraryViewController.swift */; };
+		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
 		227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* HabitsViewController.swift */; };
 		227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23142A860C7C00BE461E /* SettingsViewController.swift */; };
 		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
+		227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231D2A861F5B00BE461E /* BKTabBarController.swift */; };
+		227A23202A8625EA00BE461E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231F2A8625EA00BE461E /* Constants.swift */; };
+		227A23222A8625EF00BE461E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23212A8625EF00BE461E /* Images.swift */; };
 		22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C052A6EBF83001CF1B3 /* AppDelegate.swift */; };
 		22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */; };
 		22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C092A6EBF84001CF1B3 /* HomeViewController.swift */; };
@@ -41,9 +44,12 @@
 
 /* Begin PBXFileReference section */
 		227A230E2A860C3600BE461E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		227A23102A860C3F00BE461E /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
 		227A23122A860C6F00BE461E /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		227A231D2A861F5B00BE461E /* BKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTabBarController.swift; sourceTree = "<group>"; };
+		227A231F2A8625EA00BE461E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		227A23212A8625EF00BE461E /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		22990C022A6EBF83001CF1B3 /* Bookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990C052A6EBF83001CF1B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +96,7 @@
 			children = (
 				22990C092A6EBF84001CF1B3 /* HomeViewController.swift */,
 				227A230E2A860C3600BE461E /* SearchViewController.swift */,
-				227A23102A860C3F00BE461E /* LibraryViewController.swift */,
+				227A23102A860C3F00BE461E /* BookCaseViewController.swift */,
 				227A23122A860C6F00BE461E /* HabitsViewController.swift */,
 				227A23142A860C7C00BE461E /* SettingsViewController.swift */,
 			);
@@ -100,6 +106,7 @@
 		227A23162A860D1D00BE461E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				227A231C2A861F3900BE461E /* TabBar */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -128,8 +135,18 @@
 		227A23192A860D6300BE461E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				227A231F2A8625EA00BE461E /* Constants.swift */,
+				227A23212A8625EF00BE461E /* Images.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		227A231C2A861F3900BE461E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				227A231D2A861F5B00BE461E /* BKTabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		22990BF92A6EBF83001CF1B3 = {
@@ -337,11 +354,14 @@
 				227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */,
 				227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */,
 				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
+				227A23222A8625EF00BE461E /* Images.swift in Sources */,
 				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
-				227A23112A860C3F00BE461E /* LibraryViewController.swift in Sources */,
+				227A23202A8625EA00BE461E /* Constants.swift in Sources */,
+				227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */,
 				22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */,
 				227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */,
+				227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,7 +536,6 @@
 				INFOPLIST_FILE = Bookie/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -545,7 +564,6 @@
 				INFOPLIST_FILE = Bookie/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
