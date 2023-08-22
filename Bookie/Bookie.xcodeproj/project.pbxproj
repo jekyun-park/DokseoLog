@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A230E2A860C3600BE461E /* SearchViewController.swift */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
 		227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* HabitsViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		227A230E2A860C3600BE461E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
 		227A23122A860C6F00BE461E /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		227A23182A860D2900BE461E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				225EC4BE2A948973002FC0B6 /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
 				227A23222A8625EF00BE461E /* Images.swift in Sources */,
 				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
+				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
 				227A23202A8625EA00BE461E /* Constants.swift in Sources */,
 				227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */,
