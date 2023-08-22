@@ -16,11 +16,12 @@ class BKTabBarController: UITabBarController {
 
   private func configure() {
     viewControllers = createNavigationControllers()
-    view.backgroundColor = .systemBackground
+    view.backgroundColor = .bkBackgroundColor
+    tabBar.tintColor = .black
 
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
-    UITabBar.appearance().tintColor = .systemGreen
+    appearance.backgroundColor = .bkTabBarBackgroundColor
     UITabBar.appearance().standardAppearance = appearance
     UITabBar.appearance().scrollEdgeAppearance = appearance
   }
