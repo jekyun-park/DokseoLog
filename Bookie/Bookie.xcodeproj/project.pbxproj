@@ -24,6 +24,11 @@
 		22990C202A6EBF8C001CF1B3 /* BookieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C1F2A6EBF8C001CF1B3 /* BookieTests.swift */; };
 		22990C2A2A6EBF8C001CF1B3 /* BookieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C292A6EBF8C001CF1B3 /* BookieUITests.swift */; };
 		22990C2C2A6EBF8C001CF1B3 /* BookieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C2B2A6EBF8C001CF1B3 /* BookieUITestsLaunchTests.swift */; };
+		22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */; };
+		22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAD2AEA462700E4477A /* SpoqaHanSansNeo-Bold.ttf */; };
+		22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */; };
+		22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAF2AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf */; };
+		22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBB02AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 		22990C292A6EBF8C001CF1B3 /* BookieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookieUITests.swift; sourceTree = "<group>"; };
 		22990C2B2A6EBF8C001CF1B3 /* BookieUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookieUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		22BF43F12A6F6D3600AF167C /* Bookie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bookie.entitlements; sourceTree = "<group>"; };
+		22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
+		22C1EBAD2AEA462700E4477A /* SpoqaHanSansNeo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.ttf"; sourceTree = "<group>"; };
+		22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
+		22C1EBAF2AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.ttf"; sourceTree = "<group>"; };
+		22C1EBB02AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +126,7 @@
 		227A23172A860D2500BE461E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				22C1EBAB2AEA460600E4477A /* Fonts */,
 				22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */,
 				22BF43F12A6F6D3600AF167C /* Bookie.entitlements */,
 				22990C052A6EBF83001CF1B3 /* AppDelegate.swift */,
@@ -199,6 +210,18 @@
 				22990C2B2A6EBF8C001CF1B3 /* BookieUITestsLaunchTests.swift */,
 			);
 			path = BookieUITests;
+			sourceTree = "<group>";
+		};
+		22C1EBAB2AEA460600E4477A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				22C1EBAD2AEA462700E4477A /* SpoqaHanSansNeo-Bold.ttf */,
+				22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */,
+				22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */,
+				22C1EBB02AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf */,
+				22C1EBAF2AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +329,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */,
+				22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
+				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
+				22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
+				22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */,
 				22990C122A6EBF8B001CF1B3 /* Assets.xcassets in Resources */,
 			);
