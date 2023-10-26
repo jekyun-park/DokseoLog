@@ -17,8 +17,8 @@ class BKTabBarController: UITabBarController {
   private func configure() {
     viewControllers = createNavigationControllers()
     view.backgroundColor = .bkBackgroundColor
-    tabBar.tintColor = .black
-
+    tabBar.tintColor = .bkTabBarTintColor
+    
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = .bkTabBarBackgroundColor
@@ -32,6 +32,7 @@ class BKTabBarController: UITabBarController {
     homeViewController.tabBarItem = UITabBarItem(title: "홈", image: Images.homeTabBarImage, tag: 0)
     let homeNavigationController = UINavigationController(rootViewController: homeViewController)
     homeNavigationController.navigationBar.prefersLargeTitles = true
+//    homeNavigationController.view.backgroundColor = .bkBackgroundColor
 
     let searchViewController = SearchViewController()
     searchViewController.title = "도서 검색하기"
