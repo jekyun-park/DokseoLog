@@ -8,12 +8,8 @@
 import Foundation
 
 extension Bundle {
-  var apiKey: String? {
-          guard let file = self.path(forResource: "Info", ofType: "plist"),
-                let resource = NSDictionary(contentsOfFile: file),
-                let key = resource["SEARCH_API_KEY"] as? String else {
-              return nil
-          }
-          return key
-      }
+  
+  var APIKey: String {
+    return Bundle.main.object(forInfoDictionaryKey: "SEARCH_API_KEY") as? String ?? BKError.invalidAPIKey.rawValue
+  }
 }
