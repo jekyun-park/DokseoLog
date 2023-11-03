@@ -3,13 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */; };
 		2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */; };
 		2201C70D2AF0EF01001A93B5 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */; };
+		2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C70E2AF0F393001A93B5 /* Bundle+.swift */; };
+		220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220443702AF4C5EA0027E3EF /* SearchResult.swift */; };
+		225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* BKError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A230E2A860C3600BE461E /* SearchViewController.swift */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
@@ -18,7 +21,6 @@
 		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231D2A861F5B00BE461E /* BKTabBarController.swift */; };
 		227A23202A8625EA00BE461E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231F2A8625EA00BE461E /* Constants.swift */; };
-		227A23222A8625EF00BE461E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23212A8625EF00BE461E /* Images.swift */; };
 		22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C052A6EBF83001CF1B3 /* AppDelegate.swift */; };
 		22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */; };
 		22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C092A6EBF84001CF1B3 /* HomeViewController.swift */; };
@@ -55,6 +57,9 @@
 		2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		2201C70E2AF0F393001A93B5 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		220443702AF4C5EA0027E3EF /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		225D0ABB2AF131A1002AD604 /* BKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		227A230E2A860C3600BE461E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +67,6 @@
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		227A231D2A861F5B00BE461E /* BKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTabBarController.swift; sourceTree = "<group>"; };
 		227A231F2A8625EA00BE461E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		227A23212A8625EF00BE461E /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		22990C022A6EBF83001CF1B3 /* Bookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990C052A6EBF83001CF1B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		225D0ABD2AF13B60002AD604 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				220443702AF4C5EA0027E3EF /* SearchResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		227A230D2A860AC200BE461E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				225EC4BE2A948973002FC0B6 /* UIColor+.swift */,
+				2201C70E2AF0F393001A93B5 /* Bundle+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				227A231F2A8625EA00BE461E /* Constants.swift */,
-				227A23212A8625EF00BE461E /* Images.swift */,
+				225D0ABB2AF131A1002AD604 /* BKError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -201,6 +214,7 @@
 		22990C042A6EBF83001CF1B3 /* Bookie */ = {
 			isa = PBXGroup;
 			children = (
+				225D0ABD2AF13B60002AD604 /* Models */,
 				2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */,
 				2201C7052AF0E893001A93B5 /* Managers */,
 				227A23192A860D6300BE461E /* Utilities */,
@@ -322,7 +336,7 @@
 				};
 			};
 			buildConfigurationList = 22990BFD2A6EBF83001CF1B3 /* Build configuration list for PBXProject "Bookie" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -402,11 +416,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */,
+				225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */,
+				2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */,
 				227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */,
 				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
 				2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */,
-				227A23222A8625EF00BE461E /* Images.swift in Sources */,
 				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
+				220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */,
 				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
 				227A23202A8625EA00BE461E /* Constants.swift in Sources */,
