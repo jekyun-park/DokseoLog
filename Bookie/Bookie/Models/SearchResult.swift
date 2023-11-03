@@ -9,7 +9,7 @@ import Foundation
 
 //   let searchResult = try? JSONDecoder().decode(SearchResult.self, from: jsonData)
 
-// MARK: - SearchResult
+// MARK: - SearchResult
 struct SearchResult: Codable {
     let version: String
     let logo: String
