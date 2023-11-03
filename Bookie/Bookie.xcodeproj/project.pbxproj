@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */; };
+		2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */; };
+		2201C70D2AF0EF01001A93B5 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */; };
+		2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C70E2AF0F393001A93B5 /* Bundle+.swift */; };
+		220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220443702AF4C5EA0027E3EF /* SearchResult.swift */; };
+		225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* BKError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A230E2A860C3600BE461E /* SearchViewController.swift */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
@@ -15,7 +21,6 @@
 		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231D2A861F5B00BE461E /* BKTabBarController.swift */; };
 		227A23202A8625EA00BE461E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231F2A8625EA00BE461E /* Constants.swift */; };
-		227A23222A8625EF00BE461E /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23212A8625EF00BE461E /* Images.swift */; };
 		22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C052A6EBF83001CF1B3 /* AppDelegate.swift */; };
 		22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */; };
 		22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C092A6EBF84001CF1B3 /* HomeViewController.swift */; };
@@ -49,6 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		2201C70E2AF0F393001A93B5 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
+		220443702AF4C5EA0027E3EF /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		225D0ABB2AF131A1002AD604 /* BKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		227A230E2A860C3600BE461E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +67,6 @@
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		227A231D2A861F5B00BE461E /* BKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTabBarController.swift; sourceTree = "<group>"; };
 		227A231F2A8625EA00BE461E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		227A23212A8625EF00BE461E /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		22990C022A6EBF83001CF1B3 /* Bookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990C052A6EBF83001CF1B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +113,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2201C7052AF0E893001A93B5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		225D0ABD2AF13B60002AD604 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				220443702AF4C5EA0027E3EF /* SearchResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		227A230D2A860AC200BE461E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +160,7 @@
 				22990C112A6EBF8B001CF1B3 /* Assets.xcassets */,
 				22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */,
 				22990C162A6EBF8B001CF1B3 /* Info.plist */,
+				2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -142,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				225EC4BE2A948973002FC0B6 /* UIColor+.swift */,
+				2201C70E2AF0F393001A93B5 /* Bundle+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -150,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				227A231F2A8625EA00BE461E /* Constants.swift */,
-				227A23212A8625EF00BE461E /* Images.swift */,
+				225D0ABB2AF131A1002AD604 /* BKError.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -186,6 +214,9 @@
 		22990C042A6EBF83001CF1B3 /* Bookie */ = {
 			isa = PBXGroup;
 			children = (
+				225D0ABD2AF13B60002AD604 /* Models */,
+				2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */,
+				2201C7052AF0E893001A93B5 /* Managers */,
 				227A23192A860D6300BE461E /* Utilities */,
 				227A23182A860D2900BE461E /* Extensions */,
 				227A23172A860D2500BE461E /* Support */,
@@ -289,7 +320,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					22990C012A6EBF83001CF1B3 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -305,7 +336,7 @@
 				};
 			};
 			buildConfigurationList = 22990BFD2A6EBF83001CF1B3 /* Build configuration list for PBXProject "Bookie" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -329,7 +360,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */,
 				22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */,
+				2201C70D2AF0EF01001A93B5 /* Secrets.xcconfig in Resources */,
 				22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
@@ -383,10 +416,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */,
+				225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */,
+				2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */,
 				227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */,
 				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
-				227A23222A8625EF00BE461E /* Images.swift in Sources */,
+				2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */,
 				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
+				220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */,
 				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
 				227A23202A8625EA00BE461E /* Constants.swift in Sources */,
@@ -445,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -477,6 +514,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -491,7 +529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -537,6 +576,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -545,7 +585,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -557,6 +597,7 @@
 		};
 		22990C302A6EBF8C001CF1B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -568,8 +609,7 @@
 				INFOPLIST_FILE = Bookie/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -585,6 +625,7 @@
 		};
 		22990C312A6EBF8C001CF1B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -596,8 +637,7 @@
 				INFOPLIST_FILE = Bookie/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -620,7 +660,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4KXY85MB9;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.gyun.BookieTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -640,7 +680,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X4KXY85MB9;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.gyun.BookieTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
