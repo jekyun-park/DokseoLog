@@ -142,4 +142,5 @@ iOSInjectionProject/
 ### Configs ###
 **/*.xcconfig
 **/*.plist
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods,macos
