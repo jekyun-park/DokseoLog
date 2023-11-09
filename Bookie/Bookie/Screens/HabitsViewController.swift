@@ -9,10 +9,10 @@ import UIKit
 
 class HabitsViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
+    // Do any additional setup after loading the view.
+  }
+
 }

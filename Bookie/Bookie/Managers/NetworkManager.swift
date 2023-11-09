@@ -9,26 +9,29 @@ import Foundation
 
 final class NetworkManager {
 
-  // MARK: - Properties
-  static let shared = NetworkManager()
-  private let baseURL = "https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=\(Bundle.main.APIKey)"
+  // MARK: Lifecycle
+
   // &Query=아주 작은 습관의 힘&MaxResults=50&start=1&SearchTarget=Book&output=js&Version=20131101
 
   // MARK: - Initializer
   private init() { }
 
+  // MARK: Internal
+
+  // MARK: - Properties
+  static let shared = NetworkManager()
+
   // MARK: - Methods
   func searchBookInformation(for keyword: String, page: Int, completion: @escaping (Result<SearchResult, BKError>) -> Void) {
-    
     let endPoint = baseURL + "&Query=\(keyword)&MaxResults=50&start=\(page)&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {
       completion(.failure(.invalidURL))
       return
     }
-    
+
     let task = URLSession.shared.dataTask(with: url) { data , response, error in
-      if let error {
+      if error != nil {
         completion(.failure(.unableToComplete))
         return
       }
@@ -56,4 +59,7 @@ final class NetworkManager {
     task.resume()
   }
 
+  // MARK: Private
+
+  private let baseURL = "https://www.aladin.co.kr/ttb/api/ItemSearch.aspx?ttbkey=\(Bundle.main.APIKey)"
 }

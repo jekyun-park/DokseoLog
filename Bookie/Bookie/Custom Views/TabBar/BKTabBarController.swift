@@ -9,16 +9,20 @@ import UIKit
 
 class BKTabBarController: UITabBarController {
 
+  // MARK: Internal
+
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
   }
 
+  // MARK: Private
+
   private func configure() {
     viewControllers = createNavigationControllers()
     view.backgroundColor = .bkBackgroundColor
     tabBar.tintColor = .bkTabBarTintColor
-    
+
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = .bkTabBarBackgroundColor
@@ -58,7 +62,13 @@ class BKTabBarController: UITabBarController {
     let settingNavigationController = UINavigationController(rootViewController: settingViewController)
     settingNavigationController.navigationBar.prefersLargeTitles = true
 
-    return [homeNavigationController, searchNavigationController, bookCaseNavigationController, habitNavigationController, settingNavigationController]
+    return [
+      homeNavigationController,
+      searchNavigationController,
+      bookCaseNavigationController,
+      habitNavigationController,
+      settingNavigationController,
+    ]
   }
 
 }
