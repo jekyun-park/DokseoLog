@@ -140,6 +140,6 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 ### Configs ###
-*.xcconfig
-*.plist
+Bookie/Bookie/**/*.xcconfig
+Bookie/Bookie/**/*.plist
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods,macos
