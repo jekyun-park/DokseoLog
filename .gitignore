@@ -11,7 +11,7 @@ Pods/
 
 ### macOS ###
 # General
-.DS_Store
+/**/*.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -140,7 +140,7 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 ### Configs ###
-Bookie/**/*.xcconfig
-Bookie/**/*.plist
+/**/*.xcconfig
+/**/*.plist
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods,macos
