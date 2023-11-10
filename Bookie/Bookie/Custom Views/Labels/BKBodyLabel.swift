@@ -9,12 +9,33 @@ import UIKit
 
 class BKBodyLabel: UILabel {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+  // MARK: Lifecycle
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    configure()
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+    self.init(frame: .zero)
+    self.textAlignment = textAlignment
+    font = UIFont(name: Fonts.HanSansNeo.medium, size: fontSize)
+  }
+
+  // MARK: Private
+
+  private func configure() {
+    textColor = .secondaryLabel
+//    font = UIFont.preferredFont(forTextStyle: .body)
+    adjustsFontForContentSizeCategory = true
+    adjustsFontSizeToFitWidth = true
+    minimumScaleFactor = 0.75
+    lineBreakMode = .byWordWrapping
+    translatesAutoresizingMaskIntoConstraints = false
+  }
 
 }

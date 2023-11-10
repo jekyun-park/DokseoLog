@@ -7,23 +7,103 @@
 
 import UIKit
 
+// MARK: - SearchViewController
+
 class SearchViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  // MARK: Internal
 
-        // Do any additional setup after loading the view.
+  let tableView = UITableView()
+  let searchController = UISearchController()
+  var results: [Book] = []
+  var page = 1
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configureViewController()
+    configureSearchController()
+    configureTableView()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+  }
+
+  func updateUI(with books: [Book]) {
+    results.append(contentsOf: books)
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      self.view.bringSubviewToFront(self.tableView)
     }
-    
+  }
 
-    /*
-    // MARK: - Navigation
+  // MARK: Private
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+  private func getResults(for string: String) {
+    NetworkManager.shared.searchBookInformation(for: string, page: page) { [weak self] result in
+      guard let self else { return }
+      switch result {
+      case .success(let searchResult):
+        updateUI(with: searchResult.items)
+      case .failure(let error):
+        print(error)
+      }
     }
-    */
+  }
+
+  private func configureViewController() {
+    view.backgroundColor = .bkBackground
+    navigationController?.navigationBar.isHidden = false
+    navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+  }
+
+  private func configureSearchController() {
+    searchController.hidesNavigationBarDuringPresentation = false
+    searchController.searchBar.delegate = self
+    searchController.searchBar.placeholder = "책 제목, 저자를 검색해보세요"
+    navigationItem.searchController = searchController
+  }
+
+  private func configureTableView() {
+    view.addSubview(tableView)
+    tableView.frame = view.bounds
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.rowHeight = 120
+    tableView.register(SearchResultCell.self, forCellReuseIdentifier: SearchResultCell.reuseID)
+  }
+
+}
+
+// MARK: UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
+
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchString = searchBar.text else { return }
+    results.removeAll()
+    getResults(for: searchString)
+  }
+
+  func searchBarCancelButtonClicked(_: UISearchBar) {
+    results.removeAll()
+  }
+}
+
+// MARK: UITableViewDelegate, UITableViewDataSource
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+
+  func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+    results.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID) as? SearchResultCell
+    else { return UITableViewCell() }
+    let searchResult = results[indexPath.row]
+    cell.set(book: searchResult)
+    return cell
+  }
 
 }

@@ -19,7 +19,7 @@ struct SearchResult: Codable {
   let query: String
   let searchCategoryID: Int
   let searchCategoryName: String
-  let items: [Item]
+  let items: [Book]
 
   enum CodingKeys: String, CodingKey {
     case version, logo, title, link, pubDate, totalResults, startIndex, itemsPerPage, query, searchCategoryName
@@ -28,9 +28,9 @@ struct SearchResult: Codable {
   }
 }
 
-// MARK: - Item
+// MARK: - Book
 
-struct Item: Codable {
+struct Book: Codable {
   enum CodingKeys: String, CodingKey {
     case title, link, author, pubDate, description, isbn, isbn13
     case itemID = "itemId"
