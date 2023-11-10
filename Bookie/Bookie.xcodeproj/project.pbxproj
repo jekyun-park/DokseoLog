@@ -12,9 +12,16 @@
 		2201C70D2AF0EF01001A93B5 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */; };
 		2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C70E2AF0F393001A93B5 /* Bundle+.swift */; };
 		220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220443702AF4C5EA0027E3EF /* SearchResult.swift */; };
+		22483FA62AFCC1BC00942237 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FA52AFCC1BC00942237 /* SearchResultCell.swift */; };
+		22483FA92AFCC22000942237 /* BKCoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FA82AFCC22000942237 /* BKCoverImageView.swift */; };
+		22483FAC2AFCC3AA00942237 /* BKTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FAB2AFCC3AA00942237 /* BKTitleLabel.swift */; };
+		22483FB02AFCC6AD00942237 /* BKBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FAF2AFCC6AD00942237 /* BKBodyLabel.swift */; };
+		22483FB32AFD0AE300942237 /* BKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB22AFD0AE300942237 /* BKTextField.swift */; };
+		22483FB52AFD2E4D00942237 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB42AFD2E4D00942237 /* UIView+.swift */; };
+		22483FB82AFDB83200942237 /* BKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB72AFDB83200942237 /* BKButton.swift */; };
+		22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB92AFDD46F00942237 /* SearchViewController.swift */; };
 		225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* BKError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
-		227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A230E2A860C3600BE461E /* SearchViewController.swift */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
 		227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* HabitsViewController.swift */; };
 		227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23142A860C7C00BE461E /* SettingsViewController.swift */; };
@@ -39,9 +46,16 @@
 		2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		2201C70E2AF0F393001A93B5 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		220443702AF4C5EA0027E3EF /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		22483FA52AFCC1BC00942237 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		22483FA82AFCC22000942237 /* BKCoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKCoverImageView.swift; sourceTree = "<group>"; };
+		22483FAB2AFCC3AA00942237 /* BKTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTitleLabel.swift; sourceTree = "<group>"; };
+		22483FAF2AFCC6AD00942237 /* BKBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKBodyLabel.swift; sourceTree = "<group>"; };
+		22483FB22AFD0AE300942237 /* BKTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTextField.swift; sourceTree = "<group>"; };
+		22483FB42AFD2E4D00942237 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		22483FB72AFDB83200942237 /* BKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKButton.swift; sourceTree = "<group>"; };
+		22483FB92AFDD46F00942237 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		225D0ABB2AF131A1002AD604 /* BKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
-		227A230E2A860C3600BE461E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
 		227A23122A860C6F00BE461E /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +96,55 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		22483FA32AFCC14800942237 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				22483FA42AFCC19C00942237 /* SearchResultCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		22483FA42AFCC19C00942237 /* SearchResultCell */ = {
+			isa = PBXGroup;
+			children = (
+				22483FA52AFCC1BC00942237 /* SearchResultCell.swift */,
+			);
+			path = SearchResultCell;
+			sourceTree = "<group>";
+		};
+		22483FA72AFCC1FB00942237 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				22483FA82AFCC22000942237 /* BKCoverImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		22483FAA2AFCC38800942237 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				22483FAB2AFCC3AA00942237 /* BKTitleLabel.swift */,
+				22483FAF2AFCC6AD00942237 /* BKBodyLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		22483FB12AFD0ACE00942237 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				22483FB22AFD0AE300942237 /* BKTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		22483FB62AFDB82100942237 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				22483FB72AFDB83200942237 /* BKButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		225D0ABD2AF13B60002AD604 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +157,10 @@
 			isa = PBXGroup;
 			children = (
 				22990C092A6EBF84001CF1B3 /* HomeViewController.swift */,
-				227A230E2A860C3600BE461E /* SearchViewController.swift */,
 				227A23102A860C3F00BE461E /* BookCaseViewController.swift */,
 				227A23122A860C6F00BE461E /* HabitsViewController.swift */,
 				227A23142A860C7C00BE461E /* SettingsViewController.swift */,
+				22483FB92AFDD46F00942237 /* SearchViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -105,6 +168,11 @@
 		227A23162A860D1D00BE461E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				22483FB62AFDB82100942237 /* Buttons */,
+				22483FB12AFD0ACE00942237 /* TextFields */,
+				22483FAA2AFCC38800942237 /* Labels */,
+				22483FA72AFCC1FB00942237 /* ImageViews */,
+				22483FA32AFCC14800942237 /* Cells */,
 				227A231C2A861F3900BE461E /* TabBar */,
 			);
 			path = "Custom Views";
@@ -131,6 +199,7 @@
 			children = (
 				225EC4BE2A948973002FC0B6 /* UIColor+.swift */,
 				2201C70E2AF0F393001A93B5 /* Bundle+.swift */,
+				22483FB42AFD2E4D00942237 /* UIView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,19 +369,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22483FA92AFCC22000942237 /* BKCoverImageView.swift in Sources */,
 				227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */,
+				22483FB32AFD0AE300942237 /* BKTextField.swift in Sources */,
 				225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */,
 				2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */,
-				227A230F2A860C3600BE461E /* SearchViewController.swift in Sources */,
 				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
+				22483FB02AFCC6AD00942237 /* BKBodyLabel.swift in Sources */,
 				2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */,
+				22483FB52AFD2E4D00942237 /* UIView+.swift in Sources */,
+				22483FA62AFCC1BC00942237 /* SearchResultCell.swift in Sources */,
 				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
 				220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */,
+				22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */,
 				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
 				227A23202A8625EA00BE461E /* Constants.swift in Sources */,
 				227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */,
+				22483FAC2AFCC3AA00942237 /* BKTitleLabel.swift in Sources */,
 				22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */,
+				22483FB82AFDB83200942237 /* BKButton.swift in Sources */,
 				227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */,
 				227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */,
 			);
@@ -384,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MERGEABLE_LIBRARY = NO;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -441,7 +517,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MERGEABLE_LIBRARY = NO;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -467,6 +543,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,6 +572,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
