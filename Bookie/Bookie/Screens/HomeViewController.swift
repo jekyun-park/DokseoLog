@@ -54,7 +54,3 @@ extension HomeViewController: UITextFieldDelegate {
     return true
   }
 }
-
-#Preview {
-  HomeViewController()
-}
