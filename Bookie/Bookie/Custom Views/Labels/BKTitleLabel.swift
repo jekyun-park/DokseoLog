@@ -13,7 +13,7 @@ class BKTitleLabel: UILabel {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    configure()
+    configureUI()
   }
 
   required init?(coder _: NSCoder) {
@@ -28,7 +28,7 @@ class BKTitleLabel: UILabel {
 
   // MARK: Private
 
-  private func configure() {
+  private func configureUI() {
     textColor = .label
     adjustsFontSizeToFitWidth = true
     minimumScaleFactor = 0.9

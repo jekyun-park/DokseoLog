@@ -13,7 +13,7 @@ class BKTextField: UITextField {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    configure()
+    configureUI()
   }
 
   required init?(coder _: NSCoder) {
@@ -22,7 +22,7 @@ class BKTextField: UITextField {
 
   // MARK: Private
 
-  private func configure() {
+  private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
 
     layer.cornerRadius = 10

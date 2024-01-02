@@ -13,7 +13,7 @@ class BKBodyLabel: UILabel {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    configure()
+    configureUI()
   }
 
   required init?(coder _: NSCoder) {
@@ -28,7 +28,7 @@ class BKBodyLabel: UILabel {
 
   // MARK: Private
 
-  private func configure() {
+  private func configureUI() {
     textColor = .secondaryLabel
 //    font = UIFont.preferredFont(forTextStyle: .body)
     adjustsFontForContentSizeCategory = true

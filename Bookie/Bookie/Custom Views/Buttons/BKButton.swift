@@ -13,7 +13,7 @@ class BKButton: UIButton {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    configure()
+    configureUI()
   }
 
   required init?(coder _: NSCoder) {
@@ -38,7 +38,7 @@ class BKButton: UIButton {
 
   // MARK: Private
 
-  private func configure() {
+  private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
     configuration = .tinted()
     configuration?.cornerStyle = .medium

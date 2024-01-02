@@ -13,12 +13,12 @@ class BKTabBarController: UITabBarController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    configure()
+    configureUI()
   }
 
   // MARK: Private
 
-  private func configure() {
+  private func configureUI() {
     viewControllers = createNavigationControllers()
     view.backgroundColor = .bkBackgroundColor
     tabBar.tintColor = .bkTabBarTintColor
