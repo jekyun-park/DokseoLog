@@ -11,8 +11,6 @@ final class NetworkManager {
 
   // MARK: Lifecycle
 
-  // &Query=아주 작은 습관의 힘&MaxResults=50&start=1&SearchTarget=Book&output=js&Version=20131101
-
   // MARK: - Initializer
   private init() { }
 
@@ -25,7 +23,7 @@ final class NetworkManager {
 
   // MARK: - Methods
   func searchBookInformation(for keyword: String, page: Int, completion: @escaping (Result<SearchResult, BKError>) -> Void) {
-    let endPoint = baseURL + "&Query=\(keyword)&MaxResults=50&start=\(page)&output=js&Version=20131101"
+    let endPoint = baseURL + "&Query=\(keyword)&MaxResults=50&Cover=Mid&start=\(page)&SearchTarget=All&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {
       completion(.failure(.invalidURL))
