@@ -13,7 +13,7 @@ class SearchResultCell: UITableViewCell {
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    configure()
+    configureUI()
   }
 
   required init?(coder _: NSCoder) {
@@ -36,10 +36,13 @@ class SearchResultCell: UITableViewCell {
 
   // MARK: Private
 
-  private func configure() {
-    addSubview(coverImageView)
-    addSubview(titleLabel)
-    addSubview(authorLabel)
+  private func configureUI() {
+    selectionStyle = .none
+    backgroundColor = UIColor(resource: .bkBackground)
+
+    contentView.addSubview(coverImageView)
+    contentView.addSubview(titleLabel)
+    contentView.addSubview(authorLabel)
 
     let padding: CGFloat = 8
 

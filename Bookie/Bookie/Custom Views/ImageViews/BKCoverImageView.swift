@@ -13,7 +13,7 @@ class BKCoverImageView: UIImageView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    configure()
+    configureUI()
   }
 
   required init?(coder _: NSCoder) {
@@ -33,7 +33,8 @@ class BKCoverImageView: UIImageView {
 
   // MARK: Private
 
-  private func configure() {
+  private func configureUI() {
+    translatesAutoresizingMaskIntoConstraints = false
     layer.cornerRadius = 10
     clipsToBounds = true
     image = placeholderImage
