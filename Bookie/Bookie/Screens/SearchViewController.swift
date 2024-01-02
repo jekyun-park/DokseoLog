@@ -58,8 +58,9 @@ class SearchViewController: UIViewController {
   }
 
   private func configureSearchController() {
-    searchController.hidesNavigationBarDuringPresentation = false
     searchController.searchBar.delegate = self
+    searchController.searchBar.isHidden = false
+    searchController.hidesNavigationBarDuringPresentation = false
     searchController.searchBar.placeholder = "책 제목, 저자를 검색해보세요"
     navigationItem.searchController = searchController
   }
@@ -69,6 +70,8 @@ class SearchViewController: UIViewController {
     tableView.frame = view.bounds
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.separatorStyle = .singleLine
+    tableView.separatorColor = .darkGray
     tableView.rowHeight = 120
     tableView.register(SearchResultCell.self, forCellReuseIdentifier: SearchResultCell.reuseID)
   }
@@ -87,6 +90,7 @@ extension SearchViewController: UISearchBarDelegate {
 
   func searchBarCancelButtonClicked(_: UISearchBar) {
     results.removeAll()
+    tableView.reloadData()
   }
 }
 
@@ -102,7 +106,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultCell.reuseID) as? SearchResultCell
     else { return UITableViewCell() }
     let searchResult = results[indexPath.row]
-    cell.set(book: searchResult)
+    cell.setContents(book: searchResult)
     return cell
   }
 
