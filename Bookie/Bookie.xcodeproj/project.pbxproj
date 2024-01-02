@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */; };
 		2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */; };
-		2201C70D2AF0EF01001A93B5 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */; };
 		2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C70E2AF0F393001A93B5 /* Bundle+.swift */; };
 		220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220443702AF4C5EA0027E3EF /* SearchResult.swift */; };
 		22483FA62AFCC1BC00942237 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FA52AFCC1BC00942237 /* SearchResultCell.swift */; };
@@ -295,7 +294,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					22990C012A6EBF83001CF1B3 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -330,7 +329,6 @@
 			files = (
 				2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */,
 				22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */,
-				2201C70D2AF0EF01001A93B5 /* Secrets.xcconfig in Resources */,
 				22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
