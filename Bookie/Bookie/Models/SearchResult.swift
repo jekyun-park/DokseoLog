@@ -19,12 +19,16 @@ struct SearchResult: Codable {
   let query: String
   let searchCategoryID: Int
   let searchCategoryName: String
-  let items: [Item]
+  let item: [Item]
+
+  var books: [Item] {
+    return item.filter { $0.mallType == .book || $0.mallType == .foreign }
+  }
 
   enum CodingKeys: String, CodingKey {
-    case version, logo, title, link, pubDate, totalResults, startIndex, itemsPerPage, query, searchCategoryName
+    case version, logo, title, link, pubDate, totalResults, startIndex, itemsPerPage, query
     case searchCategoryID = "searchCategoryId"
-    case items = "item"
+    case searchCategoryName, item
   }
 }
 
@@ -37,7 +41,7 @@ struct Item: Codable {
     case priceSales, priceStandard, mallType, stockStatus, mileage
     case coverURL = "cover"
     case categoryID = "categoryId"
-    case categoryName, publisher, salesPoint, adult, fixedPrice, customerReviewRank, subInfo, seriesInfo
+    case categoryName, publisher, salesPoint, adult, customerReviewRank, seriesInfo, subInfo, fixedPrice
   }
 
   let title: String
@@ -52,10 +56,11 @@ struct Item: Codable {
   let categoryID: Int
   let categoryName, publisher: String
   let salesPoint: Int
-  let adult, fixedPrice: Bool
+  let adult: Bool
   let customerReviewRank: Int
-  let subInfo: SubInfo
   let seriesInfo: SeriesInfo?
+  let subInfo: SubInfo
+  let fixedPrice: Bool?
 
 }
 
@@ -63,6 +68,11 @@ struct Item: Codable {
 
 enum MallType: String, Codable {
   case book = "BOOK"
+  case foreign = "FOREIGN"
+  case music = "MUSIC"
+  case dvd = "DVD"
+  case used = "USED"
+  case ebook = "EBOOK"
 }
 
 // MARK: - SeriesInfo
