@@ -25,10 +25,15 @@ class SearchResultCell: UITableViewCell {
   static let reuseID = "SearchResultCell"
 
   let coverImageView = BKCoverImageView(frame: .zero)
-  let titleLabel = BKTitleLabel(textAlignment: .left, fontSize: 24)
-  let authorLabel = BKBodyLabel(textAlignment: .left, fontSize: 20)
+  let titleLabel = BKTitleLabel(textAlignment: .left, fontSize: 17)
+  let authorLabel = BKBodyLabel(textAlignment: .left, fontSize: 15)
 
-  func set(book: Book) {
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0))
+  }
+
+  func setContents(book: Item) {
     coverImageView.downloadImage(fromURL: book.coverURL)
     titleLabel.text = book.title
     authorLabel.text = book.author
@@ -47,18 +52,20 @@ class SearchResultCell: UITableViewCell {
     let padding: CGFloat = 8
 
     NSLayoutConstraint.activate([
-      coverImageView.topAnchor.constraint(equalTo: topAnchor),
-      coverImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-      coverImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+      coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      coverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+      coverImageView.widthAnchor.constraint(equalToConstant: 100),
+      coverImageView.heightAnchor.constraint(equalToConstant: 100),
+      coverImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-      titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+      titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
       titleLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: padding),
-      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
       titleLabel.bottomAnchor.constraint(equalTo: authorLabel.topAnchor, constant: padding),
 
       authorLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: padding),
-      authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      authorLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: padding),
+      authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      authorLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: padding),
     ])
   }
 
