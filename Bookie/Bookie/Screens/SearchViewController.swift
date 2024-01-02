@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
 
   let tableView = UITableView()
   let searchController = UISearchController()
-  var results: [Book] = []
+  var results: [Item] = []
   var page = 1
 
   override func viewDidLoad() {
@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
     super.viewWillAppear(animated)
   }
 
-  func updateUI(with books: [Book]) {
+  func updateUI(with books: [Item]) {
     results.append(contentsOf: books)
     DispatchQueue.main.async {
       self.tableView.reloadData()
@@ -44,7 +44,7 @@ class SearchViewController: UIViewController {
       guard let self else { return }
       switch result {
       case .success(let searchResult):
-        updateUI(with: searchResult.items)
+        updateUI(with: searchResult.books)
       case .failure(let error):
         print(error)
       }
