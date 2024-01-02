@@ -31,12 +31,12 @@ class BKTabBarController: UITabBarController {
   }
 
   private func createNavigationControllers() -> [UIViewController] {
-    let homeViewController = HomeViewController()
-    homeViewController.title = "Bookie"
-    homeViewController.tabBarItem = UITabBarItem(title: "홈", image: Images.homeTabBarImage, tag: 0)
-    let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-    homeNavigationController.navigationBar.prefersLargeTitles = false
-    homeNavigationController.view.backgroundColor = .bkBackgroundColor
+    let searchViewController = SearchViewController()
+    searchViewController.title = "도서 검색"
+    searchViewController.tabBarItem = UITabBarItem(title: "검색", image: Images.searchTabBarImage, tag: 0)
+    let searchNavigationController = UINavigationController(rootViewController: searchViewController)
+    searchNavigationController.navigationBar.prefersLargeTitles = false
+    searchNavigationController.view.backgroundColor = .bkBackgroundColor
 
     let bookCaseViewController = BookCaseViewController()
     bookCaseViewController.title = "내 책장"
@@ -57,7 +57,7 @@ class BKTabBarController: UITabBarController {
     settingNavigationController.navigationBar.prefersLargeTitles = true
 
     return [
-      homeNavigationController,
+      searchNavigationController,
       bookCaseNavigationController,
       habitNavigationController,
       settingNavigationController,

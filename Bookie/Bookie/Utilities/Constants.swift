@@ -10,7 +10,6 @@ import UIKit
 // MARK: - Images
 
 enum Images {
-  static let homeTabBarImage = UIImage(systemName: "house.fill")
   static let searchTabBarImage = UIImage(systemName: "magnifyingglass")
   static let bookCaseTabBarImage = UIImage(systemName: "books.vertical.fill")
   static let habitTabBarImage = UIImage(systemName: "figure.mind.and.body")
