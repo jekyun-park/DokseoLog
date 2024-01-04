@@ -30,7 +30,7 @@ class SearchResultCell: UITableViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0))
+    contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12))
   }
 
   func setContents(book: Item) {
@@ -42,30 +42,35 @@ class SearchResultCell: UITableViewCell {
   // MARK: Private
 
   private func configureUI() {
+    let padding: CGFloat = 8
     selectionStyle = .none
     backgroundColor = UIColor(resource: .bkBackground)
 
-    contentView.addSubview(coverImageView)
-    contentView.addSubview(titleLabel)
-    contentView.addSubview(authorLabel)
-
-    let padding: CGFloat = 8
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints = false
+    containerView.addSubviews(coverImageView, titleLabel, authorLabel)
+    contentView.addSubview(containerView)
 
     NSLayoutConstraint.activate([
-      coverImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      coverImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-      coverImageView.widthAnchor.constraint(equalToConstant: 100),
-      coverImageView.heightAnchor.constraint(equalToConstant: 100),
-      coverImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-      titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
+      coverImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+      coverImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+      coverImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
+      coverImageView.widthAnchor.constraint(equalToConstant: 85),
+
+      titleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: padding),
       titleLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: padding),
-      titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      titleLabel.bottomAnchor.constraint(equalTo: authorLabel.topAnchor, constant: padding),
+      titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+      titleLabel.bottomAnchor.constraint(equalTo: authorLabel.topAnchor, constant: -padding),
+      titleLabel.heightAnchor.constraint(equalToConstant: 20),
 
       authorLabel.leadingAnchor.constraint(equalTo: coverImageView.trailingAnchor, constant: padding),
-      authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      authorLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: padding),
+      authorLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
+      authorLabel.heightAnchor.constraint(equalToConstant: 18)
     ])
   }
 

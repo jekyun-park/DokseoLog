@@ -23,9 +23,7 @@ class BKTitleLabel: UILabel {
   convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
     self.init(frame: .zero)
     self.textAlignment = textAlignment
-    guard let customFont = UIFont(name: Fonts.HanSansNeo.medium, size: fontSize) else { return }
-    font = UIFontMetrics(forTextStyle: .title1).scaledFont(for: customFont)
-    adjustsFontForContentSizeCategory = true
+    font = UIFont(name: Fonts.HanSansNeo.medium, size: fontSize)
   }
 
   // MARK: Private

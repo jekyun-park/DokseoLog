@@ -38,7 +38,7 @@ class BKCoverImageView: UIImageView {
     layer.cornerRadius = 10
     clipsToBounds = true
     image = placeholderImage
-    contentMode = .scaleToFill
+    contentMode = .scaleAspectFill
   }
 
 }

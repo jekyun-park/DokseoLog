@@ -71,8 +71,9 @@ class SearchViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.separatorStyle = .singleLine
-    tableView.separatorColor = .darkGray
-    tableView.rowHeight = 120
+    tableView.separatorColor = .systemGray
+    tableView.separatorInset = .init(top: 0, left: 12, bottom: 0, right: 12)
+    tableView.rowHeight = 165
     tableView.register(SearchResultCell.self, forCellReuseIdentifier: SearchResultCell.reuseID)
   }
 
@@ -99,7 +100,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    results.count
+    return results.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
