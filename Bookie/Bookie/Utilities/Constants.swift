@@ -15,16 +15,18 @@ enum Images {
   static let habitTabBarImage = UIImage(systemName: "figure.mind.and.body")
   static let settingsTabBarImage = UIImage(systemName: "gearshape.2.fill")
   static let placeholderBookImage = UIImage(systemName: "book")
+  static let basketBarButtonImage = UIImage(systemName: "basket.fill")
+  static let addBookBarButtonImage = UIImage(systemName: "plus")
 }
 
 // MARK: - Fonts
 
 enum Fonts {
-  enum HanSansNeo {
-    static let bold = "SpoqaHanSansNeo-Bold"
-    static let medium = "SpoqaHanSansNeo-Medium"
-    static let light = "SpoqaHanSansNeo-Light"
-    static let thin = "SpoqaHanSansNeo-Thin"
-    static let regular = "SpoqaHanSansNeo-Regular"
+  enum HanSansNeo: String {
+    case bold = "SpoqaHanSansNeo-Bold"
+    case medium = "SpoqaHanSansNeo-Medium"
+    case light = "SpoqaHanSansNeo-Light"
+    case thin = "SpoqaHanSansNeo-Thin"
+    case regular = "SpoqaHanSansNeo-Regular"
   }
 }

@@ -20,10 +20,10 @@ class BKBodyLabel: UILabel {
     fatalError("init(coder:) has not been implemented")
   }
 
-  convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+  convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat, fontWeight: Fonts.HanSansNeo) {
     self.init(frame: .zero)
     self.textAlignment = textAlignment
-    font = UIFont(name: Fonts.HanSansNeo.regular, size: fontSize)
+    font = UIFont(name: fontWeight.rawValue, size: fontSize)
   }
 
   // MARK: Private
@@ -31,9 +31,10 @@ class BKBodyLabel: UILabel {
   private func configureUI() {
     textColor = .secondaryLabel
     adjustsFontForContentSizeCategory = true
-    adjustsFontSizeToFitWidth = true
+    adjustsFontSizeToFitWidth = false
     minimumScaleFactor = 0.75
-    lineBreakMode = .byWordWrapping
+    lineBreakMode = .byTruncatingTail
+    numberOfLines = 0
     translatesAutoresizingMaskIntoConstraints = false
   }
 

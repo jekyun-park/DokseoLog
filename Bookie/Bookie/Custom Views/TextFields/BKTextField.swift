@@ -32,7 +32,7 @@ class BKTextField: UITextField {
     textColor = .bkText
     tintColor = .bkTabBarTint
     textAlignment = .center
-    font = UIFont(name: Fonts.HanSansNeo.regular, size: UIFont.preferredFont(forTextStyle: .title2).pointSize)
+    font = UIFont(name: Fonts.HanSansNeo.regular.rawValue, size: UIFont.preferredFont(forTextStyle: .title2).pointSize)
     adjustsFontSizeToFitWidth = true
     minimumFontSize = 12
 
