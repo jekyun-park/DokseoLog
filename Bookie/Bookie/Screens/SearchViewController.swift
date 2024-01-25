@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
 
   let tableView = UITableView()
   let searchController = UISearchController()
-  var results: [Item] = []
+  var results: [Book] = []
   var page = 1
 
   override func viewDidLoad() {
@@ -29,7 +29,7 @@ class SearchViewController: UIViewController {
     super.viewWillAppear(animated)
   }
 
-  func updateUI(with books: [Item]) {
+  func updateUI(with books: [Book]) {
     results.append(contentsOf: books)
     DispatchQueue.main.async {
       self.tableView.reloadData()
@@ -55,9 +55,11 @@ class SearchViewController: UIViewController {
     view.backgroundColor = .bkBackground
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.HanSansNeo.medium.rawValue, size: 18)!]
   }
 
   private func configureSearchController() {
+    searchController.searchBar.tintColor = .bkTabBarTint
     searchController.searchBar.delegate = self
     searchController.searchBar.isHidden = false
     searchController.hidesNavigationBarDuringPresentation = false
@@ -109,6 +111,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     let searchResult = results[indexPath.row]
     cell.setContents(book: searchResult)
     return cell
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let bookInformation = results[indexPath.row]
+
+    NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { result in
+      switch result {
+      case .success(let book):
+        DispatchQueue.main.async {
+          self.navigationController?.pushViewController(BookInformationViewController(book: book), animated: true)
+        }
+      case .failure(let error):
+        print(error.description)
+      }
+    }
   }
 
 }
