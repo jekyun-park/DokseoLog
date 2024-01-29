@@ -27,9 +27,9 @@
 		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231D2A861F5B00BE461E /* BKTabBarController.swift */; };
 		227A23202A8625EA00BE461E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231F2A8625EA00BE461E /* Constants.swift */; };
+		22861CDF2B6380590080BBA7 /* BKLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22861CDE2B6380590080BBA7 /* BKLoadingViewController.swift */; };
 		22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C052A6EBF83001CF1B3 /* AppDelegate.swift */; };
 		22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */; };
-		22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C092A6EBF84001CF1B3 /* HomeViewController.swift */; };
 		22990C122A6EBF8B001CF1B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22990C112A6EBF8B001CF1B3 /* Assets.xcassets */; };
 		22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */; };
 		22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */; };
@@ -61,10 +61,10 @@
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		227A231D2A861F5B00BE461E /* BKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTabBarController.swift; sourceTree = "<group>"; };
 		227A231F2A8625EA00BE461E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		22861CDE2B6380590080BBA7 /* BKLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKLoadingViewController.swift; sourceTree = "<group>"; };
 		22990C022A6EBF83001CF1B3 /* Bookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990C052A6EBF83001CF1B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		22990C092A6EBF84001CF1B3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		22990C0F2A6EBF84001CF1B3 /* Bookie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookie.xcdatamodel; sourceTree = "<group>"; };
 		22990C112A6EBF8B001CF1B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22990C142A6EBF8B001CF1B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -157,7 +157,6 @@
 		227A230D2A860AC200BE461E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				22990C092A6EBF84001CF1B3 /* HomeViewController.swift */,
 				227A23102A860C3F00BE461E /* BookCaseViewController.swift */,
 				227A23122A860C6F00BE461E /* HabitsViewController.swift */,
 				227A23142A860C7C00BE461E /* SettingsViewController.swift */,
@@ -170,6 +169,7 @@
 		227A23162A860D1D00BE461E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				22861CDD2B6380240080BBA7 /* ViewControllers */,
 				22483FB62AFDB82100942237 /* Buttons */,
 				22483FB12AFD0ACE00942237 /* TextFields */,
 				22483FAA2AFCC38800942237 /* Labels */,
@@ -221,6 +221,14 @@
 				227A231D2A861F5B00BE461E /* BKTabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		22861CDD2B6380240080BBA7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				22861CDE2B6380590080BBA7 /* BKLoadingViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		22990BF92A6EBF83001CF1B3 = {
@@ -380,7 +388,7 @@
 				2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */,
 				22483FB52AFD2E4D00942237 /* UIView+.swift in Sources */,
 				22483FA62AFCC1BC00942237 /* SearchResultCell.swift in Sources */,
-				22990C0A2A6EBF84001CF1B3 /* HomeViewController.swift in Sources */,
+				22861CDF2B6380590080BBA7 /* BKLoadingViewController.swift in Sources */,
 				220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */,
 				22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */,
 				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,

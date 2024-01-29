@@ -10,6 +10,7 @@ import UIKit
 class BookInformationViewController: UIViewController {
 
   let book: Book
+  
   private lazy var scrollView = UIScrollView(frame: .zero)
   private lazy var titleLabel = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .bold)
   private lazy var authorLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
@@ -50,10 +51,6 @@ class BookInformationViewController: UIViewController {
 
     coverImage.downloadImage(fromURL: book.coverURL)
 
-    view.addSubview(scrollView)
-    scrollView.translatesAutoresizingMaskIntoConstraints = false
-    scrollView.addSubviews(titleLabel, authorLabel, descriptionLabel, introduceLabel, pageLabel, coverImage)
-
     NSLayoutConstraint.activate([
       scrollView.topAnchor.constraint(equalTo: view.topAnchor),
       scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -91,6 +88,10 @@ class BookInformationViewController: UIViewController {
   }
 
   private func configureScrollView() {
+    view.addSubview(scrollView)
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
+    scrollView.addSubviews(titleLabel, authorLabel, descriptionLabel, introduceLabel, pageLabel, coverImage)
+    scrollView.backgroundColor = .bkBackground
     scrollView.isScrollEnabled = true
   }
 
