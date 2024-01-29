@@ -41,7 +41,8 @@ class SearchViewController: UIViewController {
 
   // MARK: Private
 
-  private func getResults(for string: String) {
+  private func requestSearchResults(for string: String, page: Int) {
+    showLoadingView()
     NetworkManager.shared.searchBookInformation(for: string, page: page) { [weak self] result in
       guard let self else { return }
       switch result {
@@ -92,7 +93,7 @@ extension SearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     guard let searchString = searchBar.text else { return }
     results.removeAll()
-    getResults(for: searchString)
+    requestSearchResults(for: searchString, page: page)
   }
 
   func searchBarCancelButtonClicked(_: UISearchBar) {
