@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - SearchViewController
 
-class SearchViewController: UIViewController {
+class SearchViewController: BKLoadingViewController {
 
   // MARK: Internal
 
@@ -45,6 +45,7 @@ class SearchViewController: UIViewController {
     showLoadingView()
     NetworkManager.shared.searchBookInformation(for: string, page: page) { [weak self] result in
       guard let self else { return }
+      self.dismissLoadingView()
       switch result {
       case .success(let searchResult):
         totalSearchResults = searchResult.totalResults
