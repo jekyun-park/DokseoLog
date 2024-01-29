@@ -70,7 +70,7 @@ class SearchResultCell: UITableViewCell {
 
       authorLabel.leadingAnchor.constraint(equalTo: coverImage.trailingAnchor, constant: padding),
       authorLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-      authorLabel.heightAnchor.constraint(equalToConstant: 18)
+      authorLabel.heightAnchor.constraint(equalToConstant: 18),
     ])
   }
 

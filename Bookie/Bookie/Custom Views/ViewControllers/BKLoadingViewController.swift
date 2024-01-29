@@ -26,7 +26,7 @@ class BKLoadingViewController: UIViewController {
 
     NSLayoutConstraint.activate([
       activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-      activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+      activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
     ])
 
     activityIndicator.startAnimating()

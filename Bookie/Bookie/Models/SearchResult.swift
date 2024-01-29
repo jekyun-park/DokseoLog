@@ -29,7 +29,7 @@ struct SearchResult: Codable {
   }
 }
 
-// MARK: - Item
+// MARK: - Book
 
 struct Book: Codable {
   enum CodingKeys: String, CodingKey {
@@ -88,6 +88,6 @@ struct SeriesInfo: Codable {
 // MARK: - SubInfo
 
 struct SubInfo: Codable {
-    let subTitle, originalTitle: String?
-    let itemPage: Int?
+  let subTitle, originalTitle: String?
+  let itemPage: Int?
 }

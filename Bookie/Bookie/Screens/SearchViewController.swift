@@ -45,7 +45,7 @@ class SearchViewController: BKLoadingViewController {
     showLoadingView()
     NetworkManager.shared.searchBookInformation(for: string, page: page) { [weak self] result in
       guard let self else { return }
-      self.dismissLoadingView()
+      dismissLoadingView()
       switch result {
       case .success(let searchResult):
         totalSearchResults = searchResult.totalResults
@@ -61,7 +61,9 @@ class SearchViewController: BKLoadingViewController {
     view.backgroundColor = .bkBackground
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.HanSansNeo.medium.rawValue, size: 18)!]
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(
+      name: Fonts.HanSansNeo.medium.rawValue,
+      size: 18)!]
   }
 
   private func configureSearchController() {
@@ -110,7 +112,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    return results.count
+    results.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,7 +123,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bookInformation = results[indexPath.row]
 
     NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { [weak self] result in
@@ -137,7 +139,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
   }
 
-  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
     let offsetY = scrollView.contentOffset.y
     let contentHeight = scrollView.contentSize.height
     let height = scrollView.frame.height
@@ -149,7 +151,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         requestSearchResults(for: text, page: page)
       }
     }
-
   }
 
 }
