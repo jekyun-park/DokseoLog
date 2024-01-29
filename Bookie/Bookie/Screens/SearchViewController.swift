@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
   let tableView = UITableView()
   let searchController = UISearchController()
   var results: [Book] = []
+  var totalSearchResults = 0
+  var hasMoreSearchResults = false
   var page = 1
 
   override func viewDidLoad() {
@@ -44,6 +46,8 @@ class SearchViewController: UIViewController {
       guard let self else { return }
       switch result {
       case .success(let searchResult):
+        totalSearchResults = searchResult.totalResults
+        results.count < totalSearchResults ? (hasMoreSearchResults = true) : (hasMoreSearchResults = false)
         updateUI(with: searchResult.books)
       case .failure(let error):
         print(error)
@@ -92,6 +96,8 @@ extension SearchViewController: UISearchBarDelegate {
   }
 
   func searchBarCancelButtonClicked(_: UISearchBar) {
+    page = 0
+    totalSearchResults = 0
     results.removeAll()
     tableView.reloadData()
   }
@@ -126,6 +132,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         print(error.description)
       }
     }
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let offsetY = scrollView.contentOffset.y
+    let contentHeight = scrollView.contentSize.height
+    let height = scrollView.frame.height
+
+    if offsetY > contentHeight - height {
+      if hasMoreSearchResults {
+        page += 1
+        guard let text = searchController.searchBar.text else { return }
+        requestSearchResults(for: text, page: page)
+      }
+    }
+
   }
 
 }
