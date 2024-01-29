@@ -122,10 +122,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bookInformation = results[indexPath.row]
 
-    NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { result in
+    NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { [weak self] result in
       switch result {
       case .success(let book):
         DispatchQueue.main.async {
+          guard let self else { return }
           self.navigationController?.pushViewController(BookInformationViewController(book: book), animated: true)
         }
       case .failure(let error):
