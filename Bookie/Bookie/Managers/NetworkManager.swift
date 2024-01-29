@@ -23,7 +23,7 @@ final class NetworkManager {
 
   // MARK: - Methods
   func searchBookInformation(for keyword: String, page: Int, completion: @escaping (Result<SearchResult, BKError>) -> Void) {
-    let endPoint = searchBookBaseURL + "&Query=\(keyword)&MaxResults=50&Cover=Big&start=\(page)&output=js&Version=20131101"
+    let endPoint = searchBookBaseURL + "&Query=\(keyword)&Cover=Big&start=\(page)&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {
       completion(.failure(.invalidURL))
