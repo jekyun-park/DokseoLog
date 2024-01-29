@@ -44,7 +44,7 @@ class SearchResultCell: UITableViewCell {
   private func configureUI() {
     let padding: CGFloat = 8
     selectionStyle = .none
-    backgroundColor = UIColor(resource: .bkBackground)
+    backgroundColor = .bkBackgroundColor
 
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
