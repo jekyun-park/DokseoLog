@@ -23,7 +23,7 @@ final class NetworkManager {
 
   // MARK: - Methods
   func searchBookInformation(for keyword: String, page: Int, completion: @escaping (Result<SearchResult, BKError>) -> Void) {
-    let endPoint = searchBookBaseURL + "&Query=\(keyword)&MaxResults=50&Cover=Big&start=\(page)&output=js&Version=20131101"
+    let endPoint = searchBookBaseURL + "&Query=\(keyword)&Cover=Big&start=\(page)&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {
       completion(.failure(.invalidURL))
@@ -59,9 +59,9 @@ final class NetworkManager {
     task.resume()
   }
 
-  func fetchBookDetailInformation(with isbn: String, completion: @escaping(Result<Book, BKError>) -> Void){
+  func fetchBookDetailInformation(with isbn: String, completion: @escaping (Result<Book, BKError>) -> Void) {
     let endPoint = searchBookDetailBaseURL + "&itemIdType=ISBN13&ItemId=\(isbn)&Cover=Big&output=js&Version=20131101"
-    
+
     guard let url = URL(string: endPoint) else {
       completion(.failure(.invalidURL))
       return
@@ -90,7 +90,8 @@ final class NetworkManager {
 
         guard let book = result.books.first else {
           completion(.failure(.noData))
-          return }
+          return
+        }
         completion(.success(book))
       } catch {
         completion(.failure(.invalidData))
@@ -98,7 +99,6 @@ final class NetworkManager {
     }
 
     task.resume()
-
   }
 
   func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {

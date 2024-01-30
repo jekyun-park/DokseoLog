@@ -9,13 +9,15 @@ import UIKit
 
 // MARK: - SearchViewController
 
-class SearchViewController: UIViewController {
+class SearchViewController: BKLoadingViewController {
 
   // MARK: Internal
 
   let tableView = UITableView()
   let searchController = UISearchController()
   var results: [Book] = []
+  var totalSearchResults = 0
+  var hasMoreSearchResults = false
   var page = 1
 
   override func viewDidLoad() {
@@ -39,11 +41,15 @@ class SearchViewController: UIViewController {
 
   // MARK: Private
 
-  private func getResults(for string: String) {
+  private func requestSearchResults(for string: String, page: Int) {
+    showLoadingView()
     NetworkManager.shared.searchBookInformation(for: string, page: page) { [weak self] result in
       guard let self else { return }
+      dismissLoadingView()
       switch result {
       case .success(let searchResult):
+        totalSearchResults = searchResult.totalResults
+        results.count < totalSearchResults ? (hasMoreSearchResults = true) : (hasMoreSearchResults = false)
         updateUI(with: searchResult.books)
       case .failure(let error):
         print(error)
@@ -55,7 +61,9 @@ class SearchViewController: UIViewController {
     view.backgroundColor = .bkBackground
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.HanSansNeo.medium.rawValue, size: 18)!]
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(
+      name: Fonts.HanSansNeo.medium.rawValue,
+      size: 18)!]
   }
 
   private func configureSearchController() {
@@ -88,10 +96,12 @@ extension SearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     guard let searchString = searchBar.text else { return }
     results.removeAll()
-    getResults(for: searchString)
+    requestSearchResults(for: searchString, page: page)
   }
 
   func searchBarCancelButtonClicked(_: UISearchBar) {
+    page = 0
+    totalSearchResults = 0
     results.removeAll()
     tableView.reloadData()
   }
@@ -102,7 +112,7 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    return results.count
+    results.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,17 +123,32 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     return cell
   }
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bookInformation = results[indexPath.row]
 
-    NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { result in
+    NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { [weak self] result in
       switch result {
       case .success(let book):
         DispatchQueue.main.async {
+          guard let self else { return }
           self.navigationController?.pushViewController(BookInformationViewController(book: book), animated: true)
         }
       case .failure(let error):
         print(error.description)
+      }
+    }
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
+    let offsetY = scrollView.contentOffset.y
+    let contentHeight = scrollView.contentSize.height
+    let height = scrollView.frame.height
+
+    if offsetY > contentHeight - height {
+      if hasMoreSearchResults {
+        page += 1
+        guard let text = searchController.searchBar.text else { return }
+        requestSearchResults(for: text, page: page)
       }
     }
   }

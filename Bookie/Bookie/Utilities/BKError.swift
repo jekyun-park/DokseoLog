@@ -15,6 +15,8 @@ enum BKError: Error {
   case noData
   case unableToComplete
 
+  // MARK: Internal
+
   var description: String {
     switch self {
     case .invalidAPIKey:

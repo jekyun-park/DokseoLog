@@ -44,7 +44,7 @@ class SearchResultCell: UITableViewCell {
   private func configureUI() {
     let padding: CGFloat = 8
     selectionStyle = .none
-    backgroundColor = UIColor(resource: .bkBackground)
+    backgroundColor = .bkBackgroundColor
 
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class SearchResultCell: UITableViewCell {
 
       authorLabel.leadingAnchor.constraint(equalTo: coverImage.trailingAnchor, constant: padding),
       authorLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-      authorLabel.heightAnchor.constraint(equalToConstant: 18)
+      authorLabel.heightAnchor.constraint(equalToConstant: 18),
     ])
   }
 
