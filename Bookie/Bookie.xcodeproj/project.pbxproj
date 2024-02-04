@@ -27,11 +27,13 @@
 		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231D2A861F5B00BE461E /* BKTabBarController.swift */; };
 		227A23202A8625EA00BE461E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231F2A8625EA00BE461E /* Constants.swift */; };
+		227BB42E2B6A8BF1006D7727 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227BB42D2B6A8BF1006D7727 /* UserDefaultsManager.swift */; };
 		22861CDF2B6380590080BBA7 /* BKLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22861CDE2B6380590080BBA7 /* BKLoadingViewController.swift */; };
 		22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C052A6EBF83001CF1B3 /* AppDelegate.swift */; };
 		22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */; };
 		22990C122A6EBF8B001CF1B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22990C112A6EBF8B001CF1B3 /* Assets.xcassets */; };
 		22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */; };
+		229C506E2B6C7BAD00B0DC85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C506D2B6C7BAD00B0DC85 /* LoginViewController.swift */; };
 		22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */; };
 		22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAD2AEA462700E4477A /* SpoqaHanSansNeo-Bold.ttf */; };
 		22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */; };
@@ -61,6 +63,7 @@
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		227A231D2A861F5B00BE461E /* BKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTabBarController.swift; sourceTree = "<group>"; };
 		227A231F2A8625EA00BE461E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		227BB42D2B6A8BF1006D7727 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		22861CDE2B6380590080BBA7 /* BKLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKLoadingViewController.swift; sourceTree = "<group>"; };
 		22990C022A6EBF83001CF1B3 /* Bookie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22990C052A6EBF83001CF1B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		22990C112A6EBF8B001CF1B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22990C142A6EBF8B001CF1B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22990C162A6EBF8B001CF1B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		229C506D2B6C7BAD00B0DC85 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22BF43F12A6F6D3600AF167C /* Bookie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Bookie.entitlements; sourceTree = "<group>"; };
 		22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
 		22C1EBAD2AEA462700E4477A /* SpoqaHanSansNeo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.ttf"; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */,
+				227BB42D2B6A8BF1006D7727 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 				227A23142A860C7C00BE461E /* SettingsViewController.swift */,
 				22483FB92AFDD46F00942237 /* SearchViewController.swift */,
 				22E08C1F2B4C34CB002F69A7 /* BookInformationViewController.swift */,
+				229C506D2B6C7BAD00B0DC85 /* LoginViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 				220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */,
 				22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */,
 				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,
+				227BB42E2B6A8BF1006D7727 /* UserDefaultsManager.swift in Sources */,
 				22E08C202B4C34CC002F69A7 /* BookInformationViewController.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
 				227A23202A8625EA00BE461E /* Constants.swift in Sources */,
@@ -400,6 +407,7 @@
 				22990C082A6EBF84001CF1B3 /* SceneDelegate.swift in Sources */,
 				22483FB82AFDB83200942237 /* BKButton.swift in Sources */,
 				227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */,
+				229C506E2B6C7BAD00B0DC85 /* LoginViewController.swift in Sources */,
 				227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
