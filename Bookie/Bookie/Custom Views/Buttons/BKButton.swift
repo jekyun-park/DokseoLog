@@ -20,20 +20,22 @@ class BKButton: UIButton {
     fatalError("init(coder:) has not been implemented")
   }
 
-  convenience init(color _: UIColor, title _: String, systemImageName _: String) {
+//  convenience init(color : UIColor, title : String, systemImageName : String) {
+//    self.init(frame: .zero)
+//    set(color: color, title: title, systemImageName: systemImageName )
+//  }
+
+  convenience init(color: UIColor, title: String) {
     self.init(frame: .zero)
+    set(color: color, title: title)
   }
 
   // MARK: Internal
 
-  func set(color: UIColor, title: String, systemImageName: String) {
+  private func set(color: UIColor, title: String) {
     configuration?.baseBackgroundColor = color
     configuration?.baseForegroundColor = color
     configuration?.title = title
-
-    configuration?.image = UIImage(systemName: systemImageName)
-    configuration?.imagePadding = 6
-    configuration?.imagePlacement = .leading
   }
 
   // MARK: Private
