@@ -30,3 +30,8 @@ enum Fonts {
     case regular = "SpoqaHanSansNeo-Regular"
   }
 }
+
+enum UserDefaultsKey {
+  static let isFirstLaunch = "isFirstLaunch"
+  static let isContinueWithoutLogin = "isContinueWithoutLogin"
+}
