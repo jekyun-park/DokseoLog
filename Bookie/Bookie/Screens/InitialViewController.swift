@@ -8,7 +8,7 @@
 import AuthenticationServices
 import UIKit
 
-class LoginViewController: UIViewController {
+class InitialViewController: UIViewController {
 
   private lazy var appleLoginButton: ASAuthorizationAppleIDButton = {
     let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .black)
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
 
 }
 
-extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding{
+extension InitialViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding{
 
   func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
     guard let window = self.view.window else { return ASPresentationAnchor() }

@@ -13,34 +13,38 @@ class BKButton: UIButton {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    configureUI()
+    setup()
   }
 
   required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-//  convenience init(color : UIColor, title : String, systemImageName : String) {
-//    self.init(frame: .zero)
-//    set(color: color, title: title, systemImageName: systemImageName )
-//  }
-
-  convenience init(color: UIColor, title: String) {
+  convenience init(backgroundColor: UIColor, foregroundColor: UIColor, title: String, systemImage: UIImage) {
     self.init(frame: .zero)
-    set(color: color, title: title)
+
+//    self.backgroundColor = color
+    configuration?.background.backgroundColor = backgroundColor
+//    configuration?.baseBackgroundColor =
+    configuration?.baseForegroundColor = foregroundColor
+    configuration?.title = title
+
+    configuration?.image = systemImage
+    configuration?.imagePadding = 6
+    configuration?.imagePlacement = .leading
   }
 
-  // MARK: Internal
+  convenience init(backgroundColor: UIColor, foregroundColor: UIColor, title: String) {
+    self.init(frame: .zero)
 
-  private func set(color: UIColor, title: String) {
-    configuration?.baseBackgroundColor = color
-    configuration?.baseForegroundColor = color
+    configuration?.background.backgroundColor = backgroundColor
+    configuration?.baseForegroundColor = foregroundColor
     configuration?.title = title
   }
 
   // MARK: Private
 
-  private func configureUI() {
+  private func setup() {
     translatesAutoresizingMaskIntoConstraints = false
     configuration = .tinted()
     configuration?.cornerStyle = .medium
