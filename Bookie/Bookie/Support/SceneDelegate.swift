@@ -18,10 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.windowScene = windowScene
 
     if UserDefaultsManager.shared.isLaunchedBefore {
-      window?.rootViewController = LoginViewController()
-      UserDefaultsManager.shared.setLaunchedBefore()
-    } else {
       window?.rootViewController = BKTabBarController()
+    } else {
+      window?.rootViewController = InitialViewController()
     }
 
     window?.makeKeyAndVisible()
