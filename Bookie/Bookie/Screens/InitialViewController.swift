@@ -5,20 +5,22 @@
 //  Created by 박제균 on 2/2/24.
 //
 
-import AuthenticationServices
 import UIKit
 
 class InitialViewController: UIViewController {
 
-  private lazy var appleLoginButton: ASAuthorizationAppleIDButton = {
-    let button = ASAuthorizationAppleIDButton(authorizationButtonType: .default, authorizationButtonStyle: .black)
+  private lazy var linkWithiCloudButton: BKButton = {
+    guard let image = Images.icloudLinkImage else { return BKButton() }
+    let button = BKButton(backgroundColor: .black, foregroundColor: .white, title: "icloud와 데이터 연동하기", systemImage: image)
+    button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17)
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.addTarget(self, action: #selector(appleLoginButtonTapped), for: .touchUpInside)
+    button.addTarget(self, action: #selector(linkWithiCloudButtonTapped), for: .touchUpInside)
     return button
   }()
 
-  private lazy var continueWithoutLoginButton: BKButton = {
-    let button = BKButton(color: .label, title: "로그인 없이 시작하기")
+  private lazy var continueWithoutiCloudButton: BKButton = {
+    let button = BKButton(backgroundColor: .systemGray3, foregroundColor: .label, title: "연동 없이 시작하기")
+    button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(continueWithoutLoginButtonTapped), for: .touchUpInside)
     return button
@@ -26,8 +28,8 @@ class InitialViewController: UIViewController {
 
   private lazy var stackView: UIStackView = {
     let stackView = UIStackView(arrangedSubviews: [
-      appleLoginButton,
-      continueWithoutLoginButton
+      linkWithiCloudButton,
+      continueWithoutiCloudButton
     ])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .vertical
@@ -53,46 +55,26 @@ class InitialViewController: UIViewController {
     ])
   }
 
-  @objc private func appleLoginButtonTapped() {
-    let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
+  @objc private func linkWithiCloudButtonTapped() {
+    // iCloud 연동이 되어있지 않은 경우
+    if FileManager.default.ubiquityIdentityToken == nil {
+      self.presentBKAlert(title: "iCloud 연동을 해주세요", message: "설정 > iPhone에 로그인을 통해 iCloud와 연동할 수 있도록 해주세요", buttonTitle: "확인") {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(settingsURL)
+      }
+    } else { // iCloud 연동이 되어있는 경우
+      self.presentBKAlert(title: "iCloud 연동 성공", message: "iCloud 연동에 성공했습니다!", buttonTitle: "확인") {
+        self.view.window?.rootViewController = BKTabBarController()
+      }
 
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
+      UserDefaultsManager.shared.setLaunchedBefore()
+    }
   }
 
   @objc private func continueWithoutLoginButtonTapped() {
     self.dismiss(animated: true)
     view.window?.rootViewController = BKTabBarController()
+    UserDefaultsManager.shared.setLaunchedBefore()
   }
 
-}
-
-extension InitialViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding{
-
-  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-    guard let window = self.view.window else { return ASPresentationAnchor() }
-    return window
-  }
-
-  /// 인증 성공시 성공되는 함수
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    switch authorization.credential {
-    case let appleIDCredential as ASAuthorizationAppleIDCredential:
-      let userCredential = appleIDCredential.user
-      let email = appleIDCredential.email
-      let fullName = appleIDCredential.fullName
-
-    default:
-      break
-    }
-  }
-
-  /// 인증 실패시 실행되는 함수
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    
-  }
 }
