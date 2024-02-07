@@ -17,6 +17,7 @@ enum Images {
   static let placeholderBookImage = UIImage(systemName: "book")
   static let basketBarButtonImage = UIImage(systemName: "basket.fill")
   static let addBookBarButtonImage = UIImage(systemName: "plus")
+  static let icloudLinkImage = UIImage(systemName: "link.icloud")
 }
 
 // MARK: - Fonts
