@@ -9,8 +9,8 @@ import UIKit
 
 extension UIColor {
 
-  static let bkBackgroundColor = UIColor(named: "BKBackgroundColor")
-  static let bkTabBarBackgroundColor = UIColor(named: "BKTabBarBackgroundColor")
-  static let bkTabBarTintColor = UIColor(named: "BKTabBarTintColor")
+  static let bkBackgroundColor = UIColor(named: "BKBackgroundColor")!
+  static let bkTabBarBackgroundColor = UIColor(named: "BKTabBarBackgroundColor")!
+  static let bkTabBarTintColor = UIColor(named: "BKTabBarTintColor")!
 
 }
