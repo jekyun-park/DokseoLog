@@ -8,12 +8,17 @@
 import Foundation
 
 enum BKError: Error {
+
   case invalidAPIKey
   case invalidURL
   case invalidResponse
   case invalidData
   case noData
   case unableToComplete
+  case failToSaveData
+  case failToFetchData
+  case failToDeleteData
+  case failToUpdateData
 
   // MARK: Internal
 
@@ -31,6 +36,14 @@ enum BKError: Error {
       return "요청한 데이터가 존재하지 않습니다. 개발자에게 문의하거나 다시 시도해 주세요."
     case .unableToComplete:
       return "데이터 요청에 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
+    case .failToSaveData:
+      return "데이터 저장에 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
+    case .failToFetchData:
+      return "데이터 불러오기에 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
+    case .failToDeleteData:
+      return "데이터 삭제를 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
+    case .failToUpdateData:
+      return "데이터 업데이트에 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
     }
   }
 }
