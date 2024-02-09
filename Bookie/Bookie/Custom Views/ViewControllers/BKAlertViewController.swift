@@ -35,14 +35,18 @@ class BKAlertViewController: UIViewController {
   var buttonTitle: String?
   var action: (() -> Void)?
 
-  init(title: String, message: String, buttonTitle: String, action: @escaping (() -> Void)) {
+  init(title: String, message: String, buttonTitle: String) {
     super.init(nibName: nil, bundle: nil)
     self.alertTitle = title
     self.message = message
     self.buttonTitle = buttonTitle
+  }
+
+  convenience init(title: String, message: String, buttonTitle: String, action: @escaping (() -> Void)) {
+    self.init(title: title, message: message, buttonTitle: buttonTitle)
     self.action = action
   }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
