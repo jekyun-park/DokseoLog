@@ -5,6 +5,7 @@
 //  Created by 박제균 on 1/8/24.
 //
 
+import CoreData
 import UIKit
 
 class BookInformationViewController: UIViewController {
@@ -56,6 +57,7 @@ class BookInformationViewController: UIViewController {
     authorLabel.text = book.author
     descriptionLabel.text = book.description
     descriptionLabel.adjustsFontSizeToFitWidth = false
+    descriptionLabel.numberOfLines = 0
     introduceLabel.text = "책소개"
     if let page = book.subInfo?.itemPage {
       pageLabel.text = "\(page)p"
@@ -91,10 +93,9 @@ class BookInformationViewController: UIViewController {
       introduceLabel.topAnchor.constraint(equalTo: pageLabel.bottomAnchor, constant: 30),
       introduceLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
 
-      descriptionLabel.topAnchor.constraint(equalTo: introduceLabel.bottomAnchor),
+      descriptionLabel.topAnchor.constraint(equalTo: introduceLabel.bottomAnchor, constant: 10),
       descriptionLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
       descriptionLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-      descriptionLabel.heightAnchor.constraint(equalToConstant: 100),
       descriptionLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
 
     ])
@@ -118,12 +119,23 @@ class BookInformationViewController: UIViewController {
 
   @objc
   private func addToBasketBarButtonTapped() {
-    print("button tapped")
+
+    do {
+      try PersistenceManager.shared.addToBookBascket(book: book)
+    } catch (let error) {
+      self.presentBKAlert(title: "저장에 실패했습니다.", message: error.localizedDescription, buttonTitle: "확인")
+    }
+
   }
 
   @objc
   private func addBookBarButtonTapped() {
-    print("button tapped")
+    
+    do {
+      try PersistenceManager.shared.addToBookCase(book: book)
+    } catch (let error) {
+      self.presentBKAlert(title: "저장에 실패했습니다.", message: error.localizedDescription, buttonTitle: "확인")
+    }
   }
 
 }

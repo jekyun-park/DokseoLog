@@ -17,6 +17,7 @@ enum Images {
   static let placeholderBookImage = UIImage(systemName: "book")
   static let basketBarButtonImage = UIImage(systemName: "basket.fill")
   static let addBookBarButtonImage = UIImage(systemName: "plus")
+  static let icloudLinkImage = UIImage(systemName: "link.icloud")
 }
 
 // MARK: - Fonts
@@ -29,4 +30,9 @@ enum Fonts {
     case thin = "SpoqaHanSansNeo-Thin"
     case regular = "SpoqaHanSansNeo-Regular"
   }
+}
+
+enum UserDefaultsKey {
+  static let isFirstLaunch = "isFirstLaunch"
+  static let isContinueWithoutLogin = "isContinueWithoutLogin"
 }
