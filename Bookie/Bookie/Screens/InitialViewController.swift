@@ -58,12 +58,12 @@ class InitialViewController: UIViewController {
   @objc private func linkWithiCloudButtonTapped() {
     // iCloud 연동이 되어있지 않은 경우
     if FileManager.default.ubiquityIdentityToken == nil {
-      self.presentBKAlert(title: "iCloud 연동을 해주세요", message: "설정 > iPhone에 로그인을 통해 iCloud와 연동할 수 있도록 해주세요", buttonTitle: "확인") {
+      self.presentBKAlertWithAction(title: "iCloud 연동을 해주세요", message: "설정 > iPhone에 로그인을 통해 iCloud와 연동할 수 있도록 해주세요", buttonTitle: "확인") {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
         UIApplication.shared.open(settingsURL)
       }
     } else { // iCloud 연동이 되어있는 경우
-      self.presentBKAlert(title: "iCloud 연동 성공", message: "iCloud 연동에 성공했습니다!", buttonTitle: "확인") {
+      self.presentBKAlertWithAction(title: "iCloud 연동 성공", message: "iCloud 연동에 성공했습니다!", buttonTitle: "확인") {
         self.view.window?.rootViewController = BKTabBarController()
       }
 
