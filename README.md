@@ -78,9 +78,11 @@
 
 #### Libraries
 - [SwiftLint]()
+- [SwiftFormat]()
+- [Airbnb Swift Style Guide](https://github.com/airbnb/swift)
 
 #### API
-- [Naver Search API]()
+- [알라딘 OPEN API](https://blog.aladin.co.kr/openapi/popup/6695306)
 
 #### Architecture
 - MVC
