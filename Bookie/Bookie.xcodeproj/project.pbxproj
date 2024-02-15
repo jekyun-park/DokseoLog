@@ -19,6 +19,7 @@
 		22483FB52AFD2E4D00942237 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB42AFD2E4D00942237 /* UIView+.swift */; };
 		22483FB82AFDB83200942237 /* BKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB72AFDB83200942237 /* BKButton.swift */; };
 		22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB92AFDD46F00942237 /* SearchViewController.swift */; };
+		224A8FFE2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A8FFD2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift */; };
 		225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* BKError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
@@ -63,6 +64,7 @@
 		22483FB42AFD2E4D00942237 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		22483FB72AFDB83200942237 /* BKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKButton.swift; sourceTree = "<group>"; };
 		22483FB92AFDD46F00942237 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		224A8FFD2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		225D0ABB2AF131A1002AD604 /* BKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		224A8FFC2B7DA67500C003A4 /* SegmentedControls */ = {
+			isa = PBXGroup;
+			children = (
+				224A8FFD2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift */,
+			);
+			path = SegmentedControls;
+			sourceTree = "<group>";
+		};
 		225D0ABD2AF13B60002AD604 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 		227A23162A860D1D00BE461E /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				224A8FFC2B7DA67500C003A4 /* SegmentedControls */,
 				227AFB342B72705800E72F8B /* Views */,
 				22861CDD2B6380240080BBA7 /* ViewControllers */,
 				22483FB62AFDB82100942237 /* Buttons */,
@@ -414,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22483FA92AFCC22000942237 /* BKCoverImageView.swift in Sources */,
+				224A8FFE2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift in Sources */,
 				227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */,
 				22EBE5512B74B0150024D620 /* SeriesInfo.swift in Sources */,
 				22483FB32AFD0AE300942237 /* BKTextField.swift in Sources */,
