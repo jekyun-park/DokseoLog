@@ -123,18 +123,19 @@ class BookInformationViewController: UIViewController {
     do {
       try PersistenceManager.shared.addToBookBascket(book: book)
     } catch (let error) {
-      self.presentBKAlert(title: "저장에 실패했습니다.", message: error.localizedDescription, buttonTitle: "확인")
+      let bkError = error as? BKError
+      self.presentBKAlert(title: "저장에 실패했습니다.", message: bkError?.description ?? "다시 시도하거나, 개발자에게 문의해주십시오.", buttonTitle: "확인")
     }
 
   }
 
   @objc
   private func addBookBarButtonTapped() {
-    
     do {
       try PersistenceManager.shared.addToBookCase(book: book)
     } catch (let error) {
-      self.presentBKAlert(title: "저장에 실패했습니다.", message: error.localizedDescription, buttonTitle: "확인")
+      let bkError = error as? BKError
+      self.presentBKAlert(title: "도서 추가 실패", message: bkError?.description ?? "다시 시도하거나, 개발자에게 문의해주십시오.", buttonTitle: "확인")
     }
   }
 

@@ -19,6 +19,7 @@ enum BKError: Error {
   case failToFetchData
   case failToDeleteData
   case failToUpdateData
+  case duplicatedData
 
   // MARK: Internal
 
@@ -44,6 +45,8 @@ enum BKError: Error {
       return "데이터 삭제를 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
     case .failToUpdateData:
       return "데이터 업데이트에 실패했습니다. 개발자에게 문의하거나 다시 시도해 주세요."
+    case .duplicatedData:
+      return "이미 저장된 책입니다."
     }
   }
 }

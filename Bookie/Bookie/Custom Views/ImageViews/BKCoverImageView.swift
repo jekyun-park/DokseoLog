@@ -24,8 +24,14 @@ class BKCoverImageView: UIImageView {
 
   let placeholderImage = Images.placeholderBookImage
 
-  func downloadImage(fromURL urlString: String) {
-    NetworkManager.shared.downloadImage(from: urlString, completion: { [weak self] image in
+  func downloadImage(fromURL urlString: String?) {
+    
+    guard let url = urlString else {
+      DispatchQueue.main.async { self.image = self.placeholderImage }
+      return
+    }
+
+    NetworkManager.shared.downloadImage(from: url, completion: { [weak self] image in
       guard let self else { return }
       DispatchQueue.main.async { self.image = image }
     })

@@ -13,7 +13,7 @@ final class PersistenceManager {
   private init() { }
   static let shared = PersistenceManager()
 
-  lazy var persistentContainer : NSPersistentCloudKitContainer = {
+  lazy var persistentContainer: NSPersistentCloudKitContainer = {
     let container = NSPersistentCloudKitContainer(name: "Bookie")
     container.loadPersistentStores { _, error in
       if let error {
@@ -28,12 +28,23 @@ final class PersistenceManager {
 
 extension PersistenceManager {
 
+  /// 내 책장에 도서를 추가합니다.
   func addToBookCase(book: Book) throws {
 
     let managedContext = self.persistentContainer.viewContext
     guard let entity = NSEntityDescription.entity(forEntityName: "MyBook", in: managedContext) else {
       throw BKError.failToSaveData
     }
+
+    let request = NSFetchRequest<NSManagedObject>(entityName: "MyBook")
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBook.isbn13), book.isbn13)
+    request.predicate = predicate
+
+    // isbn으로 검색하여 중복도서가 존재한다면 저장을 하지 않음
+    guard try managedContext.fetch(request).isEmpty else {
+      throw BKError.duplicatedData
+    }
+
     let myBook = NSManagedObject(entity: entity, insertInto: managedContext)
 
     myBook.setValuesForKeys([
@@ -44,7 +55,8 @@ extension PersistenceManager {
       "coverURL": book.coverURL,
       "bookDescription": book.description,
       "author": book.author,
-      "isInWishList": false
+      "isInBookBasket": false,
+      "isFinished": false
     ])
 
     do {
@@ -52,14 +64,27 @@ extension PersistenceManager {
     } catch {
       throw BKError.failToSaveData
     }
+
   }
 
+  /// 책바구니에 도서를 저장합니다.
   func addToBookBascket(book: Book) throws {
 
     let managedContext = self.persistentContainer.viewContext
     guard let entity = NSEntityDescription.entity(forEntityName: "MyBook", in: managedContext) else {
       throw BKError.failToSaveData
     }
+
+    let request = NSFetchRequest<NSManagedObject>(entityName: "MyBook")
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBook.isbn13), book.isbn13)
+    request.predicate = predicate
+
+    // isbn으로 검색하여 중복도서가 존재한다면 저장을 하지 않음
+    let result = try managedContext.fetch(request) as? [MyBook] ?? []
+    guard result.isEmpty else {
+      throw BKError.duplicatedData
+    }
+
     let myBook = NSManagedObject(entity: entity, insertInto: managedContext)
 
     myBook.setValuesForKeys([
@@ -70,7 +95,8 @@ extension PersistenceManager {
       "coverURL": book.coverURL,
       "bookDescription": book.description,
       "author": book.author,
-      "isInWishList": true
+      "isInBookBasket": true,
+      "isFinished": false
     ])
 
     do {
@@ -81,29 +107,33 @@ extension PersistenceManager {
   }
 
   /// 책들을 불러옵니다.
-  func fetchBooks() throws -> [NSManagedObject] {
-    var result: [NSManagedObject] = []
+  func fetchMyBooks() throws -> [MyBook] {
+    var result: [MyBook] = []
     let managedContext = self.persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyBook")
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBook.isInBookBasket), NSNumber(value: false))
+
+    request.predicate = predicate
     do {
-      result = try managedContext.fetch(request)
+      result = try managedContext.fetch(request) as? [MyBook] ?? []
     } catch {
       throw BKError.failToFetchData
     }
+
     return result
   }
 
   /// 책바구니의 책들을 불러옵니다.
-  func fetchWishListBooks() throws -> [NSManagedObject] {
-    var result: [NSManagedObject] = []
+  func fetchBookBasket() throws -> [MyBook] {
+    var result: [MyBook] = []
     let managedContext = self.persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyBook")
-    let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBook.isInWishList), true)
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBook.isInBookBasket), NSNumber(value: true))
 
     request.predicate = predicate
 
     do {
-      result = try managedContext.fetch(request)
+      result = try managedContext.fetch(request) as? [MyBook] ?? []
     } catch {
       throw BKError.failToFetchData
     }
@@ -124,7 +154,7 @@ extension PersistenceManager {
       guard let objectToUpdate = try managedContext.fetch(request).first else { return }
       objectToUpdate.setValue(sentence.page, forKey: "page")
       objectToUpdate.setValue(sentence.memo, forKey: "memo")
-      
+
       do {
         try managedContext.save()
       } catch {
