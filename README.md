@@ -86,7 +86,7 @@
 
 #### Architecture
 - MVC
-- (will be) MVVM
+<!--(will be) MVVM -->
 
 <!-- USAGE EXAMPLES -->
 ## Usage
