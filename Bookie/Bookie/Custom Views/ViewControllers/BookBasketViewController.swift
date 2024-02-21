@@ -40,7 +40,7 @@ class BookBasketViewController: BKLoadingViewController {
       bookBasket = try PersistenceManager.shared.fetchBookBasket()
     } catch(let error) {
       guard let bkError = error as? BKError else { return }
-      self.presentBKAlert(title: "도서를 불러올 수 없습니다.", message: bkError.description, buttonTitle: "확인")
+      self.presentBKAlert(title: "도서를 불러올 수 없어요.", message: bkError.description, buttonTitle: "확인")
     }
   }
 

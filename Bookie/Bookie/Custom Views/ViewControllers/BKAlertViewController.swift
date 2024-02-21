@@ -57,8 +57,8 @@ class BKAlertViewController: UIViewController {
   }
 
   private func setupUI() {
-    titleLabel.text = alertTitle ?? "알 수 없는 에러가 발생했습니다."
-    messageLabel.text = message ?? "설정 > 문의에서 개발자에게 문의하여 주시기 바랍니다."
+    titleLabel.text = alertTitle ?? "알 수 없는 에러가 발생했어요."
+    messageLabel.text = message ?? "설정 > 문의에서 개발자에게 문의해 주세요."
     actionButton.setTitle(buttonTitle ?? "확인", for: .normal)
 
     view.backgroundColor = UIColor.black.withAlphaComponent(0.75)

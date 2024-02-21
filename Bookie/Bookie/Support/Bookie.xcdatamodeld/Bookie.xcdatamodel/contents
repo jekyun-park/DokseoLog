@@ -7,7 +7,9 @@
         <attribute name="isbn13" optional="YES" attributeType="String"/>
         <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="isInBookBasket" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="page" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publishedAt" optional="YES" attributeType="String"/>
         <attribute name="publisher" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="book" inverseEntity="Sentence"/>
