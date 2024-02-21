@@ -17,4 +17,3 @@ struct SeriesInfo: Codable {
     case seriesLink, seriesName
   }
 }
-

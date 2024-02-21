@@ -2,37 +2,33 @@
 //  Book.swift
 //  Bookie
 //
-//  Created by 박제균 on 2/8/24.
+//  Created by 박제균 on 2/20/24.
 //
 
-// MARK: - Book
+import Foundation
 
-struct Book: Codable {
-  enum CodingKeys: String, CodingKey {
-    case title, link, author, pubDate, description, isbn, isbn13
-    case itemID = "itemId"
-    case priceSales, priceStandard, mallType, stockStatus, mileage
-    case coverURL = "cover"
-    case categoryID = "categoryId"
-    case categoryName, publisher, salesPoint, adult, customerReviewRank, seriesInfo, subInfo, fixedPrice
+struct Book {
+  var title: String
+  var link: String
+  var author: String
+  var description: String
+  var publishedAt: String
+  var isbn13: String
+  var coverURL: String
+  var publisher: String
+  var page: Int?
+}
+
+extension Book {
+  init(dto: BookDTO) {
+    self.title = dto.title
+    self.link = dto.link
+    self.author = dto.author
+    self.description = dto.description
+    self.publishedAt = dto.pubDate
+    self.publisher = dto.publisher
+    self.isbn13 = dto.isbn13
+    self.coverURL = dto.coverURL
+    self.page = dto.subInfo?.itemPage
   }
-
-  let title: String
-  let link: String
-  let author, pubDate, description, isbn: String
-  let isbn13: String
-  let itemID, priceSales, priceStandard: Int
-  let mallType: MallType
-  let stockStatus: String
-  let mileage: Int
-  let coverURL: String
-  let categoryID: Int
-  let categoryName, publisher: String
-  let salesPoint: Int
-  let adult: Bool
-  let customerReviewRank: Int
-  let seriesInfo: SeriesInfo?
-  let subInfo: SubInfo?
-  let fixedPrice: Bool?
-
 }

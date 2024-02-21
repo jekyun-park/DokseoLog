@@ -19,7 +19,7 @@ struct SearchResult: Codable {
   let query: String
   let searchCategoryID: Int
   let searchCategoryName: String
-  let books: [Book]
+  let books: [BookDTO]
 
   enum CodingKeys: String, CodingKey {
     case version, logo, title, link, pubDate, totalResults, startIndex, itemsPerPage, query
@@ -28,7 +28,6 @@ struct SearchResult: Codable {
     case books = "item"
   }
 }
-
 
 // MARK: - MallType
 
