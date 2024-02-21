@@ -39,14 +39,14 @@ class BKTabBarController: UITabBarController {
     searchNavigationController.view.backgroundColor = .bkBackgroundColor
 
     let bookCaseViewController = BookCaseViewController()
-    bookCaseViewController.title = "내 책장"
-    bookCaseViewController.tabBarItem = UITabBarItem(title: "내 책장", image: Images.bookCaseTabBarImage, tag: 1)
+    bookCaseViewController.title = "책장"
+    bookCaseViewController.tabBarItem = UITabBarItem(title: "책장", image: Images.bookCaseTabBarImage, tag: 1)
     let bookCaseNavigationController = UINavigationController(rootViewController: bookCaseViewController)
     bookCaseNavigationController.navigationBar.prefersLargeTitles = true
 
     let habitViewController = HabitsViewController()
-    habitViewController.title = "나의 독서습관"
-    habitViewController.tabBarItem = UITabBarItem(title: "독서 습관", image: Images.habitTabBarImage, tag: 2)
+    habitViewController.title = "달력"
+    habitViewController.tabBarItem = UITabBarItem(title: "달력", image: Images.habitTabBarImage, tag: 2)
     let habitNavigationController = UINavigationController(rootViewController: habitViewController)
     habitNavigationController.navigationBar.prefersLargeTitles = true
 

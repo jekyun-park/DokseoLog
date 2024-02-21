@@ -59,7 +59,7 @@ final class NetworkManager {
     task.resume()
   }
 
-  func fetchBookDetailInformation(with isbn: String, completion: @escaping (Result<Book, BKError>) -> Void) {
+  func fetchBookDetailInformation(with isbn: String, completion: @escaping (Result<BookDTO, BKError>) -> Void) {
     let endPoint = searchBookDetailBaseURL + "&itemIdType=ISBN13&ItemId=\(isbn)&Cover=Big&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {

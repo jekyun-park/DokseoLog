@@ -49,9 +49,11 @@ extension PersistenceManager {
 
     myBook.setValuesForKeys([
       "title": book.title,
+      "link": book.link,
+      "publishedAt": book.publishedAt,
       "publisher": book.publisher,
       "isbn13": book.isbn13,
-      "page": book.subInfo?.itemPage ?? 0,
+      "page": book.page ?? 0,
       "coverURL": book.coverURL,
       "bookDescription": book.description,
       "author": book.author,
@@ -89,9 +91,11 @@ extension PersistenceManager {
 
     myBook.setValuesForKeys([
       "title": book.title,
+      "link": book.link,
+      "publishedAt": book.publishedAt,
       "publisher": book.publisher,
       "isbn13": book.isbn13,
-      "page": book.subInfo?.itemPage ?? 0,
+      "page": book.page ?? 0,
       "coverURL": book.coverURL,
       "bookDescription": book.description,
       "author": book.author,
