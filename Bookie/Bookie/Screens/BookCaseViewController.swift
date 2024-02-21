@@ -15,8 +15,8 @@ class BookCaseViewController: UIViewController {
     return segmentedControl
   }()
 
-  private let myBookViewController: MyBookViewController = {
-    let viewController = MyBookViewController()
+  private let myBookViewController: MyBookCaseViewController = {
+    let viewController = MyBookCaseViewController()
     return viewController
   }()
 

@@ -11,7 +11,7 @@
 		2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */; };
 		2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201C70E2AF0F393001A93B5 /* Bundle+.swift */; };
 		220443712AF4C5EA0027E3EF /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220443702AF4C5EA0027E3EF /* SearchResult.swift */; };
-		2213EEBD2B7F2D3E00B84A5F /* MyBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213EEBC2B7F2D3E00B84A5F /* MyBookViewController.swift */; };
+		2213EEBD2B7F2D3E00B84A5F /* MyBookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213EEBC2B7F2D3E00B84A5F /* MyBookCaseViewController.swift */; };
 		22483FA62AFCC1BC00942237 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FA52AFCC1BC00942237 /* SearchResultCell.swift */; };
 		22483FA92AFCC22000942237 /* BKCoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FA82AFCC22000942237 /* BKCoverImageView.swift */; };
 		22483FAC2AFCC3AA00942237 /* BKTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FAB2AFCC3AA00942237 /* BKTitleLabel.swift */; };
@@ -61,7 +61,7 @@
 		2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		2201C70E2AF0F393001A93B5 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		220443702AF4C5EA0027E3EF /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		2213EEBC2B7F2D3E00B84A5F /* MyBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookViewController.swift; sourceTree = "<group>"; };
+		2213EEBC2B7F2D3E00B84A5F /* MyBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookCaseViewController.swift; sourceTree = "<group>"; };
 		22483FA52AFCC1BC00942237 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		22483FA82AFCC22000942237 /* BKCoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKCoverImageView.swift; sourceTree = "<group>"; };
 		22483FAB2AFCC3AA00942237 /* BKTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTitleLabel.swift; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 			children = (
 				22861CDE2B6380590080BBA7 /* BKLoadingViewController.swift */,
 				227AFB322B726EEC00E72F8B /* BKAlertViewController.swift */,
-				2213EEBC2B7F2D3E00B84A5F /* MyBookViewController.swift */,
+				2213EEBC2B7F2D3E00B84A5F /* MyBookCaseViewController.swift */,
 				22C810232B7FA56000D91934 /* BookBasketViewController.swift */,
 			);
 			path = ViewControllers;
@@ -452,7 +452,7 @@
 				22483FB02AFCC6AD00942237 /* BKBodyLabel.swift in Sources */,
 				22EBE54D2B74AAE30024D620 /* BookDTO.swift in Sources */,
 				22EBE54F2B74AB1B0024D620 /* SubInfo.swift in Sources */,
-				2213EEBD2B7F2D3E00B84A5F /* MyBookViewController.swift in Sources */,
+				2213EEBD2B7F2D3E00B84A5F /* MyBookCaseViewController.swift in Sources */,
 				2201C7072AF0E8A0001A93B5 /* NetworkManager.swift in Sources */,
 				22483FB52AFD2E4D00942237 /* UIView+.swift in Sources */,
 				227AFB382B7273A600E72F8B /* BKAlertViewController.swift in Sources */,

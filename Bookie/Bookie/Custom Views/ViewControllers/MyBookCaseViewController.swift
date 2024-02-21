@@ -1,5 +1,5 @@
 //
-//  MyBookViewController.swift
+//  MyBookCaseViewController.swift
 //  Bookie
 //
 //  Created by 박제균 on 2/16/24.
@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 
-class MyBookViewController: BKLoadingViewController {
+class MyBookCaseViewController: BKLoadingViewController {
 
   var myBooks: [MyBook] = []
 
@@ -40,7 +40,7 @@ class MyBookViewController: BKLoadingViewController {
       myBooks = try PersistenceManager.shared.fetchMyBooks()
     } catch(let error) {
       guard let bkError = error as? BKError else { return }
-      self.presentBKAlert(title: "도서를 불러올 수 없습니다.", message: bkError.description, buttonTitle: "확인")
+      self.presentBKAlert(title: "도서를 불러올 수 없어요.", message: bkError.description, buttonTitle: "확인")
     }
   }
 
@@ -56,11 +56,25 @@ class MyBookViewController: BKLoadingViewController {
 
 }
 
-extension MyBookViewController: UICollectionViewDelegate {
+extension MyBookCaseViewController: UICollectionViewDelegate {
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+    let myBook = myBooks[indexPath.item]
+    let book = Book(title: myBook.title!, link: myBook.link!, author: myBook.author!, description: myBook.bookDescription!, publishedAt: myBook.publishedAt!, isbn13: myBook.isbn13!, coverURL: myBook.coverURL!, publisher: myBook.publisher!, page: Int(myBook.page))
+
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first,
+       let rootViewController = window.rootViewController as? BKTabBarController {
+      let vc = rootViewController.viewControllers?[1] as? UINavigationController
+      vc?.pushViewController(BookInformationViewController(book: book), animated: true)
+    }
+
+  }
 
 }
 
-extension MyBookViewController: UICollectionViewDataSource {
+extension MyBookCaseViewController: UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return myBooks.count
@@ -77,7 +91,7 @@ extension MyBookViewController: UICollectionViewDataSource {
 
 }
 
-extension MyBookViewController: UICollectionViewDelegateFlowLayout {
+extension MyBookCaseViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 8
