@@ -33,7 +33,7 @@ class BookInformationViewController: UIViewController {
     target: self,
     action: #selector(addToBasketBarButtonTapped))
   private lazy var addBookBarButton = UIBarButtonItem(
-    image: Images.addBookBarButtonImage,
+    image: Images.plusButtonImage,
     style: .plain,
     target: self,
     action: #selector(addBookBarButtonTapped))
