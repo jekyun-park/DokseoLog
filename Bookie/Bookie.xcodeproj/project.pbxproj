@@ -132,19 +132,11 @@
 		22483FA32AFCC14800942237 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				22483FA42AFCC19C00942237 /* SearchResultCell */,
+				22483FA52AFCC1BC00942237 /* SearchResultCell.swift */,
 				224A90012B7DB11600C003A4 /* MyBookCollectionViewCell.swift */,
 				22F449C32B83187E000417B2 /* BookBasketCollectionViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		22483FA42AFCC19C00942237 /* SearchResultCell */ = {
-			isa = PBXGroup;
-			children = (
-				22483FA52AFCC1BC00942237 /* SearchResultCell.swift */,
-			);
-			path = SearchResultCell;
 			sourceTree = "<group>";
 		};
 		22483FA72AFCC1FB00942237 /* ImageViews */ = {
