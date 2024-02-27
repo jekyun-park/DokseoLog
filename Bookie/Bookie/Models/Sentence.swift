@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Sentence {
+  var book: Book
+  var page: Int
+  var memo: String
+  var id = UUID()
+  var createdAt = Date()
+}

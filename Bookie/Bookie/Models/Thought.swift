@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Thought {
+  var book: Book
+  var memo: String
+  var id = UUID()
+  var createdAt = Date()
+}

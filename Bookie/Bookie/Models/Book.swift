@@ -20,6 +20,7 @@ struct Book {
 }
 
 extension Book {
+
   init(dto: BookDTO) {
     self.title = dto.title
     self.link = dto.link
