@@ -11,7 +11,12 @@ import UIKit
 
 class BookInformationViewController: UIViewController {
 
+  enum BarButtonStyle {
+    case add, move
+  }
+
   let book: Book
+  let style: BookInformationViewController.BarButtonStyle
 
   private lazy var scrollView = UIScrollView(frame: .zero)
   private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 22, fontWeight: .bold)
@@ -27,23 +32,46 @@ class BookInformationViewController: UIViewController {
   private let descriptionPlaceholderLabel = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
   private let descriptionLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
   private let coverImage = BKCoverImageView(frame: .zero)
-  private lazy var addToBasketBarButton = UIBarButtonItem(
+  
+  private lazy var addToWishListBarButton = UIBarButtonItem(
     image: Images.basketBarButtonImage,
     style: .plain,
     target: self,
-    action: #selector(addToBasketBarButtonTapped))
+    action: #selector(addToWishListBarButtonTapped)
+  )
+
   private lazy var addBookBarButton = UIBarButtonItem(
     image: Images.plusButtonImage,
     style: .plain,
     target: self,
-    action: #selector(addBookBarButtonTapped))
+    action: #selector(addBookBarButtonTapped)
+  )
+
+  private lazy var moveToBookCaseBarButton = UIBarButtonItem(
+    image: Images.moveToBookCaseBarButtonImage,
+    style: .plain,
+    target: self,
+    action: #selector(moveToBookCaseBarButtonImageTapped)
+  )
+
+  private lazy var deleteButton: UIBarButtonItem = {
+    let button = UIBarButtonItem(
+      image: Images.trashImage,
+      style: .plain,
+      target: self,
+      action: #selector(deleteButtonTapped)
+    )
+    button.tintColor = .red
+    return button
+  }()
 
   required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  init(book: Book) {
+  init(book: Book, style: BarButtonStyle) {
     self.book = book
+    self.style = style
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -153,16 +181,22 @@ class BookInformationViewController: UIViewController {
   }
 
   private func setupNavigationBar() {
-    navigationItem.setRightBarButtonItems([addToBasketBarButton, addBookBarButton], animated: true)
+    switch style {
+    case .add:
+      navigationItem.setRightBarButtonItems([addToWishListBarButton, addBookBarButton], animated: true)
+      addToWishListBarButton.tintColor = .bkTabBarTint
+      addBookBarButton.tintColor = .bkTabBarTint
+    case .move:
+      navigationItem.setRightBarButtonItems([deleteButton, moveToBookCaseBarButton], animated: true)
+      moveToBookCaseBarButton.tintColor = .bkTabBarTint
+    }
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationBar.tintColor = .bkTabBarTint
-    addToBasketBarButton.tintColor = .bkTabBarTint
-    addBookBarButton.tintColor = .bkTabBarTint
   }
 
-  @objc private func addToBasketBarButtonTapped() {
+  @objc private func addToWishListBarButtonTapped() {
     do {
-      try PersistenceManager.shared.addToBookBascket(book: book)
+      try PersistenceManager.shared.addToWishList(book: book)
     } catch (let error) {
       let bkError = error as? BKError
       self.presentBKAlert(title: "도서를 추가할 수 없어요.", message: bkError?.description ?? "다시 시도하거나, 개발자에게 문의해주세요.", buttonTitle: "확인")
@@ -175,6 +209,26 @@ class BookInformationViewController: UIViewController {
     } catch (let error) {
       let bkError = error as? BKError
       self.presentBKAlert(title: "도서를 추가할 수 없어요.", message: bkError?.description ?? "다시 시도하거나, 개발자에게 문의해주세요.", buttonTitle: "확인")
+    }
+  }
+
+  @objc private func moveToBookCaseBarButtonImageTapped() {
+    let result = PersistenceManager.shared.moveToBookCase(book: book)
+    switch result {
+    case .success:
+      self.navigationController?.popViewController(animated: true)
+    case .failure(let error):
+      self.presentBKAlert(title: "책장으로 이동할 수 없어요.", message: error.description, buttonTitle: "확인")
+    }
+  }
+
+  @objc private func deleteButtonTapped() {
+    let result = PersistenceManager.shared.deleteBook(book)
+    switch result {
+    case .success:
+      self.navigationController?.popViewController(animated: true)
+    case .failure(let error):
+      self.presentBKAlert(title: "도서를 삭제할 수 없어요.", message: error.description, buttonTitle: "확인")
     }
   }
 

@@ -25,6 +25,7 @@ class SearchViewController: BKLoadingViewController {
     configureViewController()
     configureSearchController()
     configureTableView()
+    self.hideKeyboardWhenTappedAround()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +59,7 @@ class SearchViewController: BKLoadingViewController {
   }
 
   private func configureViewController() {
-    view.backgroundColor = .bkBackground
+    view.backgroundColor = .bkBackgroundColor
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(
@@ -78,6 +79,7 @@ class SearchViewController: BKLoadingViewController {
   private func configureTableView() {
     view.addSubview(tableView)
     tableView.frame = view.bounds
+    tableView.backgroundColor = .bkBackgroundColor
     tableView.delegate = self
     tableView.dataSource = self
     tableView.separatorStyle = .singleLine
@@ -131,7 +133,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
       case .success(let bookDTO):
         DispatchQueue.main.async {
           guard let self else { return }
-          self.navigationController?.pushViewController(BookInformationViewController(book: bookDTO.toModel()), animated: true)
+          self.navigationController?.pushViewController(BookInformationViewController(book: bookDTO.toModel(), style: .add), animated: true)
         }
       case .failure(let error):
         guard let self else { return }
