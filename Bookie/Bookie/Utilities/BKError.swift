@@ -14,11 +14,15 @@ enum BKError: Error {
   case invalidData
   case noData
   case unableToComplete
+  case failToFindData
   case failToSaveData
   case failToFetchData
   case failToDeleteData
   case failToUpdateData
   case duplicatedData
+  case noPageInput
+  case pageInputInvalid
+  case noContentInput
 
   // MARK: Internal
 
@@ -36,6 +40,8 @@ enum BKError: Error {
       return "요청한 데이터가 존재하지 않아요. 개발자에게 문의하거나 다시 시도해 주세요."
     case .unableToComplete:
       return "데이터 요청에 실패했어요. 개발자에게 문의하거나 다시 시도해 주세요."
+    case .failToFindData:
+      return "데이터 찾기에 실패했어요. 개발자에게 문의하거나 다시 시도해 주세요."
     case .failToSaveData:
       return "데이터 저장에 실패했어요. 개발자에게 문의하거나 다시 시도해 주세요."
     case .failToFetchData:
@@ -46,6 +52,12 @@ enum BKError: Error {
       return "데이터 업데이트에 실패했어요. 개발자에게 문의하거나 다시 시도해 주세요."
     case .duplicatedData:
       return "이미 저장된 책이에요."
+    case .noPageInput:
+      return "페이지를 입력해 주세요."
+    case .noContentInput:
+      return "내용을 입력해 주세요."
+    case .pageInputInvalid:
+      return "올바른 페이지 숫자를 입력해 주세요."
     }
   }
 }
