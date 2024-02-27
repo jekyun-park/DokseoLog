@@ -10,7 +10,7 @@ import UIKit
 
 class MyBookCaseViewController: BKLoadingViewController {
 
-  var myBooks: [MyBook] = []
+  var myBooks: [MyBookEntity] = []
 
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -61,13 +61,13 @@ extension MyBookCaseViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
     let myBook = myBooks[indexPath.item]
-    let book = Book(title: myBook.title!, link: myBook.link!, author: myBook.author!, description: myBook.bookDescription!, publishedAt: myBook.publishedAt!, isbn13: myBook.isbn13!, coverURL: myBook.coverURL!, publisher: myBook.publisher!, page: Int(myBook.page))
+    let book = Book(title: myBook.title!, link: myBook.link!, author: myBook.author!, description: myBook.bookDescription!, publishedAt: myBook.publishedAt!, isbn13: myBook.isbn13!, coverURL: myBook.coverURL!, publisher: myBook.publisher!, page: Int(myBook.totalPage))
 
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let window = windowScene.windows.first,
        let rootViewController = window.rootViewController as? BKTabBarController {
       let vc = rootViewController.viewControllers?[1] as? UINavigationController
-      vc?.pushViewController(BookInformationViewController(book: book), animated: true)
+      vc?.pushViewController(MyBookViewController(book: book), animated: true)
     }
 
   }
