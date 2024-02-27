@@ -32,7 +32,7 @@ class BKTabBarController: UITabBarController {
 
   private func createNavigationControllers() -> [UIViewController] {
     let searchViewController = SearchViewController()
-    searchViewController.title = "도서 검색"
+    searchViewController.title = "책 검색"
     searchViewController.tabBarItem = UITabBarItem(title: "검색", image: Images.searchTabBarImage, tag: 0)
     let searchNavigationController = UINavigationController(rootViewController: searchViewController)
     searchNavigationController.navigationBar.prefersLargeTitles = false
