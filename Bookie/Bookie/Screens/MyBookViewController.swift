@@ -46,12 +46,19 @@ class MyBookViewController: UIViewController {
     action: #selector(bookInformationButtonTapped)
   )
 
-  private lazy var addButton = UIBarButtonItem(
-    image: Images.plusButtonImage,
+  private lazy var deleteButton = UIBarButtonItem(
+    image: Images.trashImage,
     style: .plain,
     target: self,
-    action: #selector(addButtonTapped)
+    action: #selector(deleteButtonTapped)
   )
+
+  private lazy var floatingButton: BKFloatingButton = {
+    let button = BKFloatingButton(frame: .zero)
+    button.addTarget(self, action: #selector(floatingButtonTapped), for: .touchUpInside)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
 
   var currentPage: Int = 0 {
     didSet {
@@ -87,10 +94,20 @@ class MyBookViewController: UIViewController {
     self.thoughtViewController.tableView.reloadData()
   }
 
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    floatingButton.frame = CGRect(
+      x: view.frame.size.width - 80,
+      y: view.frame.size.height - 180,
+      width: 60,
+      height: 60
+    )
+
+  }
+
   private func setupUI() {
-    self.view.backgroundColor = .bkBackground
-    self.view.addSubview(self.segmentedControl)
-    self.view.addSubview(self.pageViewController.view)
+    view.backgroundColor = .bkBackground
+    view.addSubviews(segmentedControl, pageViewController.view, floatingButton)
 
     NSLayoutConstraint.activate([
       self.segmentedControl.leftAnchor.constraint(equalTo: self.view.leftAnchor),
@@ -134,12 +151,12 @@ class MyBookViewController: UIViewController {
   }
 
   private func setupNavigationController() {
-    self.navigationItem.setRightBarButtonItems([bookInformationButton, addButton], animated: true)
+    self.navigationItem.setRightBarButtonItems([deleteButton, bookInformationButton], animated: true)
     self.navigationController?.navigationBar.prefersLargeTitles = false
     self.navigationItem.title = book.title
     navigationController?.navigationBar.tintColor = .bkTabBarTint
     bookInformationButton.tintColor = .bkTabBarTint
-    addButton.tintColor = .bkTabBarTint
+    deleteButton.tintColor = .red
   }
 
   @objc private func changeValue(control: UISegmentedControl) {
@@ -150,7 +167,7 @@ class MyBookViewController: UIViewController {
     self.navigationController?.pushViewController(BookInformationViewController(book: book, style: .add), animated: true)
   }
 
-  @objc private func addButtonTapped() {
+  @objc private func floatingButtonTapped() {
     var viewController: AddRecordViewController
 
     if currentPage == 0 {
@@ -165,8 +182,18 @@ class MyBookViewController: UIViewController {
       let vc = rootViewController.viewControllers?[1] as? UINavigationController
       vc?.pushViewController(viewController, animated: true)
     }
-//    let navigationViewController = UINavigationController(rootViewController: viewController)
-//    self.present(navigationViewController, animated: true)
+  }
+
+  @objc private func deleteButtonTapped() {
+    self.presentBKAlertWithDestructiveAction(title: "정말 삭제하시겠습니까?", message: "책을 삭제하면 모든 기록이 함께 삭제됩니다.", buttonTitle: "삭제") {
+      let result = PersistenceManager.shared.deleteBook(self.book)
+      switch result {
+      case .success:
+        self.navigationController?.popViewController(animated: true)
+      case .failure(let error):
+        self.presentBKAlert(title: "책을 삭제하지 못했습니다.", message: error.description, buttonTitle: "확인")
+      }
+    }
   }
 
 }
