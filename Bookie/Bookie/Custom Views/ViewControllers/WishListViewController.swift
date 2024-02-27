@@ -8,9 +8,9 @@
 import CoreData
 import UIKit
 
-class BookBasketViewController: BKLoadingViewController {
+class WishListViewController: BKLoadingViewController {
 
-  var bookBasket: [MyBook] = []
+  var bookBasket: [MyBookEntity] = []
 
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -56,11 +56,24 @@ class BookBasketViewController: BKLoadingViewController {
 
 }
 
-extension BookBasketViewController: UICollectionViewDelegate {
+extension WishListViewController: UICollectionViewDelegate {
 
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let myBook = bookBasket[indexPath.item]
+    let book = Book(title: myBook.title!, link: myBook.link!, author: myBook.author!, description: myBook.bookDescription!, publishedAt: myBook.publishedAt!, isbn13: myBook.isbn13!, coverURL: myBook.coverURL!, publisher: myBook.publisher!, page: Int(myBook.totalPage))
+
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first,
+       let rootViewController = window.rootViewController as? BKTabBarController {
+      let vc = rootViewController.viewControllers?[1] as? UINavigationController
+      let pushViewController = BookInformationViewController(book: book, style: .move)
+      vc?.pushViewController(pushViewController, animated: true)
+    }
+
+  }
 }
 
-extension BookBasketViewController: UICollectionViewDataSource {
+extension WishListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return bookBasket.count
   }
@@ -70,13 +83,12 @@ extension BookBasketViewController: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookBasketCollectionViewCell.reuseID, for: indexPath) as? BookBasketCollectionViewCell else { return UICollectionViewCell() }
     let myBook = bookBasket[indexPath.item]
     cell.setContents(book: myBook)
-
     return cell
   }
   
 }
 
-extension BookBasketViewController: UICollectionViewDelegateFlowLayout {
+extension WishListViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 8

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BookBasketCollectionViewCell: UICollectionViewCell {
+class WishListCollectionViewCell: UICollectionViewCell {
   static let reuseID = "BookBasketCollectionViewCell"
 
   private let coverImage = BKCoverImageView(frame: .zero)
@@ -29,7 +29,7 @@ class BookBasketCollectionViewCell: UICollectionViewCell {
     contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12))
   }
 
-  func setContents(book: MyBook) {
+  func setContents(book: MyBookEntity) {
     coverImage.downloadImage(fromURL: book.coverURL)
     titleLabel.text = book.title
     authorLabel.text = book.author
