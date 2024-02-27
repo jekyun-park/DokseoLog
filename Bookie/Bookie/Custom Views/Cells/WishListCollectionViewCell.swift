@@ -1,5 +1,5 @@
 //
-//  BookBasketCollectionViewCell.swift
+//  WishListCollectionViewCell.swift
 //  Bookie
 //
 //  Created by 박제균 on 2/19/24.
@@ -8,7 +8,7 @@
 import UIKit
 
 class WishListCollectionViewCell: UICollectionViewCell {
-  static let reuseID = "BookBasketCollectionViewCell"
+  static let reuseID = "WishListCollectionViewCell"
 
   private let coverImage = BKCoverImageView(frame: .zero)
   private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .bold)
