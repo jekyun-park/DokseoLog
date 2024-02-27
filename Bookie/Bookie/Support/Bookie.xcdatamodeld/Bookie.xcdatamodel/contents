@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23D60" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="MyBook" representedClassName="MyBook" syncable="YES" codeGenerationType="class">
+    <entity name="MyBookEntity" representedClassName="MyBookEntity" syncable="YES" codeGenerationType="class">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="bookDescription" optional="YES" attributeType="String"/>
         <attribute name="coverURL" optional="YES" attributeType="String"/>
         <attribute name="isbn13" optional="YES" attributeType="String"/>
         <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="isInBookBasket" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="page" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isInWishList" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="link" optional="YES" attributeType="String"/>
+        <attribute name="publishedAt" optional="YES" attributeType="String"/>
         <attribute name="publisher" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sentence" inverseName="book" inverseEntity="Sentence"/>
-        <relationship name="thoughts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Thought" inverseName="book" inverseEntity="Thought"/>
+        <attribute name="totalPage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="sentences" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MySentenceEntity" inverseName="book" inverseEntity="MySentenceEntity"/>
+        <relationship name="thoughts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MyThoughtEntity" inverseName="book" inverseEntity="MyThoughtEntity"/>
     </entity>
-    <entity name="Sentence" representedClassName="Sentence" syncable="YES" codeGenerationType="class">
+    <entity name="MySentenceEntity" representedClassName="MySentenceEntity" parentEntity="MyBookEntity" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="memo" optional="YES" attributeType="String"/>
-        <attribute name="myBook" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="MyBook"/>
-        <attribute name="page" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="page" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sentenceID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="book" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MyBook" inverseName="sentences" inverseEntity="MyBook"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="MyBookEntity" inverseName="sentences" inverseEntity="MyBookEntity"/>
     </entity>
-    <entity name="Thought" representedClassName="Thought" syncable="YES" codeGenerationType="class">
+    <entity name="MyThoughtEntity" representedClassName="MyThoughtEntity" parentEntity="MyBookEntity" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="memo" optional="YES" attributeType="String"/>
-        <attribute name="myBook" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="MyBook"/>
         <attribute name="thoughtID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="book" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MyBook" inverseName="thoughts" inverseEntity="MyBook"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="MyBookEntity" inverseName="thoughts" inverseEntity="MyBookEntity"/>
     </entity>
 </model>

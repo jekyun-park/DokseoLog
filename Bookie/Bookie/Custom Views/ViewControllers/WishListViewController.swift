@@ -1,5 +1,5 @@
 //
-//  BookBasketViewController.swift
+//  WishListViewController.swift
 //  Bookie
 //
 //  Created by 박제균 on 2/16/24.
@@ -8,9 +8,9 @@
 import CoreData
 import UIKit
 
-class BookBasketViewController: BKLoadingViewController {
+class WishListViewController: BKLoadingViewController {
 
-  var bookBasket: [MyBook] = []
+  var wishList: [MyBookEntity] = []
 
   let collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -23,24 +23,24 @@ class BookBasketViewController: BKLoadingViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    getBookBasket()
+    getWishList()
     setupCollectionView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    getBookBasket()
+    getWishList()
     showLoadingView()
     collectionView.reloadData()
     dismissLoadingView()
   }
 
-  private func getBookBasket() {
+  private func getWishList() {
     do {
-      bookBasket = try PersistenceManager.shared.fetchBookBasket()
+      wishList = try PersistenceManager.shared.fetchWishList()
     } catch(let error) {
       guard let bkError = error as? BKError else { return }
-      self.presentBKAlert(title: "도서를 불러올 수 없습니다.", message: bkError.description, buttonTitle: "확인")
+      self.presentBKAlert(title: "도서를 불러올 수 없어요.", message: bkError.description, buttonTitle: "확인")
     }
   }
 
@@ -50,33 +50,45 @@ class BookBasketViewController: BKLoadingViewController {
     collectionView.frame = view.bounds
     collectionView.delegate = self
     collectionView.dataSource = self
-    collectionView.register(BookBasketCollectionViewCell.self, forCellWithReuseIdentifier: BookBasketCollectionViewCell.reuseID)
+    collectionView.register(WishListCollectionViewCell.self, forCellWithReuseIdentifier: WishListCollectionViewCell.reuseID)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
   }
 
 }
 
-extension BookBasketViewController: UICollectionViewDelegate {
+extension WishListViewController: UICollectionViewDelegate {
 
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let myBook = wishList[indexPath.item]
+    let book = Book(title: myBook.title!, link: myBook.link!, author: myBook.author!, description: myBook.bookDescription!, publishedAt: myBook.publishedAt!, isbn13: myBook.isbn13!, coverURL: myBook.coverURL!, publisher: myBook.publisher!, page: Int(myBook.totalPage))
+
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first,
+       let rootViewController = window.rootViewController as? BKTabBarController {
+      let vc = rootViewController.viewControllers?[1] as? UINavigationController
+      let pushViewController = BookInformationViewController(book: book, style: .move)
+      vc?.pushViewController(pushViewController, animated: true)
+    }
+
+  }
 }
 
-extension BookBasketViewController: UICollectionViewDataSource {
+extension WishListViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return bookBasket.count
+    return wishList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookBasketCollectionViewCell.reuseID, for: indexPath) as? BookBasketCollectionViewCell else { return UICollectionViewCell() }
-    let myBook = bookBasket[indexPath.item]
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WishListCollectionViewCell.reuseID, for: indexPath) as? WishListCollectionViewCell else { return UICollectionViewCell() }
+    let myBook = wishList[indexPath.item]
     cell.setContents(book: myBook)
-
     return cell
   }
   
 }
 
-extension BookBasketViewController: UICollectionViewDelegateFlowLayout {
+extension WishListViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 8

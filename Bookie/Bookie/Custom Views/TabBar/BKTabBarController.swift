@@ -32,21 +32,21 @@ class BKTabBarController: UITabBarController {
 
   private func createNavigationControllers() -> [UIViewController] {
     let searchViewController = SearchViewController()
-    searchViewController.title = "도서 검색"
+    searchViewController.title = "책 검색"
     searchViewController.tabBarItem = UITabBarItem(title: "검색", image: Images.searchTabBarImage, tag: 0)
     let searchNavigationController = UINavigationController(rootViewController: searchViewController)
     searchNavigationController.navigationBar.prefersLargeTitles = false
     searchNavigationController.view.backgroundColor = .bkBackgroundColor
 
     let bookCaseViewController = BookCaseViewController()
-    bookCaseViewController.title = "내 책장"
-    bookCaseViewController.tabBarItem = UITabBarItem(title: "내 책장", image: Images.bookCaseTabBarImage, tag: 1)
+    bookCaseViewController.title = "책장"
+    bookCaseViewController.tabBarItem = UITabBarItem(title: "책장", image: Images.bookCaseTabBarImage, tag: 1)
     let bookCaseNavigationController = UINavigationController(rootViewController: bookCaseViewController)
     bookCaseNavigationController.navigationBar.prefersLargeTitles = true
 
     let habitViewController = HabitsViewController()
-    habitViewController.title = "나의 독서습관"
-    habitViewController.tabBarItem = UITabBarItem(title: "독서 습관", image: Images.habitTabBarImage, tag: 2)
+    habitViewController.title = "달력"
+    habitViewController.tabBarItem = UITabBarItem(title: "달력", image: Images.habitTabBarImage, tag: 2)
     let habitNavigationController = UINavigationController(rootViewController: habitViewController)
     habitNavigationController.navigationBar.prefersLargeTitles = true
 

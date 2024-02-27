@@ -15,7 +15,7 @@ class SearchViewController: BKLoadingViewController {
 
   let tableView = UITableView()
   let searchController = UISearchController()
-  var results: [Book] = []
+  var results: [BookDTO] = []
   var totalSearchResults = 0
   var hasMoreSearchResults = false
   var page = 1
@@ -25,13 +25,14 @@ class SearchViewController: BKLoadingViewController {
     configureViewController()
     configureSearchController()
     configureTableView()
+    self.hideKeyboardWhenTappedAround()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
   }
 
-  func updateUI(with books: [Book]) {
+  func updateUI(with books: [BookDTO]) {
     results.append(contentsOf: books)
     DispatchQueue.main.async {
       self.tableView.reloadData()
@@ -52,13 +53,13 @@ class SearchViewController: BKLoadingViewController {
         results.count < totalSearchResults ? (hasMoreSearchResults = true) : (hasMoreSearchResults = false)
         updateUI(with: searchResult.books)
       case .failure(let error):
-        print(error)
+        self.presentBKAlert(title: "검색결과를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
       }
     }
   }
 
   private func configureViewController() {
-    view.backgroundColor = .bkBackground
+    view.backgroundColor = .bkBackgroundColor
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(
@@ -78,6 +79,7 @@ class SearchViewController: BKLoadingViewController {
   private func configureTableView() {
     view.addSubview(tableView)
     tableView.frame = view.bounds
+    tableView.backgroundColor = .bkBackgroundColor
     tableView.delegate = self
     tableView.dataSource = self
     tableView.separatorStyle = .singleLine
@@ -128,13 +130,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
     NetworkManager.shared.fetchBookDetailInformation(with: bookInformation.isbn13) { [weak self] result in
       switch result {
-      case .success(let book):
+      case .success(let bookDTO):
         DispatchQueue.main.async {
           guard let self else { return }
-          self.navigationController?.pushViewController(BookInformationViewController(book: book), animated: true)
+          self.navigationController?.pushViewController(BookInformationViewController(book: bookDTO.toModel(), style: .add), animated: true)
         }
       case .failure(let error):
-        print(error.description)
+        guard let self else { return }
+        self.presentBKAlert(title: "도서 정보를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
       }
     }
   }

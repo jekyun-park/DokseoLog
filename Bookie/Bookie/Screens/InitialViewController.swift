@@ -14,7 +14,7 @@ class InitialViewController: UIViewController {
     let button = BKButton(backgroundColor: .black, foregroundColor: .white, title: "icloud와 데이터 연동하기", systemImage: image)
     button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17)
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.addTarget(self, action: #selector(linkWithiCloudButtonTapped), for: .touchUpInside)
+//    button.addTarget(self, action: #selector(linkWithiCloudButtonTapped), for: .touchUpInside)
     return button
   }()
 
@@ -55,21 +55,21 @@ class InitialViewController: UIViewController {
     ])
   }
 
-  @objc private func linkWithiCloudButtonTapped() {
-    // iCloud 연동이 되어있지 않은 경우
-    if FileManager.default.ubiquityIdentityToken == nil {
-      self.presentBKAlertWithAction(title: "iCloud 연동을 해주세요", message: "설정 > iPhone에 로그인을 통해 iCloud와 연동할 수 있도록 해주세요", buttonTitle: "확인") {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(settingsURL)
-      }
-    } else { // iCloud 연동이 되어있는 경우
-      self.presentBKAlertWithAction(title: "iCloud 연동 성공", message: "iCloud 연동에 성공했습니다!", buttonTitle: "확인") {
-        self.view.window?.rootViewController = BKTabBarController()
-      }
-
-      UserDefaultsManager.shared.setLaunchedBefore()
-    }
-  }
+//  @objc private func linkWithiCloudButtonTapped() {
+//    // iCloud 연동이 되어있지 않은 경우
+//    if FileManager.default.ubiquityIdentityToken == nil {
+//      self.presentBKAlertWithAction(title: "iCloud 연동을 해주세요", message: "설정 > iPhone에 로그인을 통해 iCloud와 연동할 수 있도록 해주세요", buttonTitle: "확인") {
+//        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+//        UIApplication.shared.open(settingsURL)
+//      }
+//    } else { // iCloud 연동이 되어있는 경우
+//      self.presentBKAlertWithAction(title: "iCloud 연동 성공", message: "iCloud 연동에 성공했습니다!", buttonTitle: "확인") {
+//        self.view.window?.rootViewController = BKTabBarController()
+//      }
+//
+//      UserDefaultsManager.shared.setLaunchedBefore()
+//    }
+//  }
 
   @objc private func continueWithoutLoginButtonTapped() {
     self.dismiss(animated: true)

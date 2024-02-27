@@ -10,18 +10,18 @@ import UIKit
 class BookCaseViewController: UIViewController {
 
   private let segmentedControl: UISegmentedControl = {
-    let segmentedControl = UnderlineSegmentedControl(items: ["내 책장", "책바구니"])
+    let segmentedControl = UnderlineSegmentedControl(items: ["내 책장", "위시리스트"])
     segmentedControl.translatesAutoresizingMaskIntoConstraints = false
     return segmentedControl
   }()
 
-  private let myBookViewController: MyBookViewController = {
-    let viewController = MyBookViewController()
+  private let myBookViewController: MyBookCaseViewController = {
+    let viewController = MyBookCaseViewController()
     return viewController
   }()
 
-  private let bookBasketViewController: BookBasketViewController = {
-    let viewController = BookBasketViewController()
+  private let wishListViewController: WishListViewController = {
+    let viewController = WishListViewController()
     return viewController
   }()
 
@@ -34,7 +34,7 @@ class BookCaseViewController: UIViewController {
   }()
 
   var dataViewControllers: [UIViewController] {
-    [self.myBookViewController, self.bookBasketViewController]
+    [self.myBookViewController, self.wishListViewController]
   }
 
   /// 현재 페이지의 인덱스를 나타낸다.
@@ -83,8 +83,12 @@ class BookCaseViewController: UIViewController {
     self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
 
     if let hanSansNeoFont = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17) {
-      self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.label, .font: hanSansNeoFont],
-                                                   for: .selected
+      self.segmentedControl.setTitleTextAttributes(
+        [
+          NSAttributedString.Key.foregroundColor: UIColor.label,
+          .font: hanSansNeoFont
+        ],
+        for: .selected
       )
     } else {
       self.segmentedControl.setTitleTextAttributes(
@@ -130,10 +134,7 @@ extension BookCaseViewController: UIPageViewControllerDelegate {
 
 extension BookCaseViewController: UIPageViewControllerDataSource {
 
-  func pageViewController(
-    _ pageViewController: UIPageViewController,
-    viewControllerBefore viewController: UIViewController
-  ) -> UIViewController? {
+  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     guard
       let index = self.dataViewControllers.firstIndex(of: viewController),
       index - 1 >= 0

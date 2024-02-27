@@ -16,8 +16,13 @@ enum Images {
   static let settingsTabBarImage = UIImage(systemName: "gearshape.2.fill")
   static let placeholderBookImage = UIImage(systemName: "book")
   static let basketBarButtonImage = UIImage(systemName: "basket.fill")
-  static let addBookBarButtonImage = UIImage(systemName: "plus")
+  static let moveToBookCaseBarButtonImage = UIImage(systemName: "arrow.left.arrow.right.square.fill")
+  static let plusButtonImage = UIImage(systemName: "plus")
   static let icloudLinkImage = UIImage(systemName: "link.icloud")
+  static let infoImage = UIImage(systemName: "info.circle")
+  static let xImage = UIImage(systemName: "xmark")
+  static let saveRecordImage = UIImage(systemName: "xmark")
+  static let trashImage = UIImage(systemName: "trash")
 }
 
 // MARK: - Fonts

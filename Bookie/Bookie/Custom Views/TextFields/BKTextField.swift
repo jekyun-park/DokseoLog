@@ -25,9 +25,9 @@ class BKTextField: UITextField {
   private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
 
-    layer.cornerRadius = 10
-    layer.borderWidth = 2
+//    layer.borderWidth = 2
     layer.borderColor = UIColor.systemGray4.cgColor
+    borderStyle = .roundedRect
 
     textColor = .bkText
     tintColor = .bkTabBarTint
@@ -39,9 +39,10 @@ class BKTextField: UITextField {
     backgroundColor = .tertiarySystemBackground
     autocorrectionType = .no
     autocapitalizationType = .none
+    keyboardType = .numberPad
     returnKeyType = .go
     clearButtonMode = .whileEditing
-    placeholder = "책 이름을 입력하세요"
+//    placeholder = "책 이름을 입력하세요"
   }
 
 }

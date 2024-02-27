@@ -33,7 +33,7 @@ class SearchResultCell: UITableViewCell {
     contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12))
   }
 
-  func setContents(book: Book) {
+  func setContents(book: BookDTO) {
     coverImage.downloadImage(fromURL: book.coverURL)
     titleLabel.text = book.title
     authorLabel.text = book.author
