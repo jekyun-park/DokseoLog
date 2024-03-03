@@ -43,6 +43,7 @@
 		22990C122A6EBF8B001CF1B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22990C112A6EBF8B001CF1B3 /* Assets.xcassets */; };
 		22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */; };
 		229C506E2B6C7BAD00B0DC85 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C506D2B6C7BAD00B0DC85 /* InitialViewController.swift */; };
+		22AAEC5E2B9454E700ACB045 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 22AAEC5D2B9454E700ACB045 /* FSCalendar */; };
 		22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */; };
 		22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAD2AEA462700E4477A /* SpoqaHanSansNeo-Bold.ttf */; };
 		22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */; };
@@ -135,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AAEC5E2B9454E700ACB045 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +380,7 @@
 			);
 			name = Bookie;
 			packageProductDependencies = (
+				22AAEC5D2B9454E700ACB045 /* FSCalendar */,
 			);
 			productName = Bookie;
 			productReference = 22990C022A6EBF83001CF1B3 /* Bookie.app */;
@@ -409,6 +412,7 @@
 			mainGroup = 22990BF92A6EBF83001CF1B3;
 			packageReferences = (
 				22D9C9802AFCAB6A00DC72B4 /* XCRemoteSwiftPackageReference "swift" */,
+				22AAEC5C2B9454E700ACB045 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 22990C032A6EBF83001CF1B3 /* Products */;
 			projectDirPath = "";
@@ -732,6 +736,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		22AAEC5C2B9454E700ACB045 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 		22D9C9802AFCAB6A00DC72B4 /* XCRemoteSwiftPackageReference "swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/swift";
@@ -741,6 +753,14 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22AAEC5D2B9454E700ACB045 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22AAEC5C2B9454E700ACB045 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */ = {
