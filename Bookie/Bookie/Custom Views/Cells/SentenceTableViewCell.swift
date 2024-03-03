@@ -9,7 +9,28 @@ import UIKit
 
 class SentenceTableViewCell: UITableViewCell {
 
+  // MARK: Lifecycle
+
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    setupUI()
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
   static let reuseID = "SentenceTableViewCell"
+
+  func setContents(sentence: Sentence) {
+    pageLabel.text = "p.\(Int(sentence.page))"
+    sentenceLabel.text = sentence.memo
+    dateLabel.text = sentence.createdAt.formatted()
+  }
+
+  // MARK: Private
 
   private lazy var stackView: UIStackView = {
     let stackView = UIStackView()
@@ -37,21 +58,12 @@ class SentenceTableViewCell: UITableViewCell {
     return label
   }()
 
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setupUI()
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
   private func setupUI() {
     let padding: CGFloat = 20
-    
-    self.selectionStyle = .none
-    self.backgroundColor = .bkBackgroundColor
-    self.contentView.addSubviews(stackView, sentenceLabel)
+
+    selectionStyle = .none
+    backgroundColor = .bkBackgroundColor
+    contentView.addSubviews(stackView, sentenceLabel)
 
     NSLayoutConstraint.activate([
       stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
@@ -63,12 +75,6 @@ class SentenceTableViewCell: UITableViewCell {
       sentenceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
       sentenceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
     ])
-
   }
 
-  func setContents(sentence: Sentence) {
-    self.pageLabel.text = "p.\(Int(sentence.page))"
-    self.sentenceLabel.text = sentence.memo
-    self.dateLabel.text = sentence.createdAt.formatted()
-  }
 }

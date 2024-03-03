@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Book
+
 struct Book {
   var title: String
   var link: String
@@ -22,14 +24,14 @@ struct Book {
 extension Book {
 
   init(dto: BookDTO) {
-    self.title = dto.title
-    self.link = dto.link
-    self.author = dto.author
-    self.description = dto.description
-    self.publishedAt = dto.pubDate
-    self.publisher = dto.publisher
-    self.isbn13 = dto.isbn13
-    self.coverURL = dto.coverURL
-    self.page = dto.subInfo?.itemPage
+    title = dto.title
+    link = dto.link
+    author = dto.author
+    description = dto.description
+    publishedAt = dto.pubDate
+    publisher = dto.publisher
+    isbn13 = dto.isbn13
+    coverURL = dto.coverURL
+    page = dto.subInfo?.itemPage
   }
 }

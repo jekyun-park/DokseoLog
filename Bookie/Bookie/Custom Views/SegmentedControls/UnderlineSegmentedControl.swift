@@ -9,6 +9,36 @@ import UIKit
 
 final class UnderlineSegmentedControl: UISegmentedControl {
 
+  // MARK: Lifecycle
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    setup()
+  }
+
+  override init(items: [Any]?) {
+    super.init(items: items)
+    setup()
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+
+    let underlineX = (bounds.width / CGFloat(numberOfSegments)) * CGFloat(selectedSegmentIndex)
+
+    UIView.animate(withDuration: 0.1) {
+      self.underlineView.frame.origin.x = underlineX
+    }
+  }
+
+  // MARK: Private
+
   private lazy var underlineView: UIView = {
     let width = self.bounds.width / CGFloat(self.numberOfSegments)
     let height = 2.0
@@ -21,36 +51,12 @@ final class UnderlineSegmentedControl: UISegmentedControl {
     return view
   }()
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setup()
-  }
-
-  override init(items: [Any]?) {
-    super.init(items: items)
-    setup()
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  override func layoutSubviews() {
-    super.layoutSubviews()
-
-    let underlineX = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.selectedSegmentIndex)
-
-    UIView.animate(withDuration: 0.1) {
-      self.underlineView.frame.origin.x = underlineX
-    }
-  }
-
   private func setup() {
     let image = UIImage()
-    self.setBackgroundImage(image, for: .normal, barMetrics: .default)
-    self.setBackgroundImage(image, for: .selected, barMetrics: .default)
-    self.setBackgroundImage(image, for: .highlighted, barMetrics: .default)
-    self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
+    setBackgroundImage(image, for: .normal, barMetrics: .default)
+    setBackgroundImage(image, for: .selected, barMetrics: .default)
+    setBackgroundImage(image, for: .highlighted, barMetrics: .default)
+    setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
   }
 
 }

@@ -9,14 +9,18 @@ import UIKit
 
 class BKAlertContainerView: UIView {
 
+  // MARK: Lifecycle
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
   }
 
-  required init?(coder: NSCoder) {
+  required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  // MARK: Private
 
   private func setup() {
     backgroundColor = .bkBackgroundColor

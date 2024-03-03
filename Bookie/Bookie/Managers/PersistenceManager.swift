@@ -8,9 +8,16 @@
 import CoreData
 import Foundation
 
+// MARK: - PersistenceManager
+
 final class PersistenceManager {
 
+  // MARK: Lifecycle
+
   private init() { }
+
+  // MARK: Internal
+
   static let shared = PersistenceManager()
 
   lazy var persistentContainer: NSPersistentCloudKitContainer = {
@@ -30,8 +37,7 @@ extension PersistenceManager {
 
   /// 내 책장에 도서를 추가합니다.
   func addToBookCase(book: Book) throws {
-
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     guard let entity = NSEntityDescription.entity(forEntityName: "MyBookEntity", in: managedContext) else {
       throw BKError.failToSaveData
     }
@@ -58,7 +64,7 @@ extension PersistenceManager {
       "bookDescription": book.description,
       "author": book.author,
       "isInWishList": false,
-      "isFinished": false
+      "isFinished": false,
     ])
 
     do {
@@ -66,13 +72,11 @@ extension PersistenceManager {
     } catch {
       throw BKError.failToSaveData
     }
-
   }
 
   /// 위시리스트에 도서를 저장합니다.
   func addToWishList(book: Book) throws {
-
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     guard let entity = NSEntityDescription.entity(forEntityName: "MyBookEntity", in: managedContext) else {
       throw BKError.failToSaveData
     }
@@ -100,7 +104,7 @@ extension PersistenceManager {
       "bookDescription": book.description,
       "author": book.author,
       "isInWishList": true,
-      "isFinished": false
+      "isFinished": false,
     ])
 
     do {
@@ -113,7 +117,7 @@ extension PersistenceManager {
   /// 책들을 불러옵니다.
   func fetchMyBooks() throws -> [MyBookEntity] {
     var result: [MyBookEntity] = []
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyBookEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBookEntity.isInWishList), NSNumber(value: false))
 
@@ -130,7 +134,7 @@ extension PersistenceManager {
   /// 위시리스트의 책들을 불러옵니다.
   func fetchWishList() throws -> [MyBookEntity] {
     var result: [MyBookEntity] = []
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyBookEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBookEntity.isInWishList), NSNumber(value: true))
 
@@ -145,8 +149,7 @@ extension PersistenceManager {
   }
 
   func moveToBookCase(book: Book) -> Result<Void, BKError> {
-
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
 
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyBookEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBookEntity.isbn13), book.isbn13)
@@ -166,8 +169,7 @@ extension PersistenceManager {
   }
 
   func addSentence(sentence: Sentence) throws {
-
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     guard let entity = NSEntityDescription.entity(forEntityName: "MySentenceEntity", in: managedContext) else {
       throw BKError.failToSaveData
     }
@@ -181,7 +183,7 @@ extension PersistenceManager {
     do {
       let objects = try managedContext.fetch(request)
       bookEntity = objects as? [MyBookEntity] ?? []
-    } catch(let error) {
+    } catch (let error) {
       print("여기에요 여기 ~! : \(error)")
       throw BKError.failToFetchData
     }
@@ -192,7 +194,7 @@ extension PersistenceManager {
       "createdAt": sentence.createdAt,
       "memo": sentence.memo,
       "page": sentence.page,
-      "sentenceID": sentence.id
+      "sentenceID": sentence.id,
     ])
 
     do {
@@ -205,7 +207,7 @@ extension PersistenceManager {
 
   func fetchSentences(_ book: Book) -> Result<[Sentence], BKError> {
     var result: [Sentence] = []
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MySentenceEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MySentenceEntity.book.isbn13), book.isbn13)
     let sortDescriptor = NSSortDescriptor(key: #keyPath(MySentenceEntity.createdAt), ascending: false)
@@ -220,54 +222,50 @@ extension PersistenceManager {
           page: Int($0.page),
           memo: $0.memo ?? "내용을 찾을 수 없습니다.",
           id: $0.sentenceID!,
-          createdAt: $0.createdAt!
-        )
+          createdAt: $0.createdAt!)
       }
       return .success(result)
     } catch {
       return .failure(.failToFetchData)
     }
-
   }
 
   /// 문장을 업데이트
   /// 1) Entity의 Predicate를 사용하여 요청을 생성
   /// 2) 레코드를 가져오고 키로 새 값을 설정
   /// 3) 마지막 저장 컨텍스트는 데이터 생성과 동일
-    func updateSentence(_ sentence: Sentence) -> Result<Void, BKError> {
+  func updateSentence(_ sentence: Sentence) -> Result<Void, BKError> {
+    let managedContext = persistentContainer.viewContext
+    let request = NSFetchRequest<NSManagedObject>(entityName: "MySentenceEntity")
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(MySentenceEntity.sentenceID), sentence.id as CVarArg)
+    request.predicate = predicate
 
-      let managedContext = self.persistentContainer.viewContext
-      let request = NSFetchRequest<NSManagedObject>(entityName: "MySentenceEntity")
-      let predicate = NSPredicate(format: "%K == %@", #keyPath(MySentenceEntity.sentenceID), sentence.id as CVarArg)
-      request.predicate = predicate
-  
-      do {
-        guard let objectToUpdate = try managedContext.fetch(request).first else {
-          errorLog("업데이트할 객체를 찾지 못했습니다.")
-          return .failure(.failToUpdateData)
-        }
-
-        objectToUpdate.setValue(sentence.page, forKey: "page")
-        objectToUpdate.setValue(sentence.memo, forKey: "memo")
-  
-        do {
-          try managedContext.save()
-        } catch {
-          errorLog("업데이트 내용 저장에 실패했습니다.")
-          return .failure(.failToSaveData)
-        }
-  
-      } catch {
-        errorLog("업데이트 내용 저장에 실패했습니다. - 2")
+    do {
+      guard let objectToUpdate = try managedContext.fetch(request).first else {
+        errorLog("업데이트할 객체를 찾지 못했습니다.")
         return .failure(.failToUpdateData)
       }
 
-      return .success(())
+      objectToUpdate.setValue(sentence.page, forKey: "page")
+      objectToUpdate.setValue(sentence.memo, forKey: "memo")
+
+      do {
+        try managedContext.save()
+      } catch {
+        errorLog("업데이트 내용 저장에 실패했습니다.")
+        return .failure(.failToSaveData)
+      }
+
+    } catch {
+      errorLog("업데이트 내용 저장에 실패했습니다. - 2")
+      return .failure(.failToUpdateData)
     }
 
+    return .success(())
+  }
+
   func addThought(_ thought: Thought) throws {
-    
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     guard let entity = NSEntityDescription.entity(forEntityName: "MyThoughtEntity", in: managedContext) else {
       errorLog("생각 저장 엔티티를 생성하는데 실패함")
       throw BKError.failToSaveData
@@ -294,12 +292,12 @@ extension PersistenceManager {
       "book": book!,
       "createdAt": thought.createdAt,
       "memo": thought.memo,
-      "thoughtID": thought.id
+      "thoughtID": thought.id,
     ])
 
     do {
       try managedContext.save()
-    } catch(let error) {
+    } catch (let error) {
       print(error)
       errorLog("생각 저장에 실패함")
       throw BKError.failToSaveData
@@ -309,7 +307,7 @@ extension PersistenceManager {
   // 최신순 sort필요
   func fetchThoughts(_ book: Book) -> Result<[Thought], BKError> {
     var result: [Thought] = []
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyThoughtEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MyThoughtEntity.book.isbn13), book.isbn13)
     let sortDescriptor = NSSortDescriptor(key: #keyPath(MyThoughtEntity.createdAt), ascending: false)
@@ -323,8 +321,7 @@ extension PersistenceManager {
           book: book,
           memo: $0.memo ?? "내용을 찾을 수 없습니다.",
           id: $0.thoughtID!,
-          createdAt: $0.createdAt!
-          )
+          createdAt: $0.createdAt!)
       }
       return .success(result)
     } catch {
@@ -332,38 +329,38 @@ extension PersistenceManager {
     }
   }
 
-    // 생각을 업데이트
-    func updateThought(_ thought: Thought) -> Result<Void, BKError> {
-      let managedContext = self.persistentContainer.viewContext
-      let request = NSFetchRequest<NSManagedObject>(entityName: "MyThoughtEntity")
-      let predicate = NSPredicate(format: "%K == %@", #keyPath(MyThoughtEntity.thoughtID), thought.id as CVarArg)
-      request.predicate = predicate
+  // 생각을 업데이트
+  func updateThought(_ thought: Thought) -> Result<Void, BKError> {
+    let managedContext = persistentContainer.viewContext
+    let request = NSFetchRequest<NSManagedObject>(entityName: "MyThoughtEntity")
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(MyThoughtEntity.thoughtID), thought.id as CVarArg)
+    request.predicate = predicate
 
-      do {
-        guard let objectToUpdate = try managedContext.fetch(request).first else {
-          errorLog("생각 저장 을 위한 책 객체를 fetch 실패함")
-          return .failure(.failToUpdateData) }
-        objectToUpdate.setValue(thought.memo, forKey: "memo")
-  
-        do {
-          try managedContext.save()
-        } catch {
-          errorLog("생각 업데이트 실패")
-          return .failure(.failToSaveData)
-        }
-  
-      } catch {
-        errorLog("생각 업뎃을 위한 thought 객체를 가져오는데 실패함")
+    do {
+      guard let objectToUpdate = try managedContext.fetch(request).first else {
+        errorLog("생각 저장 을 위한 책 객체를 fetch 실패함")
         return .failure(.failToUpdateData)
       }
+      objectToUpdate.setValue(thought.memo, forKey: "memo")
 
-      return .success(())
+      do {
+        try managedContext.save()
+      } catch {
+        errorLog("생각 업데이트 실패")
+        return .failure(.failToSaveData)
+      }
+
+    } catch {
+      errorLog("생각 업뎃을 위한 thought 객체를 가져오는데 실패함")
+      return .failure(.failToUpdateData)
     }
+
+    return .success(())
+  }
 
   /// 특정 도서를 삭제합니다.
   func deleteBook(_ book: Book) -> Result<Void, BKError> {
-
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyBookEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MyBookEntity.isbn13), book.isbn13)
     request.predicate = predicate
@@ -382,15 +379,16 @@ extension PersistenceManager {
 
   /// 특정 문장을 삭제합니다.
   func deleteSentence(_ sentence: Sentence) -> Result<Void, BKError> {
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MySentenceEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MySentenceEntity.sentenceID), sentence.id as CVarArg)
     request.predicate = predicate
 
     do {
-      guard let objectToDelete = try managedContext.fetch(request).first else { 
+      guard let objectToDelete = try managedContext.fetch(request).first else {
         print("여기?-1")
-        return .failure(.failToDeleteData) }
+        return .failure(.failToDeleteData)
+      }
       do {
         managedContext.delete(objectToDelete)
         try managedContext.save()
@@ -406,7 +404,7 @@ extension PersistenceManager {
   }
 
   func deleteThought(_ thought: Thought) -> Result<Void, BKError> {
-    let managedContext = self.persistentContainer.viewContext
+    let managedContext = persistentContainer.viewContext
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyThoughtEntity")
     let predicate = NSPredicate(format: "%K == %@", #keyPath(MyThoughtEntity.thoughtID), thought.id as CVarArg)
     request.predicate = predicate
@@ -418,7 +416,6 @@ extension PersistenceManager {
         managedContext.delete(objectToDelete)
         try managedContext.save()
       } catch {
-
         return .failure(.failToDeleteData)
       }
     } catch {

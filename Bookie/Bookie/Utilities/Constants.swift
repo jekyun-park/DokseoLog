@@ -37,6 +37,8 @@ enum Fonts {
   }
 }
 
+// MARK: - UserDefaultsKey
+
 enum UserDefaultsKey {
   static let isFirstLaunch = "isFirstLaunch"
   static let isContinueWithoutLogin = "isContinueWithoutLogin"

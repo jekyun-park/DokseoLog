@@ -8,20 +8,21 @@
 import UIKit
 
 class WishListCollectionViewCell: UICollectionViewCell {
-  static let reuseID = "WishListCollectionViewCell"
 
-  private let coverImage = BKCoverImageView(frame: .zero)
-  private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .bold)
-  private let authorLabel = BKBodyLabel(textAlignment: .center, fontSize: 13, fontWeight: .medium)
+  // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupUI()
   }
 
-  required init?(coder: NSCoder) {
+  required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  // MARK: Internal
+
+  static let reuseID = "WishListCollectionViewCell"
 
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -34,6 +35,12 @@ class WishListCollectionViewCell: UICollectionViewCell {
     titleLabel.text = book.title
     authorLabel.text = book.author
   }
+
+  // MARK: Private
+
+  private let coverImage = BKCoverImageView(frame: .zero)
+  private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .bold)
+  private let authorLabel = BKBodyLabel(textAlignment: .center, fontSize: 13, fontWeight: .medium)
 
   private func setupUI() {
     let padding: CGFloat = 8

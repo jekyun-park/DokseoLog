@@ -8,20 +8,26 @@
 import CoreData
 import UIKit
 
+// MARK: - SentenceViewController
+
 class SentenceViewController: UIViewController {
 
-  let book: Book
-  let tableView = UITableView()
-  var sentences = [Sentence]()
+  // MARK: Lifecycle
 
   init(book: Book) {
     self.book = book
     super.init(nibName: nil, bundle: nil)
   }
 
-  required init?(coder: NSCoder) {
+  required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  // MARK: Internal
+
+  let book: Book
+  let tableView = UITableView()
+  var sentences = [Sentence]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,14 +43,16 @@ class SentenceViewController: UIViewController {
     tableView.reloadData()
   }
 
+  // MARK: Private
+
   private func getSentences() {
-    let result = PersistenceManager.shared.fetchSentences( self.book)
+    let result = PersistenceManager.shared.fetchSentences(book)
 
     switch result {
     case .success(let results):
       sentences = results
     case .failure(let error):
-      self.presentBKAlert(title: "저장된 문장을 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
+      presentBKAlert(title: "저장된 문장을 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
     }
   }
 
@@ -62,7 +70,7 @@ class SentenceViewController: UIViewController {
 
     tableView.backgroundColor = .bkBackgroundColor
     tableView.translatesAutoresizingMaskIntoConstraints = false
-    
+
     tableView.delegate = self
     tableView.dataSource = self
     view.addSubview(tableView)
@@ -77,18 +85,21 @@ class SentenceViewController: UIViewController {
 
 }
 
+// MARK: UITableViewDataSource
+
 extension SentenceViewController: UITableViewDataSource {
 
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+  func numberOfSections(in _: UITableView) -> Int {
+    1
   }
 
   func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
-    return sentences.count
+    sentences.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceTableViewCell.reuseID) as? SentenceTableViewCell else { return UITableViewCell() }
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceTableViewCell.reuseID) as? SentenceTableViewCell
+    else { return UITableViewCell() }
 
     let sentence = sentences[indexPath.row]
     cell.setContents(sentence: sentence)
@@ -96,25 +107,29 @@ extension SentenceViewController: UITableViewDataSource {
     return cell
   }
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
+  func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
+    UITableView.automaticDimension
   }
 
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 600
+  func tableView(_: UITableView, estimatedHeightForRowAt _: IndexPath) -> CGFloat {
+    600
   }
 }
 
+// MARK: UITableViewDelegate
+
 extension SentenceViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
     // move to detail view
     // then update data or delete data
     let sentence = sentences[indexPath.row]
     let viewController = ModifyRecordViewController(sentence)
 //    self.navigationController?.pushViewController(viewController, animated: true)
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-       let window = windowScene.windows.first,
-       let rootViewController = window.rootViewController as? BKTabBarController {
+    if
+      let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+      let window = windowScene.windows.first,
+      let rootViewController = window.rootViewController as? BKTabBarController
+    {
       let vc = rootViewController.viewControllers?[1] as? UINavigationController
       vc?.pushViewController(viewController, animated: true)
     }

@@ -7,11 +7,45 @@
 
 import UIKit
 
+// MARK: - ModifyRecordViewController
+
 class ModifyRecordViewController: UIViewController {
+
+  // MARK: Lifecycle
+
+  init(_ sentence: Sentence) {
+    self.sentence = sentence
+    thought = nil
+    style = .sentence
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  init(_ thought: Thought) {
+    sentence = nil
+    self.thought = thought
+    style = .thought
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
 
   let sentence: Sentence?
   let thought: Thought?
   let style: ModifyRecordViewController.style
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .bkBackground
+    setupNavigationController()
+    style == .sentence ? setupSentenceUI() : setupThoughtUI()
+    hideKeyboardWhenTappedAround()
+  }
+
+  // MARK: Private
 
   private lazy var pageTextField: BKTextField = {
     let textField = BKTextField(frame: .zero)
@@ -64,8 +98,7 @@ class ModifyRecordViewController: UIViewController {
       image: Images.trashImage,
       style: .plain,
       target: self,
-      action: #selector(deleteButtonTapped)
-    )
+      action: #selector(deleteButtonTapped))
     button.tintColor = .red
     return button
   }()
@@ -75,37 +108,10 @@ class ModifyRecordViewController: UIViewController {
       title: "수정",
       style: .done,
       target: self,
-      action: #selector(updateButtonTapped)
-    )
+      action: #selector(updateButtonTapped))
     button.tintColor = .bkTabBarTintColor
     return button
   }()
-
-  init(_ sentence: Sentence) {
-    self.sentence = sentence
-    self.thought = nil
-    self.style = .sentence
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  init(_ thought: Thought) {
-    self.sentence = nil
-    self.thought = thought
-    self.style = .thought
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.view.backgroundColor = .bkBackground
-    setupNavigationController()
-    self.style == .sentence ? setupSentenceUI() : setupThoughtUI()
-    self.hideKeyboardWhenTappedAround()
-  }
 
   private func setupSentenceUI() {
     let padding: CGFloat = 20
@@ -127,9 +133,8 @@ class ModifyRecordViewController: UIViewController {
       textView.topAnchor.constraint(equalTo: sentencePlaceholderLabel.bottomAnchor, constant: padding),
       textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
       textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
+      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
     ])
-
   }
 
   private func setupThoughtUI() {
@@ -143,71 +148,77 @@ class ModifyRecordViewController: UIViewController {
       textView.topAnchor.constraint(equalTo: thoughtPlaceholderLabel.bottomAnchor, constant: padding),
       textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
       textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
+      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
     ])
   }
 
   private func setupNavigationController() {
-    self.navigationItem.rightBarButtonItems = [deleteButton, updateButton]
-    self.navigationController?.navigationItem.backButtonDisplayMode = .minimal
-    self.navigationItem.leftBarButtonItem = .none
+    navigationItem.rightBarButtonItems = [deleteButton, updateButton]
+    navigationController?.navigationItem.backButtonDisplayMode = .minimal
+    navigationItem.leftBarButtonItem = .none
   }
 
-  @objc private func updateButtonTapped() {
-    switch self.style {
+  @objc
+  private func updateButtonTapped() {
+    switch style {
     case .sentence:
       // 페이지, 내용 없을경우 에러처리
       guard let pageString = pageTextField.text, !pageString.isEmpty else {
-        self.presentBKAlert(title: "저장에 실패했습니다.", message: BKError.noPageInput.description, buttonTitle: "확인")
+        presentBKAlert(title: "저장에 실패했습니다.", message: BKError.noPageInput.description, buttonTitle: "확인")
         return
       }
 
-      if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
-        self.presentBKAlert(title: "저장에 실패했습니다.", message: BKError.noContentInput.description, buttonTitle: "확인")
+      if (textView.text == style.placeHolderString) || textView.text.isEmpty {
+        presentBKAlert(title: "저장에 실패했습니다.", message: BKError.noContentInput.description, buttonTitle: "확인")
         return
       }
 
       guard let page = Int(pageString) else {
-        self.presentBKAlert(title: "저장에 실패했습니다.", message: BKError.pageInputInvalid.description, buttonTitle: "확인")
+        presentBKAlert(title: "저장에 실패했습니다.", message: BKError.pageInputInvalid.description, buttonTitle: "확인")
         return
       }
 
-      let sentence = Sentence(book: self.sentence!.book, page: page, memo: textView.text, id: self.sentence!.id, createdAt: self.sentence!.createdAt)
+      let sentence = Sentence(
+        book: sentence!.book,
+        page: page,
+        memo: textView.text,
+        id: sentence!.id,
+        createdAt: sentence!.createdAt)
       let update = PersistenceManager.shared.updateSentence(sentence)
 
       switch update {
       case .success:
         break
       case .failure(let error):
-        self.presentBKAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
+        presentBKAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
         return
       }
 
     case .thought:
       // text 없을경우 에러처리
-      if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
-        self.presentBKAlert(title: "내용을 입력해주세요", message: BKError.noContentInput.description, buttonTitle: "확인")
+      if (textView.text == style.placeHolderString) || textView.text.isEmpty {
+        presentBKAlert(title: "내용을 입력해주세요", message: BKError.noContentInput.description, buttonTitle: "확인")
         return
       }
 
-      let thought = Thought(book: self.thought!.book, memo: textView.text, id: self.thought!.id, createdAt: self.thought!.createdAt)
+      let thought = Thought(book: thought!.book, memo: textView.text, id: thought!.id, createdAt: thought!.createdAt)
       let update = PersistenceManager.shared.updateThought(thought)
 
       switch update {
       case .success:
         break
       case .failure(let error):
-        self.presentBKAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
+        presentBKAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
         return
       }
     }
 
-    self.navigationController?.popViewController(animated: true)
+    navigationController?.popViewController(animated: true)
     // toast alert
   }
 
-  @objc private func deleteButtonTapped() {
-
+  @objc
+  private func deleteButtonTapped() {
     let alertController = UIAlertController(title: "삭제하시겠습니까?", message: "기록이 삭제됩니다.", preferredStyle: .alert)
 
     alertController.addAction(UIAlertAction(title: "취소", style: .cancel) { _ in
@@ -238,10 +249,12 @@ class ModifyRecordViewController: UIViewController {
       self.navigationController?.popViewController(animated: true)
     })
 
-    self.present(alertController, animated: true)
+    present(alertController, animated: true)
   }
 
 }
+
+// MARK: ModifyRecordViewController.style
 
 extension ModifyRecordViewController {
   enum style {
@@ -258,10 +271,12 @@ extension ModifyRecordViewController {
   }
 }
 
+// MARK: UITextViewDelegate
+
 extension ModifyRecordViewController: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if (textView.text == self.style.placeHolderString) {
+    if textView.text == style.placeHolderString {
       textView.text = nil
       textView.textColor = .black
     }
@@ -269,7 +284,7 @@ extension ModifyRecordViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-      textView.text = self.style.placeHolderString
+      textView.text = style.placeHolderString
       textView.textColor = .lightGray
     }
   }

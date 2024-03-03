@@ -5,7 +5,7 @@
 //  Created by 박제균 on 2/8/24.
 //
 
-// MARK: - Book
+// MARK: - BookDTO
 
 struct BookDTO: Codable {
   enum CodingKeys: String, CodingKey {
@@ -38,6 +38,6 @@ struct BookDTO: Codable {
 
 extension BookDTO {
   func toModel() -> Book {
-    return Book(dto: self)
+    Book(dto: self)
   }
 }

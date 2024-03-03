@@ -9,7 +9,27 @@ import UIKit
 
 class ThoughtTableViewCell: UITableViewCell {
 
+  // MARK: Lifecycle
+
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    setupUI()
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
   static let reuseID = "ThoughtTableViewCell"
+
+  func setContent(thought: Thought) {
+    thoughtLabel.text = thought.memo
+    dateLabel.text = thought.createdAt.formatted()
+  }
+
+  // MARK: Private
 
   private lazy var thoughtLabel: BKBodyLabel = {
     let label = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
@@ -22,21 +42,12 @@ class ThoughtTableViewCell: UITableViewCell {
     return label
   }()
 
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setupUI()
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
   private func setupUI() {
     let padding: CGFloat = 20
 
-    self.selectionStyle = .none
-    self.backgroundColor = .bkBackgroundColor
-    self.contentView.addSubviews(thoughtLabel, dateLabel)
+    selectionStyle = .none
+    backgroundColor = .bkBackgroundColor
+    contentView.addSubviews(thoughtLabel, dateLabel)
 
     NSLayoutConstraint.activate([
       dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
@@ -49,11 +60,6 @@ class ThoughtTableViewCell: UITableViewCell {
       thoughtLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
       thoughtLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
     ])
-  }
-
-  func setContent(thought: Thought) {
-    self.thoughtLabel.text = thought.memo
-    self.dateLabel.text = thought.createdAt.formatted()
   }
 
 }

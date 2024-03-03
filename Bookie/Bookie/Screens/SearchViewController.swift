@@ -25,7 +25,7 @@ class SearchViewController: BKLoadingViewController {
     configureViewController()
     configureSearchController()
     configureTableView()
-    self.hideKeyboardWhenTappedAround()
+    hideKeyboardWhenTappedAround()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +53,7 @@ class SearchViewController: BKLoadingViewController {
         results.count < totalSearchResults ? (hasMoreSearchResults = true) : (hasMoreSearchResults = false)
         updateUI(with: searchResult.books)
       case .failure(let error):
-        self.presentBKAlert(title: "검색결과를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
+        presentBKAlert(title: "검색결과를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
       }
     }
   }
@@ -133,11 +133,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
       case .success(let bookDTO):
         DispatchQueue.main.async {
           guard let self else { return }
-          self.navigationController?.pushViewController(BookInformationViewController(book: bookDTO.toModel(), style: .add), animated: true)
+          self.navigationController?.pushViewController(
+            BookInformationViewController(book: bookDTO.toModel(), style: .add),
+            animated: true)
         }
       case .failure(let error):
         guard let self else { return }
-        self.presentBKAlert(title: "도서 정보를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
+        presentBKAlert(title: "도서 정보를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
       }
     }
   }

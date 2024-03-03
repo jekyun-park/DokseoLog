@@ -8,7 +8,11 @@
 import CoreData
 import UIKit
 
+// MARK: - MyBookCaseViewController
+
 class MyBookCaseViewController: BKLoadingViewController {
+
+  // MARK: Internal
 
   var myBooks: [MyBookEntity] = []
 
@@ -35,10 +39,12 @@ class MyBookCaseViewController: BKLoadingViewController {
     dismissLoadingView()
   }
 
+  // MARK: Private
+
   private func getMyBooks() {
     do {
       myBooks = try PersistenceManager.shared.fetchMyBooks()
-    } catch(let error) {
+    } catch (let error) {
       guard let bkError = error as? BKError else { return }
       self.presentBKAlert(title: "도서를 불러올 수 없어요.", message: bkError.description, buttonTitle: "확인")
     }
@@ -56,33 +62,49 @@ class MyBookCaseViewController: BKLoadingViewController {
 
 }
 
+// MARK: UICollectionViewDelegate
+
 extension MyBookCaseViewController: UICollectionViewDelegate {
 
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+  func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let myBook = myBooks[indexPath.item]
-    let book = Book(title: myBook.title!, link: myBook.link!, author: myBook.author!, description: myBook.bookDescription!, publishedAt: myBook.publishedAt!, isbn13: myBook.isbn13!, coverURL: myBook.coverURL!, publisher: myBook.publisher!, page: Int(myBook.totalPage))
+    let book = Book(
+      title: myBook.title!,
+      link: myBook.link!,
+      author: myBook.author!,
+      description: myBook.bookDescription!,
+      publishedAt: myBook.publishedAt!,
+      isbn13: myBook.isbn13!,
+      coverURL: myBook.coverURL!,
+      publisher: myBook.publisher!,
+      page: Int(myBook.totalPage))
 
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-       let window = windowScene.windows.first,
-       let rootViewController = window.rootViewController as? BKTabBarController {
+    if
+      let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+      let window = windowScene.windows.first,
+      let rootViewController = window.rootViewController as? BKTabBarController
+    {
       let vc = rootViewController.viewControllers?[1] as? UINavigationController
       vc?.pushViewController(MyBookViewController(book: book), animated: true)
     }
-
   }
 
 }
 
+// MARK: UICollectionViewDataSource
+
 extension MyBookCaseViewController: UICollectionViewDataSource {
 
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return myBooks.count
+  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+    myBooks.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyBookCollectionViewCell.reuseID, for: indexPath) as? MyBookCollectionViewCell else { return UICollectionViewCell() }
+    guard
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: MyBookCollectionViewCell.reuseID,
+        for: indexPath) as? MyBookCollectionViewCell
+    else { return UICollectionViewCell() }
     let myBook = myBooks[indexPath.item]
     cell.setContents(book: myBook)
 
@@ -91,18 +113,29 @@ extension MyBookCaseViewController: UICollectionViewDataSource {
 
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension MyBookCaseViewController: UICollectionViewDelegateFlowLayout {
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 8
+  func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, minimumLineSpacingForSectionAt _: Int) -> CGFloat {
+    8
   }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 8
+  func collectionView(
+    _: UICollectionView,
+    layout _: UICollectionViewLayout,
+    minimumInteritemSpacingForSectionAt _: Int)
+    -> CGFloat
+  {
+    8
   }
 
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt _: IndexPath)
+    -> CGSize
+  {
     guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
 //    flowLayout.estimatedItemSize = .zero
 

@@ -9,7 +9,12 @@ import Foundation
 
 final class UserDefaultsManager {
 
+  // MARK: Lifecycle
+
   private init() { }
+
+  // MARK: Internal
+
   static let shared = UserDefaultsManager()
 
   /// 앱을 설치하고 처음 켜는지 확인하는 변수
@@ -17,7 +22,7 @@ final class UserDefaultsManager {
     UserDefaults.standard.bool(forKey: UserDefaultsKey.isFirstLaunch)
   }
 
-//  /// 로그인 없이 
+//  /// 로그인 없이
 //  var isContinueWithoutLogin: Bool {
 //    UserDefaults.standard.bool(forKey: UserDefaultsKey.isContinueWithoutLogin)
 //  }

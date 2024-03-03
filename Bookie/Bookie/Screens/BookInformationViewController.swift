@@ -11,12 +11,35 @@ import UIKit
 
 class BookInformationViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  init(book: Book, style: BarButtonStyle) {
+    self.book = book
+    self.style = style
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  // MARK: Internal
+
   enum BarButtonStyle {
     case add, move
   }
 
   let book: Book
   let style: BookInformationViewController.BarButtonStyle
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupScrollView()
+    setupNavigationBar()
+    setupUI()
+  }
+
+  // MARK: Private
 
   private lazy var scrollView = UIScrollView(frame: .zero)
   private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 22, fontWeight: .bold)
@@ -32,62 +55,39 @@ class BookInformationViewController: UIViewController {
   private let descriptionPlaceholderLabel = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
   private let descriptionLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
   private let coverImage = BKCoverImageView(frame: .zero)
-  
+
   private lazy var addToWishListBarButton = UIBarButtonItem(
     image: Images.basketBarButtonImage,
     style: .plain,
     target: self,
-    action: #selector(addToWishListBarButtonTapped)
-  )
+    action: #selector(addToWishListBarButtonTapped))
 
   private lazy var addBookBarButton = UIBarButtonItem(
     image: Images.plusButtonImage,
     style: .plain,
     target: self,
-    action: #selector(addBookBarButtonTapped)
-  )
+    action: #selector(addBookBarButtonTapped))
 
   private lazy var moveToBookCaseBarButton = UIBarButtonItem(
     image: Images.moveToBookCaseBarButtonImage,
     style: .plain,
     target: self,
-    action: #selector(moveToBookCaseBarButtonImageTapped)
-  )
+    action: #selector(moveToBookCaseBarButtonImageTapped))
 
   private lazy var deleteButton: UIBarButtonItem = {
     let button = UIBarButtonItem(
       image: Images.trashImage,
       style: .plain,
       target: self,
-      action: #selector(deleteButtonTapped)
-    )
+      action: #selector(deleteButtonTapped))
     button.tintColor = .red
     return button
   }()
 
-  required init?(coder _: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-  init(book: Book, style: BarButtonStyle) {
-    self.book = book
-    self.style = style
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  // MARK: Internal
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupScrollView()
-    setupNavigationBar()
-    setupUI()
-  }
-
   private func setupUI() {
     titleLabel.text = book.title
     authorLabel.text = book.author
-    descriptionLabel.text = (book.description.count == 0) ? ("내용이 없습니다.") : (book.description)
+    descriptionLabel.text = (book.description.count == 0) ? "내용이 없습니다." : (book.description)
     descriptionLabel.adjustsFontSizeToFitWidth = false
     descriptionLabel.numberOfLines = 0
     descriptionPlaceholderLabel.text = "책소개"
@@ -174,8 +174,7 @@ class BookInformationViewController: UIViewController {
       publisherPlaceholderLabel,
       publisherLabel,
       publishedDatePlaceholderLabel,
-      publishedDateLabel
-    )
+      publishedDateLabel)
     scrollView.backgroundColor = .bkBackground
     scrollView.isScrollEnabled = true
   }
@@ -194,7 +193,8 @@ class BookInformationViewController: UIViewController {
     navigationController?.navigationBar.tintColor = .bkTabBarTint
   }
 
-  @objc private func addToWishListBarButtonTapped() {
+  @objc
+  private func addToWishListBarButtonTapped() {
     do {
       try PersistenceManager.shared.addToWishList(book: book)
     } catch (let error) {
@@ -203,7 +203,8 @@ class BookInformationViewController: UIViewController {
     }
   }
 
-  @objc private func addBookBarButtonTapped() {
+  @objc
+  private func addBookBarButtonTapped() {
     do {
       try PersistenceManager.shared.addToBookCase(book: book)
     } catch (let error) {
@@ -212,23 +213,25 @@ class BookInformationViewController: UIViewController {
     }
   }
 
-  @objc private func moveToBookCaseBarButtonImageTapped() {
+  @objc
+  private func moveToBookCaseBarButtonImageTapped() {
     let result = PersistenceManager.shared.moveToBookCase(book: book)
     switch result {
     case .success:
-      self.navigationController?.popViewController(animated: true)
+      navigationController?.popViewController(animated: true)
     case .failure(let error):
-      self.presentBKAlert(title: "책장으로 이동할 수 없어요.", message: error.description, buttonTitle: "확인")
+      presentBKAlert(title: "책장으로 이동할 수 없어요.", message: error.description, buttonTitle: "확인")
     }
   }
 
-  @objc private func deleteButtonTapped() {
+  @objc
+  private func deleteButtonTapped() {
     let result = PersistenceManager.shared.deleteBook(book)
     switch result {
     case .success:
-      self.navigationController?.popViewController(animated: true)
+      navigationController?.popViewController(animated: true)
     case .failure(let error):
-      self.presentBKAlert(title: "도서를 삭제할 수 없어요.", message: error.description, buttonTitle: "확인")
+      presentBKAlert(title: "도서를 삭제할 수 없어요.", message: error.description, buttonTitle: "확인")
     }
   }
 

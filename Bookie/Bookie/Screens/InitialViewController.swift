@@ -9,6 +9,15 @@ import UIKit
 
 class InitialViewController: UIViewController {
 
+  // MARK: Internal
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupUI()
+  }
+
+  // MARK: Private
+
   private lazy var linkWithiCloudButton: BKButton = {
     guard let image = Images.icloudLinkImage else { return BKButton() }
     let button = BKButton(backgroundColor: .black, foregroundColor: .white, title: "icloud와 데이터 연동하기", systemImage: image)
@@ -29,7 +38,7 @@ class InitialViewController: UIViewController {
   private lazy var stackView: UIStackView = {
     let stackView = UIStackView(arrangedSubviews: [
       linkWithiCloudButton,
-      continueWithoutiCloudButton
+      continueWithoutiCloudButton,
     ])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .vertical
@@ -37,11 +46,6 @@ class InitialViewController: UIViewController {
     stackView.distribution = .fillEqually
     return stackView
   }()
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    setupUI()
-  }
 
   private func setupUI() {
     view.addSubview(stackView)
@@ -51,7 +55,7 @@ class InitialViewController: UIViewController {
       stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
       stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
       stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
-      stackView.heightAnchor.constraint(equalToConstant: 120)
+      stackView.heightAnchor.constraint(equalToConstant: 120),
     ])
   }
 
@@ -71,8 +75,9 @@ class InitialViewController: UIViewController {
 //    }
 //  }
 
-  @objc private func continueWithoutLoginButtonTapped() {
-    self.dismiss(animated: true)
+  @objc
+  private func continueWithoutLoginButtonTapped() {
+    dismiss(animated: true)
     view.window?.rootViewController = BKTabBarController()
     UserDefaultsManager.shared.setLaunchedBefore()
   }

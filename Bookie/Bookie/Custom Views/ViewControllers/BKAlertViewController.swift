@@ -9,9 +9,56 @@ import UIKit
 
 class BKAlertViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  init(title: String, message: String, buttonTitle: String, style: BKAlertViewController.Style) {
+    super.init(nibName: nil, bundle: nil)
+    alertTitle = title
+    self.message = message
+    self.buttonTitle = buttonTitle
+    self.style = style
+  }
+
+  convenience init(
+    title: String,
+    message: String,
+    buttonTitle: String,
+    style: BKAlertViewController.Style,
+    action: (() -> Void)?)
+  {
+    self.init(title: title, message: message, buttonTitle: buttonTitle, style: style)
+    self.action = action
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
   enum Style {
     case confirm, destructive, normal
   }
+
+  var alertTitle: String?
+  var message: String?
+  var buttonTitle: String?
+  var action: (() -> Void)?
+  var style: BKAlertViewController.Style = .normal
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    switch style {
+    case .confirm:
+      setupConfirmUI()
+    case .destructive:
+      setupDestructiveUI()
+    case .normal:
+      setupUI()
+    }
+  }
+
+  // MARK: Private
 
   private let containerView = BKAlertContainerView()
   private let titleLabel: BKTitleLabel = {
@@ -41,41 +88,6 @@ class BKAlertViewController: UIViewController {
     return button
   }()
 
-  var alertTitle: String?
-  var message: String?
-  var buttonTitle: String?
-  var action: (() -> Void)?
-  var style: BKAlertViewController.Style = .normal
-
-  init(title: String, message: String, buttonTitle: String, style: BKAlertViewController.Style) {
-    super.init(nibName: nil, bundle: nil)
-    self.alertTitle = title
-    self.message = message
-    self.buttonTitle = buttonTitle
-    self.style = style
-  }
-
-  convenience init(title: String, message: String, buttonTitle: String, style: BKAlertViewController.Style, action: (() -> Void)?) {
-    self.init(title: title, message: message, buttonTitle: buttonTitle, style: style)
-    self.action = action
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    switch style {
-    case .confirm:
-      setupConfirmUI()
-    case .destructive:
-      setupDestructiveUI()
-    case .normal:
-      setupUI()
-    }
-  }
-
   private func setupUI() {
     titleLabel.text = alertTitle ?? "알 수 없는 에러가 발생했어요."
     messageLabel.text = message ?? "설정 > 문의에서 개발자에게 문의해 주세요."
@@ -104,7 +116,7 @@ class BKAlertViewController: UIViewController {
       actionButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -padding),
       actionButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
       actionButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -padding),
-      actionButton.heightAnchor.constraint(equalToConstant: 44)
+      actionButton.heightAnchor.constraint(equalToConstant: 44),
     ])
   }
 
@@ -186,14 +198,16 @@ class BKAlertViewController: UIViewController {
     ])
   }
 
-  @objc private func actionButtonTapped() {
-    if let action = action {
+  @objc
+  private func actionButtonTapped() {
+    if let action {
       action()
     }
     dismiss(animated: true)
   }
 
-  @objc private func normalButtonTapped() {
+  @objc
+  private func normalButtonTapped() {
     dismiss(animated: true)
   }
 

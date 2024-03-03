@@ -9,15 +9,19 @@ import UIKit
 
 class BKFloatingButton: UIButton {
 
+  // MARK: Lifecycle
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
   }
-  
-  required init?(coder: NSCoder) {
+
+  required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+
+  // MARK: Private
+
   private func setup() {
     layer.cornerRadius = 30
     layer.shadowRadius = 10
