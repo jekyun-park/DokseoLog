@@ -46,7 +46,7 @@ class BKTabBarController: UITabBarController {
 
     let habitViewController = HabitsViewController()
     habitViewController.title = "달력"
-    habitViewController.tabBarItem = UITabBarItem(title: "달력", image: Images.habitTabBarImage, tag: 2)
+    habitViewController.tabBarItem = UITabBarItem(title: "달력", image: Images.calendarImage, tag: 2)
     let habitNavigationController = UINavigationController(rootViewController: habitViewController)
     habitNavigationController.navigationBar.prefersLargeTitles = true
 

@@ -23,6 +23,7 @@ enum Images {
   static let xImage = UIImage(systemName: "xmark")
   static let saveRecordImage = UIImage(systemName: "xmark")
   static let trashImage = UIImage(systemName: "trash")
+  static let calendarImage = UIImage(systemName: "calendar")
 }
 
 // MARK: - Fonts
