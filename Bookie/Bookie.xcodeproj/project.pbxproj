@@ -26,7 +26,7 @@
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		2260764D2B878B3F000550F8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260764C2B878B3F000550F8 /* Date+.swift */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
-		227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* HabitsViewController.swift */; };
+		227A23132A860C6F00BE461E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* CalendarViewController.swift */; };
 		227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23142A860C7C00BE461E /* SettingsViewController.swift */; };
 		227A231A2A8611BA00BE461E /* Bookie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22990C0E2A6EBF84001CF1B3 /* Bookie.xcdatamodeld */; };
 		227A231E2A861F5B00BE461E /* BKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A231D2A861F5B00BE461E /* BKTabBarController.swift */; };
@@ -88,7 +88,7 @@
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2260764C2B878B3F000550F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
-		227A23122A860C6F00BE461E /* HabitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsViewController.swift; sourceTree = "<group>"; };
+		227A23122A860C6F00BE461E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		227A231D2A861F5B00BE461E /* BKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKTabBarController.swift; sourceTree = "<group>"; };
 		227A231F2A8625EA00BE461E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			children = (
 				22D2E5AC2B85CA1C00ED0455 /* MyBookViewController.swift */,
 				227A23102A860C3F00BE461E /* BookCaseViewController.swift */,
-				227A23122A860C6F00BE461E /* HabitsViewController.swift */,
+				227A23122A860C6F00BE461E /* CalendarViewController.swift */,
 				227A23142A860C7C00BE461E /* SettingsViewController.swift */,
 				22483FB92AFDD46F00942237 /* SearchViewController.swift */,
 				22E08C1F2B4C34CB002F69A7 /* BookInformationViewController.swift */,
@@ -482,7 +482,7 @@
 				22D2E5AD2B85CA1C00ED0455 /* MyBookViewController.swift in Sources */,
 				224A90022B7DB11600C003A4 /* MyBookCollectionViewCell.swift in Sources */,
 				2201C70F2AF0F393001A93B5 /* Bundle+.swift in Sources */,
-				227A23132A860C6F00BE461E /* HabitsViewController.swift in Sources */,
+				227A23132A860C6F00BE461E /* CalendarViewController.swift in Sources */,
 				22483FB02AFCC6AD00942237 /* BKBodyLabel.swift in Sources */,
 				22EBE54D2B74AAE30024D620 /* BookDTO.swift in Sources */,
 				22EBE54F2B74AB1B0024D620 /* SubInfo.swift in Sources */,

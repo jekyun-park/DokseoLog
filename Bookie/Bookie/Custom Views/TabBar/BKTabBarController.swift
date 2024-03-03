@@ -44,10 +44,10 @@ class BKTabBarController: UITabBarController {
     let bookCaseNavigationController = UINavigationController(rootViewController: bookCaseViewController)
     bookCaseNavigationController.navigationBar.prefersLargeTitles = true
 
-    let habitViewController = HabitsViewController()
-    habitViewController.title = "달력"
-    habitViewController.tabBarItem = UITabBarItem(title: "달력", image: Images.calendarImage, tag: 2)
-    let habitNavigationController = UINavigationController(rootViewController: habitViewController)
+    let calendarViewController = CalendarViewController()
+    calendarViewController.title = "달력"
+    calendarViewController.tabBarItem = UITabBarItem(title: "달력", image: Images.calendarImage, tag: 2)
+    let habitNavigationController = UINavigationController(rootViewController: calendarViewController)
     habitNavigationController.navigationBar.prefersLargeTitles = true
 
     let settingViewController = SettingsViewController()
