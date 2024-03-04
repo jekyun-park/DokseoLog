@@ -62,9 +62,11 @@ class SearchViewController: BKLoadingViewController {
     view.backgroundColor = .bkBackgroundColor
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont(
-      name: Fonts.HanSansNeo.medium.rawValue,
-      size: 18)!]
+    UINavigationBar.appearance().titleTextAttributes = [
+      NSAttributedString.Key.font: UIFont(
+      name: Fonts.HanSansNeo.medium.description,
+      size: 18)!
+    ]
   }
 
   private func configureSearchController() {
