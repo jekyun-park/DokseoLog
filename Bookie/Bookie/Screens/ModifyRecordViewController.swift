@@ -16,14 +16,14 @@ class ModifyRecordViewController: UIViewController {
   init(_ sentence: Sentence) {
     self.sentence = sentence
     thought = nil
-    style = .sentence
+    self.style = .sentence
     super.init(nibName: nil, bundle: nil)
   }
 
   init(_ thought: Thought) {
     sentence = nil
     self.thought = thought
-    style = .thought
+    self.style = .thought
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -41,7 +41,7 @@ class ModifyRecordViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .bkBackground
     setupNavigationController()
-    style == .sentence ? setupSentenceUI() : setupThoughtUI()
+    self.style == .sentence ? setupSentenceUI() : setupThoughtUI()
     hideKeyboardWhenTappedAround()
   }
 
@@ -67,7 +67,7 @@ class ModifyRecordViewController: UIViewController {
     textView.delegate = self
     textView.autocorrectionType = .no
     textView.spellCheckingType = .no
-    textView.font = UIFont(name: Fonts.HanSansNeo.medium.rawValue, size: 15)
+    textView.font = UIFont(name: Fonts.HanSansNeo.medium.description, size: 15)
     textView.textColor = .label
     textView.layer.cornerRadius = 5
     textView.layer.borderColor = UIColor.systemGray4.cgColor
@@ -160,7 +160,7 @@ class ModifyRecordViewController: UIViewController {
 
   @objc
   private func updateButtonTapped() {
-    switch style {
+    switch self.style {
     case .sentence:
       // 페이지, 내용 없을경우 에러처리
       guard let pageString = pageTextField.text, !pageString.isEmpty else {
@@ -168,7 +168,7 @@ class ModifyRecordViewController: UIViewController {
         return
       }
 
-      if (textView.text == style.placeHolderString) || textView.text.isEmpty {
+      if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
         presentBKAlert(title: "저장에 실패했습니다.", message: BKError.noContentInput.description, buttonTitle: "확인")
         return
       }
@@ -196,7 +196,7 @@ class ModifyRecordViewController: UIViewController {
 
     case .thought:
       // text 없을경우 에러처리
-      if (textView.text == style.placeHolderString) || textView.text.isEmpty {
+      if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
         presentBKAlert(title: "내용을 입력해주세요", message: BKError.noContentInput.description, buttonTitle: "확인")
         return
       }
@@ -276,7 +276,7 @@ extension ModifyRecordViewController {
 extension ModifyRecordViewController: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.text == style.placeHolderString {
+    if textView.text == self.style.placeHolderString {
       textView.text = nil
       textView.textColor = .black
     }
@@ -284,7 +284,7 @@ extension ModifyRecordViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-      textView.text = style.placeHolderString
+      textView.text = self.style.placeHolderString
       textView.textColor = .lightGray
     }
   }
