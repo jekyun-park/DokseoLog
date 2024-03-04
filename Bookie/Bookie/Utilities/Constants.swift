@@ -29,12 +29,23 @@ enum Images {
 // MARK: - Fonts
 
 enum Fonts {
-  enum HanSansNeo: String {
-    case bold = "SpoqaHanSansNeo-Bold"
-    case medium = "SpoqaHanSansNeo-Medium"
-    case light = "SpoqaHanSansNeo-Light"
-    case thin = "SpoqaHanSansNeo-Thin"
-    case regular = "SpoqaHanSansNeo-Regular"
+  enum HanSansNeo{
+    case bold, medium, light, thin, regular
+
+    var description: String {
+      switch self {
+      case .bold:
+        return "SpoqaHanSansNeo-Bold"
+      case .medium:
+        return "SpoqaHanSansNeo-Medium"
+      case .light:
+        return "SpoqaHanSansNeo-Light"
+      case .thin:
+        return "SpoqaHanSansNeo-Thin"
+      case .regular:
+        return "SpoqaHanSansNeo-Regular"
+      }
+    }
   }
 }
 

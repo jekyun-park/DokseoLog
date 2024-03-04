@@ -33,7 +33,7 @@ class AddRecordViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .bkBackground
     setupNavigationController()
-    style == .sentence ? setupSentenceUI() : setupThoughtUI()
+    self.style == .sentence ? setupSentenceUI() : setupThoughtUI()
     hideKeyboardWhenTappedAround()
   }
 
@@ -57,7 +57,7 @@ class AddRecordViewController: UIViewController {
     textView.text = self.style.placeHolderString
     textView.autocorrectionType = .no
     textView.spellCheckingType = .no
-    textView.font = UIFont(name: Fonts.HanSansNeo.medium.rawValue, size: 15)
+    textView.font = UIFont(name: Fonts.HanSansNeo.medium.description, size: 15)
     textView.textColor = .label
     textView.delegate = self
     textView.layer.cornerRadius = 5
@@ -137,7 +137,7 @@ class AddRecordViewController: UIViewController {
 
   @objc
   private func saveButtonTapped() {
-    switch style {
+    switch self.style {
     case .sentence:
       // 페이지, 내용 없을경우 에러처리
       guard let pageString = pageTextField.text, !pageString.isEmpty else {
@@ -145,7 +145,7 @@ class AddRecordViewController: UIViewController {
         return
       }
 
-      if (textView.text == style.placeHolderString) || textView.text.isEmpty {
+      if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
         presentBKAlert(title: "저장에 실패했습니다.", message: BKError.noContentInput.description, buttonTitle: "확인")
         return
       }
@@ -166,7 +166,7 @@ class AddRecordViewController: UIViewController {
 
     case .thought:
       // text 없을경우 에러처리
-      if (textView.text == style.placeHolderString) || textView.text.isEmpty {
+      if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
         presentBKAlert(title: "내용을 입력해주세요", message: BKError.noContentInput.description, buttonTitle: "확인")
         return
       }
@@ -209,7 +209,7 @@ extension AddRecordViewController {
 extension AddRecordViewController: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.text == style.placeHolderString {
+    if textView.text == self.style.placeHolderString {
       textView.text = nil
       textView.textColor = .black
     }
@@ -217,7 +217,7 @@ extension AddRecordViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-      textView.text = style.placeHolderString
+      textView.text = self.style.placeHolderString
       textView.textColor = .lightGray
     }
   }

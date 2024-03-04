@@ -21,7 +21,7 @@ class InitialViewController: UIViewController {
   private lazy var linkWithiCloudButton: BKButton = {
     guard let image = Images.icloudLinkImage else { return BKButton() }
     let button = BKButton(backgroundColor: .black, foregroundColor: .white, title: "icloud와 데이터 연동하기", systemImage: image)
-    button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17)
+    button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.description, size: 17)
     button.translatesAutoresizingMaskIntoConstraints = false
 //    button.addTarget(self, action: #selector(linkWithiCloudButtonTapped), for: .touchUpInside)
     return button
@@ -29,7 +29,7 @@ class InitialViewController: UIViewController {
 
   private lazy var continueWithoutiCloudButton: BKButton = {
     let button = BKButton(backgroundColor: .systemGray3, foregroundColor: .label, title: "연동 없이 시작하기")
-    button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17)
+    button.titleLabel?.font = UIFont(name: Fonts.HanSansNeo.bold.description, size: 17)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(continueWithoutLoginButtonTapped), for: .touchUpInside)
     return button

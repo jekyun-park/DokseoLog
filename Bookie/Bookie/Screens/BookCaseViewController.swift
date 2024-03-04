@@ -87,7 +87,7 @@ class BookCaseViewController: UIViewController {
   private func setupSegmentedControl() {
     segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
 
-    if let hanSansNeoFont = UIFont(name: Fonts.HanSansNeo.bold.rawValue, size: 17) {
+    if let hanSansNeoFont = UIFont(name: Fonts.HanSansNeo.bold.description, size: 17) {
       segmentedControl.setTitleTextAttributes(
         [
           NSAttributedString.Key.foregroundColor: UIColor.label,
