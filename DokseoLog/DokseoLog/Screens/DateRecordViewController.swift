@@ -39,10 +39,8 @@ class DateRecordViewController: UIViewController {
     let result = PersistenceManager.shared.fetchRecords(date)
     switch result {
     case .success(let results):
-      for record in zip(results.sentences, results.thoughts) {
-        data.append(record.0)
-        data.append(record.1)
-      }
+      data.append(contentsOf: results.sentences)
+      data.append(contentsOf: results.thoughts)
     case .failure(let error):
       presentBKAlert(title: "데이터를 가져오지 못했어요", message: error.description, buttonTitle: "확인")
       self.navigationController?.popViewController(animated: true)
@@ -54,6 +52,7 @@ class DateRecordViewController: UIViewController {
     view.backgroundColor = .bkBackgroundColor
     navigationController?.navigationBar.isHidden = false
     navigationController?.navigationBar.tintColor = .bkTabBarTint
+    self.title = "\(date.formattedWithDay()) 의 기록"
   }
 
   private func configureTableView() {
@@ -105,7 +104,6 @@ extension DateRecordViewController: UITableViewDataSource {
 
     if let sentence = data[indexPath.row] as? Sentence {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: SentenceTableViewCell.reuseID, for: indexPath) as? SentenceTableViewCell else {
-        print("sentence변환X")
         return UITableViewCell()
       }
       cell.setContents(sentence: sentence)
@@ -113,14 +111,12 @@ extension DateRecordViewController: UITableViewDataSource {
       return cell
     } else if let thought = data[indexPath.row] as? Thought {
       guard let cell = tableView.dequeueReusableCell(withIdentifier: ThoughtTableViewCell.reuseID, for: indexPath) as? ThoughtTableViewCell else {
-        print("thought cell 변환X")
         return UITableViewCell()
       }
       cell.setContents(thought: thought)
       cell.separatorInset = UIEdgeInsets.zero
       return cell
     } else {
-      print("모델 변환 실패, \(self.data)")
       return UITableViewCell()
     }
   }

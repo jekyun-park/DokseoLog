@@ -26,7 +26,7 @@ class ThoughtTableViewCell: UITableViewCell {
 
   func setContents(thought: Thought) {
     thoughtLabel.text = thought.memo
-    dateLabel.text = thought.createdAt.formatted()
+    dateLabel.text = thought.createdAt.formattedWithTime()
   }
 
   // MARK: Private

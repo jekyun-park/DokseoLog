@@ -260,7 +260,6 @@ class BookInformationViewController: UIViewController {
       self.view.makeToast("책을 위시리스트에서 삭제했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
-      navigationController?.popViewController(animated: true)
     case .failure(let error):
       presentBKAlert(title: "도서를 삭제할 수 없어요.", message: error.description, buttonTitle: "확인")
     }
