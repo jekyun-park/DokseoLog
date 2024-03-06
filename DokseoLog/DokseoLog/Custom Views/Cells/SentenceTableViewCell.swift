@@ -27,7 +27,7 @@ class SentenceTableViewCell: UITableViewCell {
   func setContents(sentence: Sentence) {
     pageLabel.text = "p.\(Int(sentence.page))"
     sentenceLabel.text = sentence.memo
-    dateLabel.text = sentence.createdAt.formatted()
+    dateLabel.text = sentence.createdAt.formattedWithTime()
   }
 
   // MARK: Private
