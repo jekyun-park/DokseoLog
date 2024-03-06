@@ -72,7 +72,6 @@
 /* Begin PBXFileReference section */
 		2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2201C7082AF0EAD8001A93B5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		2201C70E2AF0F393001A93B5 /* Bundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		220443702AF4C5EA0027E3EF /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		2213EEBC2B7F2D3E00B84A5F /* MyBookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookCaseViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +86,8 @@
 		22483FB92AFDD46F00942237 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		224A8FFD2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		224A90012B7DB11600C003A4 /* MyBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookCollectionViewCell.swift; sourceTree = "<group>"; };
+		22551E2D2B989B2D0008B0C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22551E2F2B989BFA0008B0C5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		225D0ABB2AF131A1002AD604 /* BKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2260764C2B878B3F000550F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -108,7 +109,6 @@
 		22990C0F2A6EBF84001CF1B3 /* Bookie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bookie.xcdatamodel; sourceTree = "<group>"; };
 		22990C112A6EBF8B001CF1B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22990C142A6EBF8B001CF1B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		22990C162A6EBF8B001CF1B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		229C506D2B6C7BAD00B0DC85 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		22BF43F12A6F6D3600AF167C /* DokseoLog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DokseoLog.entitlements; sourceTree = "<group>"; };
 		22C1EBAC2AEA462700E4477A /* SpoqaHanSansNeo-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Medium.ttf"; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 				22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */,
 				22990C112A6EBF8B001CF1B3 /* Assets.xcassets */,
 				22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */,
-				22990C162A6EBF8B001CF1B3 /* Info.plist */,
-				2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */,
+				22551E2D2B989B2D0008B0C5 /* Info.plist */,
+				22551E2F2B989BFA0008B0C5 /* Secrets.xcconfig */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -664,7 +664,7 @@
 		};
 		22990C302A6EBF8C001CF1B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */;
+			baseConfigurationReference = 22551E2F2B989BFA0008B0C5 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -693,7 +693,7 @@
 		};
 		22990C312A6EBF8C001CF1B3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2201C70C2AF0EEFB001A93B5 /* Secrets.xcconfig */;
+			baseConfigurationReference = 22551E2F2B989BFA0008B0C5 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

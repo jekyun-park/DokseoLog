@@ -53,7 +53,9 @@ class SearchViewController: BKLoadingViewController {
         results.count < totalSearchResults ? (hasMoreSearchResults = true) : (hasMoreSearchResults = false)
         updateUI(with: searchResult.books)
       case .failure(let error):
-        presentBKAlert(title: "검색결과를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
+        DispatchQueue.main.async {
+          self.presentBKAlert(title: "검색결과를 불러올 수 없어요.", message: error.description, buttonTitle: "확인")
+        }
       }
     }
   }
