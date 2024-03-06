@@ -77,16 +77,22 @@ class CalendarViewController: UIViewController {
     switch sentencesResult {
     case .success(let sentences):
       sentences.forEach { recordDates.append($0.createdAt) }
-    case .failure(let failure):
-      print(failure.localizedDescription)
+    case .failure(let error):
+      var style = ToastStyle()
+      style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
+      style.backgroundColor = .systemRed
+      self.view.makeToast(error.description, duration: 1, position: .center, style: style)
     }
 
     let thoughtsResult = PersistenceManager.shared.fetchThoughts()
     switch thoughtsResult {
     case .success(let thoughts):
       thoughts.forEach { recordDates.append($0.createdAt) }
-    case .failure(let failure):
-      print(failure.localizedDescription)
+    case .failure(let error):
+      var style = ToastStyle()
+      style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
+      style.backgroundColor = .systemRed
+      self.view.makeToast(error.description, duration: 1, position: .center, style: style)
     }
     calendar.reloadData()
   }
