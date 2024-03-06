@@ -25,18 +25,22 @@ class WishListViewController: BKLoadingViewController {
     return collectionView
   }()
 
+  private lazy var emptyLabel: BKBodyLabel = {
+    let label = BKBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
+    label.text = "책을 검색하여 위시리스트에 추가해주세요."
+    return label
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     getWishList()
-    setupCollectionView()
+    setupUI()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     getWishList()
-    showLoadingView()
-    collectionView.reloadData()
-    dismissLoadingView()
+    setupUI()
   }
 
   // MARK: Private
@@ -48,6 +52,28 @@ class WishListViewController: BKLoadingViewController {
       guard let bkError = error as? BKError else { return }
       self.presentBKAlert(title: "도서를 불러올 수 없어요.", message: bkError.description, buttonTitle: "확인")
     }
+  }
+
+  private func setupUI() {
+    if wishList.isEmpty {
+      setupEmptyState()
+    } else {
+      setupCollectionView()
+      showLoadingView()
+      collectionView.reloadData()
+      dismissLoadingView()
+    }
+  }
+
+  private func setupEmptyState() {
+      view.addSubviews(emptyLabel)
+      NSLayoutConstraint.activate([
+        emptyLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+        emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+        emptyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+        emptyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+        emptyLabel.heightAnchor.constraint(equalToConstant: 24),
+      ])
   }
 
   private func setupCollectionView() {
