@@ -40,6 +40,14 @@ class ModifyRecordViewController: UIViewController {
   let thought: Thought?
   let recordStyle: ModifyRecordViewController.RecordStyle
   let viewStyle: ModifyRecordViewController.ViewStyle
+  var book: Book? {
+    if let book = self.sentence?.book {
+      return book
+    } else if let book = self.thought?.book {
+      return book
+    }
+    return nil
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -117,38 +125,49 @@ class ModifyRecordViewController: UIViewController {
     return button
   }()
 
-  private func setupSentenceUI() {
+  private lazy var bookInformationButton = UIBarButtonItem(
+    image: Images.infoImage,
+    style: .plain,
+    target: self,
+    action: #selector(bookInformationButtonTapped))
 
+  private func setupSentenceUI() {
     switch self.viewStyle {
     case .withBookInformation:
-      <#code#>
-    case .withoutBookInformation:
-      let padding: CGFloat = 20
-      view.addSubviews(pageTextField, pagePlaceholderLabel, sentencePlaceholderLabel, textView)
-      NSLayoutConstraint.activate([
-        pagePlaceholderLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-        pagePlaceholderLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-        pagePlaceholderLabel.heightAnchor.constraint(equalToConstant: padding),
-
-        pageTextField.topAnchor.constraint(equalTo: pagePlaceholderLabel.bottomAnchor, constant: padding),
-        pageTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-        pageTextField.heightAnchor.constraint(equalToConstant: 50),
-        pageTextField.widthAnchor.constraint(equalToConstant: 100),
-
-        sentencePlaceholderLabel.topAnchor.constraint(equalTo: pageTextField.bottomAnchor, constant: padding),
-        sentencePlaceholderLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-        sentencePlaceholderLabel.heightAnchor.constraint(equalToConstant: padding),
-
-        textView.topAnchor.constraint(equalTo: sentencePlaceholderLabel.bottomAnchor, constant: padding),
-        textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-        textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-        textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
-      ])
+      navigationItem.rightBarButtonItems = [deleteButton, updateButton, bookInformationButton]
+    case .withoutBookInformation: break
     }
+
+    let padding: CGFloat = 20
+    view.addSubviews(pageTextField, pagePlaceholderLabel, sentencePlaceholderLabel, textView)
+    NSLayoutConstraint.activate([
+      pagePlaceholderLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+      pagePlaceholderLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+      pagePlaceholderLabel.heightAnchor.constraint(equalToConstant: padding),
+
+      pageTextField.topAnchor.constraint(equalTo: pagePlaceholderLabel.bottomAnchor, constant: padding),
+      pageTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+      pageTextField.heightAnchor.constraint(equalToConstant: 50),
+      pageTextField.widthAnchor.constraint(equalToConstant: 100),
+
+      sentencePlaceholderLabel.topAnchor.constraint(equalTo: pageTextField.bottomAnchor, constant: padding),
+      sentencePlaceholderLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+      sentencePlaceholderLabel.heightAnchor.constraint(equalToConstant: padding),
+
+      textView.topAnchor.constraint(equalTo: sentencePlaceholderLabel.bottomAnchor, constant: padding),
+      textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
+      textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+      textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+    ])
 
   }
 
   private func setupThoughtUI() {
+    switch self.viewStyle {
+    case .withBookInformation:
+      navigationItem.rightBarButtonItems = [deleteButton, updateButton, bookInformationButton]
+    case .withoutBookInformation: break
+    }
     let padding: CGFloat = 20
     view.addSubviews(thoughtPlaceholderLabel, textView)
     NSLayoutConstraint.activate([
@@ -161,6 +180,7 @@ class ModifyRecordViewController: UIViewController {
       textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
       textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
     ])
+
   }
 
   private func setupNavigationController() {
@@ -260,8 +280,9 @@ class ModifyRecordViewController: UIViewController {
           var style = ToastStyle()
           style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
           style.backgroundColor = .systemGreen
-          self.view.makeToast("삭제되었습니다.", duration: 1, position: .center, style: style)
-          self.navigationController?.popViewController(animated: true)
+          self.view.makeToast("삭제되었습니다.", duration: 1, position: .center, style: style) { _ in
+            self.navigationController?.popViewController(animated: true)
+          }
         case .failure(let error):
           self.presentBKAlert(title: "문장을 삭제하지 못했어요.", message: error.description, buttonTitle: "확인")
         }
@@ -271,11 +292,25 @@ class ModifyRecordViewController: UIViewController {
         let result = PersistenceManager.shared.deleteThought(self.thought!)
         switch result {
         case .success:
-          self.navigationController?.popViewController(animated: true)
+          var style = ToastStyle()
+          style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
+          style.backgroundColor = .systemGreen
+          self.view.makeToast("삭제되었습니다.", duration: 1, position: .center, style: style) { _ in
+            self.navigationController?.popViewController(animated: true)
+          }
         case .failure(let error):
           self.presentBKAlert(title: "기록을 삭제하지 못했어요.", message: error.description, buttonTitle: "확인")
         }
       }
+    }
+  }
+
+  @objc
+  private func bookInformationButtonTapped() {
+    if let book = self.book {
+      navigationController?.pushViewController(BookInformationViewController(book: book, style: .add), animated: true)
+    } else {
+      self.presentBKAlert(title: "책 정보를 찾지 못했어요.", message: BKError.failToFindData.description, buttonTitle: "확인")
     }
   }
 
