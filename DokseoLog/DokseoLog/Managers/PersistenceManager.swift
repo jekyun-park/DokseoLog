@@ -408,7 +408,6 @@ extension PersistenceManager {
     do {
       try managedContext.save()
     } catch (let error) {
-      print(error)
       errorLog("생각 저장에 실패함")
       throw BKError.failToSaveData
     }
