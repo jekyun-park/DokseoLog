@@ -55,3 +55,12 @@ enum UserDefaultsKey {
   static let isFirstLaunch = "isFirstLaunch"
   static let isContinueWithoutLogin = "isContinueWithoutLogin"
 }
+
+/// 버전 관리 관련 Constant
+enum Versioning {
+  static var appVersion: String? {
+    guard let dictionary = Bundle.main.infoDictionary,
+        let version = dictionary["CFBundleShortVersionString"] as? String else { return nil }
+    return version
+  }
+}
