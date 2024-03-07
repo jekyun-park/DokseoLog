@@ -59,9 +59,7 @@ class WishListViewController: BKLoadingViewController {
       setupEmptyState()
     } else {
       setupCollectionView()
-      showLoadingView()
       collectionView.reloadData()
-      dismissLoadingView()
     }
   }
 
