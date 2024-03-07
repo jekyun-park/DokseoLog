@@ -23,6 +23,9 @@
 		22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22483FB92AFDD46F00942237 /* SearchViewController.swift */; };
 		224A8FFE2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A8FFD2B7DA69A00C003A4 /* UnderlineSegmentedControl.swift */; };
 		224A90022B7DB11600C003A4 /* MyBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224A90012B7DB11600C003A4 /* MyBookCollectionViewCell.swift */; };
+		22551E312B98B27C0008B0C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22551E302B98B27C0008B0C5 /* GoogleService-Info.plist */; };
+		22551E342B98B4530008B0C5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22551E332B98B4530008B0C5 /* FirebaseAnalytics */; };
+		22551E362B98B4530008B0C5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22551E352B98B4530008B0C5 /* FirebaseCrashlytics */; };
 		225D0ABC2AF131A1002AD604 /* BKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* BKError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		2260764D2B878B3F000550F8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260764C2B878B3F000550F8 /* Date+.swift */; };
@@ -88,6 +91,7 @@
 		224A90012B7DB11600C003A4 /* MyBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		22551E2D2B989B2D0008B0C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22551E2F2B989BFA0008B0C5 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		22551E302B98B27C0008B0C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		225D0ABB2AF131A1002AD604 /* BKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BKError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2260764C2B878B3F000550F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -140,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EEFE0E2B976A1F00BE07E5 /* Toast in Frameworks */,
+				22551E362B98B4530008B0C5 /* FirebaseCrashlytics in Frameworks */,
 				22AAEC5E2B9454E700ACB045 /* FSCalendar in Frameworks */,
+				22551E342B98B4530008B0C5 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +274,7 @@
 				22990C072A6EBF84001CF1B3 /* SceneDelegate.swift */,
 				22990C112A6EBF8B001CF1B3 /* Assets.xcassets */,
 				22990C132A6EBF8B001CF1B3 /* LaunchScreen.storyboard */,
+				22551E302B98B27C0008B0C5 /* GoogleService-Info.plist */,
 				22551E2D2B989B2D0008B0C5 /* Info.plist */,
 				22551E2F2B989BFA0008B0C5 /* Secrets.xcconfig */,
 			);
@@ -387,6 +394,8 @@
 			packageProductDependencies = (
 				22AAEC5D2B9454E700ACB045 /* FSCalendar */,
 				22EEFE0D2B976A1F00BE07E5 /* Toast */,
+				22551E332B98B4530008B0C5 /* FirebaseAnalytics */,
+				22551E352B98B4530008B0C5 /* FirebaseCrashlytics */,
 			);
 			productName = Bookie;
 			productReference = 22990C022A6EBF83001CF1B3 /* DokseoLog.app */;
@@ -420,6 +429,7 @@
 				22D9C9802AFCAB6A00DC72B4 /* XCRemoteSwiftPackageReference "swift" */,
 				22AAEC5C2B9454E700ACB045 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				22EEFE0C2B976A1F00BE07E5 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				22551E322B98B4530008B0C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 22990C032A6EBF83001CF1B3 /* Products */;
 			projectDirPath = "";
@@ -437,6 +447,7 @@
 			files = (
 				2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */,
 				22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */,
+				22551E312B98B27C0008B0C5 /* GoogleService-Info.plist in Resources */,
 				22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
@@ -744,6 +755,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		22551E322B98B4530008B0C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.0;
+			};
+		};
 		22AAEC5C2B9454E700ACB045 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
@@ -771,6 +790,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		22551E332B98B4530008B0C5 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22551E322B98B4530008B0C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		22551E352B98B4530008B0C5 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22551E322B98B4530008B0C5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
 		22AAEC5D2B9454E700ACB045 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22AAEC5C2B9454E700ACB045 /* XCRemoteSwiftPackageReference "FSCalendar" */;
