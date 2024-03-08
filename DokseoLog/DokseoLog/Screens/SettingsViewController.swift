@@ -32,6 +32,22 @@ class SettingsViewController: UIViewController {
     ])
   }
 
+  private func showEmailWithTemplate(subject: String, body: String) {
+    var components = URLComponents()
+    components.scheme = "mailto"
+    components.path = "jegyun@icloud.com"
+    components.queryItems = [
+      URLQueryItem(name: "subject", value: subject),
+      URLQueryItem(name: "body", value: body)
+    ]
+
+    guard let url = components.url else { return }
+
+    if UIApplication.shared.canOpenURL(url) {
+      UIApplication.shared.open(url)
+    }
+  }
+
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -56,9 +72,23 @@ extension SettingsViewController: UITableViewDataSource {
       cell.contentConfiguration = configuration
       return cell
     case 1:
-      return UITableViewCell()
+      // 문의/의견 보내기
+      let cell = UITableViewCell()
+      var configuration = UIListContentConfiguration.cell()
+      cell.backgroundColor = .bkBackground
+      configuration.text = "문의 및 의견 보내기"
+      cell.accessoryType = .disclosureIndicator
+      cell.contentConfiguration = configuration
+      return cell
     case 2:
-      return UITableViewCell()
+      // 문의/의견 보내기
+      let cell = UITableViewCell()
+      var configuration = UIListContentConfiguration.cell()
+      cell.backgroundColor = .bkBackground
+      configuration.text = "개인정보 처리방침"
+      cell.accessoryType = .disclosureIndicator
+      cell.contentConfiguration = configuration
+      return cell
     default:
       return UITableViewCell()
     }
@@ -67,6 +97,7 @@ extension SettingsViewController: UITableViewDataSource {
 }
 
 extension SettingsViewController: UITableViewDelegate {
+
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     switch indexPath.row {
     case 0:
@@ -75,13 +106,25 @@ extension SettingsViewController: UITableViewDelegate {
     }
     return indexPath
   }
+
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.row {
+    //mailto
     case 1:
-      break
+      let subject = "독서Log: 문의 및 의견"
+      let body = """
+                    보다 나은 서비스와 사용 경험을 제공할 수 있도록 의견을 남겨주세요.
+                    혹은 문제가 발생했다면 문제상황을 말씀해주시고, 가능한 경우 이미지 혹은 스크린샷 등의 자료를 남겨 제보해 주세요. 자세할수록 좋습니다.
+
+                    1. 의견/문제
+                    2. (문제라면) 어떤 상황에서 발생했는지
+                    3. 이미지 혹은 스크린샷 등의 자료
+                 """
+      showEmailWithTemplate(subject: subject, body: body)
     case 2:
       break
     default: break
     }
   }
+
 }
