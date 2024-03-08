@@ -1,6 +1,6 @@
 //
 //  AddRecordViewController.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/21/24.
 //
@@ -32,21 +32,21 @@ class AddRecordViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .bkBackground
+    view.backgroundColor = .dlBackground
     setupNavigationController()
-    self.style == .sentence ? setupSentenceUI() : setupThoughtUI()
+    style == .sentence ? setupSentenceUI() : setupThoughtUI()
     hideKeyboardWhenTappedAround()
   }
 
   // MARK: Private
 
-  private lazy var pageTextField: BKTextField = {
-    let textField = BKTextField(frame: .zero)
+  private lazy var pageTextField: DLTextField = {
+    let textField = DLTextField(frame: .zero)
     return textField
   }()
 
-  private lazy var pagePlaceholderLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
+  private lazy var pagePlaceholderLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
     label.text = "페이지"
     return label
   }()
@@ -67,14 +67,14 @@ class AddRecordViewController: UIViewController {
     return textView
   }()
 
-  private lazy var sentencePlaceholderLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
+  private lazy var sentencePlaceholderLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
     label.text = "문장 수집하기"
     return label
   }()
 
-  private lazy var thoughtPlaceholderLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
+  private lazy var thoughtPlaceholderLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
     label.text = "내 생각 적기"
     return label
   }()
@@ -85,7 +85,7 @@ class AddRecordViewController: UIViewController {
       style: .done,
       target: self,
       action: #selector(saveButtonTapped))
-    button.tintColor = .bkTabBarTintColor
+    button.tintColor = .dlTabBarTintColor
     return button
   }()
 
@@ -130,22 +130,19 @@ class AddRecordViewController: UIViewController {
 
   private func setupNavigationController() {
     navigationItem.rightBarButtonItem = saveButton
-    navigationItem.rightBarButtonItem?.tintColor = .bkTabBarTint
-//    self.navigationItem.backButtonTitle = ""
+    navigationItem.rightBarButtonItem?.tintColor = .dlTabBarTint
     navigationItem.backButtonDisplayMode = .minimal
-//    self.navigationItem.leftBarButtonItem?.tintColor = .bkTabBarTint
   }
 
   @objc
   private func saveButtonTapped() {
     switch style {
     case .sentence:
-      // 페이지, 내용 없을경우 에러처리
       guard let pageString = pageTextField.text, !pageString.isEmpty else {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(BKError.noPageInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noPageInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -153,15 +150,15 @@ class AddRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(BKError.noContentInput.description, duration: 1, position: .center, style: style)
-        return        
+        view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
+        return
       }
 
       guard let page = Int(pageString) else {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(BKError.pageInputInvalid.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.pageInputInvalid.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -170,17 +167,16 @@ class AddRecordViewController: UIViewController {
       do {
         try PersistenceManager.shared.addSentence(sentence: sentence)
       } catch (let error) {
-        let bkError = error as? BKError
-        self.presentBKAlert(title: "저장에 실패했어요.", message: bkError?.description ?? "다시 시도하거나 개발자에게 문의해주세요.", buttonTitle: "확인")
+        let dlError = error as? DLError
+        self.presentDLAlert(title: "저장에 실패했어요.", message: dlError?.description ?? "다시 시도하거나 개발자에게 문의해주세요.", buttonTitle: "확인")
       }
 
     case .thought:
-      // text 없을경우 에러처리
       if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(BKError.noContentInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -189,23 +185,22 @@ class AddRecordViewController: UIViewController {
       do {
         try PersistenceManager.shared.addThought(thought)
       } catch (let error) {
-        let bkError = error as? BKError
-        self.presentBKAlert(title: "저장에 실패했어요.", message: bkError?.description ?? "다시 시도하거나 개발자에게 문의해주세요.", buttonTitle: "확인")
+        let dlError = error as? DLError
+        self.presentDLAlert(title: "저장에 실패했어요.", message: dlError?.description ?? "다시 시도하거나 개발자에게 문의해주세요.", buttonTitle: "확인")
       }
     }
 
     var style = ToastStyle()
     style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
     style.backgroundColor = .systemGreen
-    self.view.makeToast("저장되었습니다.", duration: 1, position: .center, style: style) { _ in
+    view.makeToast("저장되었습니다.", duration: 1, position: .center, style: style) { _ in
       self.navigationController?.popViewController(animated: true)
     }
-
   }
 
 }
 
-// MARK: AddRecordViewController.style
+// MARK: AddRecordViewController.recordStyle
 
 extension AddRecordViewController {
   enum recordStyle {
@@ -214,9 +209,9 @@ extension AddRecordViewController {
     var placeHolderString: String {
       switch self {
       case .sentence:
-        return "인상깊었던 문장을 입력하세요"
+        "인상깊었던 문장을 입력하세요"
       case .thought:
-        return "책을 읽으며 했던 생각이나 느꼈던 감정을 입력하세요"
+        "책을 읽으며 했던 생각이나 느꼈던 감정을 입력하세요"
       }
     }
   }
@@ -227,7 +222,7 @@ extension AddRecordViewController {
 extension AddRecordViewController: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.text == self.style.placeHolderString {
+    if textView.text == style.placeHolderString {
       textView.text = nil
       textView.textColor = .black
     }
@@ -235,7 +230,7 @@ extension AddRecordViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-      textView.text = self.style.placeHolderString
+      textView.text = style.placeHolderString
       textView.textColor = .lightGray
     }
   }

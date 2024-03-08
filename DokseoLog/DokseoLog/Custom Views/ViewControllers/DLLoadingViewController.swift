@@ -1,13 +1,13 @@
 //
-//  BKLoadingViewController.swift
-//  Bookie
+//  DLLoadingViewController.swift
+//  DokseoLog
 //
 //  Created by 박제균 on 1/26/24.
 //
 
 import UIKit
 
-class BKLoadingViewController: UIViewController {
+class DLLoadingViewController: UIViewController {
 
   var containerView: UIView!
 

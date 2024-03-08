@@ -1,20 +1,15 @@
 //
-//  BKCoverImageView.swift
-//  Bookie
+//  DLCoverImageView.swift
+//  DokseoLog
 //
 //  Created by 박제균 on 11/9/23.
 //
 
 import UIKit
 
-class BKCoverImageView: UIImageView {
+class DLCoverImageView: UIImageView {
 
   // MARK: Lifecycle
-  private let indicatorView: UIActivityIndicatorView = {
-    let indicatorView = UIActivityIndicatorView(style: .large)
-    indicatorView.hidesWhenStopped = true
-    return indicatorView
-  }()
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -28,7 +23,6 @@ class BKCoverImageView: UIImageView {
   // MARK: Internal
 
   func downloadImage(fromURL urlString: String?) {
-
     indicatorView.startAnimating()
     guard let url = urlString else {
       return
@@ -45,10 +39,16 @@ class BKCoverImageView: UIImageView {
 
   // MARK: Private
 
+  private let indicatorView: UIActivityIndicatorView = {
+    let indicatorView = UIActivityIndicatorView(style: .large)
+    indicatorView.hidesWhenStopped = true
+    return indicatorView
+  }()
+
   private func configureUI() {
-    self.addSubview(indicatorView)
+    addSubview(indicatorView)
     translatesAutoresizingMaskIntoConstraints = false
-    indicatorView.center = self.center
+    indicatorView.center = center
     layer.cornerRadius = 10
     clipsToBounds = true
     contentMode = .scaleToFill

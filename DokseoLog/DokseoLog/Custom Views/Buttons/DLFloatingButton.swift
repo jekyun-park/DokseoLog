@@ -1,13 +1,13 @@
 //
-//  BKFloatingButton.swift
-//  Bookie
+//  DLFloatingButton.swift
+//  DokseoLog
 //
 //  Created by 박제균 on 2/27/24.
 //
 
 import UIKit
 
-class BKFloatingButton: UIButton {
+class DLFloatingButton: UIButton {
 
   // MARK: Lifecycle
 
@@ -26,11 +26,10 @@ class BKFloatingButton: UIButton {
     layer.cornerRadius = 30
     layer.shadowRadius = 10
     layer.shadowOpacity = 0.2
-    backgroundColor = .white
+    backgroundColor = .systemGreen
     let image = UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32, weight: .medium))
     setImage(image, for: .normal)
-    tintColor = .black
-    setTitleColor(.label, for: .normal)
+    tintColor = .white
   }
 
 }

@@ -1,6 +1,6 @@
 //
 //  ThoughtTableViewCell.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/21/24.
 //
@@ -31,14 +31,14 @@ class ThoughtTableViewCell: UITableViewCell {
 
   // MARK: Private
 
-  private lazy var thoughtLabel: BKBodyLabel = {
-    let label = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
+  private lazy var thoughtLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
     label.lineBreakMode = .byCharWrapping
     return label
   }()
 
-  private lazy var dateLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private lazy var dateLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
     return label
   }()
 
@@ -46,7 +46,7 @@ class ThoughtTableViewCell: UITableViewCell {
     let padding: CGFloat = 20
 
     selectionStyle = .none
-    backgroundColor = .bkBackgroundColor
+    backgroundColor = .dlBackgroundColor
     contentView.addSubviews(thoughtLabel, dateLabel)
 
     NSLayoutConstraint.activate([

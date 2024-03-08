@@ -1,6 +1,6 @@
 //
 //  SearchResultCell.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 11/9/23.
 //
@@ -24,9 +24,9 @@ class SearchResultCell: UITableViewCell {
 
   static let reuseID = "SearchResultCell"
 
-  let coverImage = BKCoverImageView(frame: .zero)
-  let titleLabel = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .bold)
-  let authorLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  let coverImage = DLCoverImageView(frame: .zero)
+  let titleLabel = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .bold)
+  let authorLabel = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
 
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -44,7 +44,7 @@ class SearchResultCell: UITableViewCell {
   private func configureUI() {
     let padding: CGFloat = 8
     selectionStyle = .none
-    backgroundColor = .bkBackgroundColor
+    backgroundColor = .dlBackgroundColor
 
     let containerView = UIView()
     containerView.translatesAutoresizingMaskIntoConstraints = false

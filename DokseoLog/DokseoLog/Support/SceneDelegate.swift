@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2023/07/24.
 //
@@ -16,14 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
     window?.windowScene = windowScene
-    window?.rootViewController = BKTabBarController()
-
-//    if UserDefaultsManager.shared.isLaunchedBefore {
-//      window?.rootViewController = BKTabBarController()
-//    } else {
-//      window?.rootViewController = InitialViewController()
-//    }
-
+    window?.rootViewController = DLTabBarController()
     window?.makeKeyAndVisible()
   }
 

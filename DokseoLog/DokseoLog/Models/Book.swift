@@ -1,6 +1,6 @@
 //
 //  Book.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/20/24.
 //

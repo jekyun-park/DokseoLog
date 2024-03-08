@@ -1,6 +1,6 @@
 //
 //  UIViewController+.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/6/24.
 //
@@ -9,15 +9,15 @@ import UIKit
 
 extension UIViewController {
 
-  func presentBKAlert(title: String, message: String, buttonTitle: String) {
-    let alertViewController = BKAlertViewController(title: title, message: message, buttonTitle: buttonTitle, style: .normal)
+  func presentDLAlert(title: String, message: String, buttonTitle: String) {
+    let alertViewController = DLAlertViewController(title: title, message: message, buttonTitle: buttonTitle, style: .normal)
     alertViewController.modalPresentationStyle = .overFullScreen
     alertViewController.modalTransitionStyle = .crossDissolve
     present(alertViewController, animated: true)
   }
 
-  func presentBKAlertWithConfirmAction(title: String, message: String, buttonTitle: String, action: (() -> Void)?) {
-    let alertViewController = BKAlertViewController(
+  func presentDLAlertWithConfirmAction(title: String, message: String, buttonTitle: String, action: (() -> Void)?) {
+    let alertViewController = DLAlertViewController(
       title: title,
       message: message,
       buttonTitle: buttonTitle,
@@ -28,8 +28,8 @@ extension UIViewController {
     present(alertViewController, animated: true)
   }
 
-  func presentBKAlertWithDestructiveAction(title: String, message: String, buttonTitle: String, action: (() -> Void)?) {
-    let alertViewController = BKAlertViewController(
+  func presentDLAlertWithDestructiveAction(title: String, message: String, buttonTitle: String, action: (() -> Void)?) {
+    let alertViewController = DLAlertViewController(
       title: title,
       message: message,
       buttonTitle: buttonTitle,

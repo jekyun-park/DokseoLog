@@ -1,6 +1,6 @@
 //
 //  MyBookViewController.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/21/24.
 //
@@ -102,15 +102,15 @@ class MyBookViewController: UIViewController {
     target: self,
     action: #selector(deleteButtonTapped))
 
-  private lazy var floatingButton: BKFloatingButton = {
-    let button = BKFloatingButton(frame: .zero)
+  private lazy var floatingButton: DLFloatingButton = {
+    let button = DLFloatingButton(frame: .zero)
     button.addTarget(self, action: #selector(floatingButtonTapped), for: .touchUpInside)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()
 
   private func setupUI() {
-    view.backgroundColor = .bkBackground
+    view.backgroundColor = .dlBackground
     view.addSubviews(segmentedControl, pageViewController.view, floatingButton)
 
     NSLayoutConstraint.activate([
@@ -156,8 +156,8 @@ class MyBookViewController: UIViewController {
     navigationItem.setRightBarButtonItems([deleteButton, bookInformationButton], animated: true)
     navigationController?.navigationBar.prefersLargeTitles = false
     navigationItem.title = book.title
-    navigationController?.navigationBar.tintColor = .bkTabBarTint
-    bookInformationButton.tintColor = .bkTabBarTint
+    navigationController?.navigationBar.tintColor = .dlTabBarTint
+    bookInformationButton.tintColor = .dlTabBarTint
     deleteButton.tintColor = .red
   }
 
@@ -173,18 +173,17 @@ class MyBookViewController: UIViewController {
 
   @objc
   private func floatingButtonTapped() {
-    var viewController: AddRecordViewController
-
-    if currentPage == 0 {
-      viewController = AddRecordViewController(book: book, style: .sentence)
-    } else {
-      viewController = AddRecordViewController(book: book, style: .thought)
-    }
+    var viewController =
+      if currentPage == 0 {
+        AddRecordViewController(book: book, style: .sentence)
+      } else {
+        AddRecordViewController(book: book, style: .thought)
+      }
 
     if
       let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
       let window = windowScene.windows.first,
-      let rootViewController = window.rootViewController as? BKTabBarController
+      let rootViewController = window.rootViewController as? DLTabBarController
     {
       let vc = rootViewController.viewControllers?[1] as? UINavigationController
       vc?.pushViewController(viewController, animated: true)
@@ -193,7 +192,7 @@ class MyBookViewController: UIViewController {
 
   @objc
   private func deleteButtonTapped() {
-    presentBKAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "책을 삭제하면 모든 기록이 함께 삭제됩니다.", buttonTitle: "삭제") {
+    presentDLAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "책을 삭제하면 모든 기록이 함께 삭제됩니다.", buttonTitle: "삭제") {
       let result = PersistenceManager.shared.deleteBook(self.book)
       switch result {
       case .success:
@@ -204,7 +203,7 @@ class MyBookViewController: UIViewController {
           self.navigationController?.popViewController(animated: true)
         }
       case .failure(let error):
-        self.presentBKAlert(title: "책을 삭제하지 못했습니다.", message: error.description, buttonTitle: "확인")
+        self.presentDLAlert(title: "책을 삭제하지 못했습니다.", message: error.description, buttonTitle: "확인")
       }
     }
   }

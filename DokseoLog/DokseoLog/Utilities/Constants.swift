@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2023/08/11.
 //
@@ -29,21 +29,21 @@ enum Images {
 // MARK: - Fonts
 
 enum Fonts {
-  enum HanSansNeo{
+  enum HanSansNeo {
     case bold, medium, light, thin, regular
 
     var description: String {
       switch self {
       case .bold:
-        return "SpoqaHanSansNeo-Bold"
+        "SpoqaHanSansNeo-Bold"
       case .medium:
-        return "SpoqaHanSansNeo-Medium"
+        "SpoqaHanSansNeo-Medium"
       case .light:
-        return "SpoqaHanSansNeo-Light"
+        "SpoqaHanSansNeo-Light"
       case .thin:
-        return "SpoqaHanSansNeo-Thin"
+        "SpoqaHanSansNeo-Thin"
       case .regular:
-        return "SpoqaHanSansNeo-Regular"
+        "SpoqaHanSansNeo-Regular"
       }
     }
   }
@@ -54,4 +54,17 @@ enum Fonts {
 enum UserDefaultsKey {
   static let isFirstLaunch = "isFirstLaunch"
   static let isContinueWithoutLogin = "isContinueWithoutLogin"
+}
+
+// MARK: - Versioning
+
+/// 버전 관리 관련 Constant
+enum Versioning {
+  static var appVersion: String? {
+    guard
+      let dictionary = Bundle.main.infoDictionary,
+      let version = dictionary["CFBundleShortVersionString"] as? String
+    else { return nil }
+    return version
+  }
 }

@@ -1,7 +1,7 @@
 //
 //
 //  BookInformationViewController.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 1/8/24.
 //
@@ -42,19 +42,19 @@ class BookInformationViewController: UIViewController {
   // MARK: Private
 
   private lazy var scrollView = UIScrollView(frame: .zero)
-  private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 22, fontWeight: .bold)
-  private let authorLabel = BKBodyLabel(textAlignment: .center, fontSize: 15, fontWeight: .regular)
+  private let titleLabel = DLTitleLabel(textAlignment: .center, fontSize: 22, fontWeight: .bold)
+  private let authorLabel = DLBodyLabel(textAlignment: .center, fontSize: 15, fontWeight: .regular)
 
-  private let pagePlaceholderLabel = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
-  private let pageLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
-  private let publishedDatePlaceholderLabel = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
-  private let publishedDateLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
-  private let publisherPlaceholderLabel = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
-  private let publisherLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
+  private let pagePlaceholderLabel = DLTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private let pageLabel = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
+  private let publishedDatePlaceholderLabel = DLTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private let publishedDateLabel = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
+  private let publisherPlaceholderLabel = DLTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private let publisherLabel = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
 
-  private let descriptionPlaceholderLabel = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
-  private let descriptionLabel = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
-  private let coverImage = BKCoverImageView(frame: .zero)
+  private let descriptionPlaceholderLabel = DLTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private let descriptionLabel = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .regular)
+  private let coverImage = DLCoverImageView(frame: .zero)
 
   private lazy var addToWishListBarButton = UIBarButtonItem(
     image: Images.basketBarButtonImage,
@@ -174,9 +174,8 @@ class BookInformationViewController: UIViewController {
       publisherPlaceholderLabel,
       publisherLabel,
       publishedDatePlaceholderLabel,
-      publishedDateLabel
-    )
-    scrollView.backgroundColor = .bkBackground
+      publishedDateLabel)
+    scrollView.backgroundColor = .dlBackgroundColor
     scrollView.isScrollEnabled = true
   }
 
@@ -184,14 +183,14 @@ class BookInformationViewController: UIViewController {
     switch style {
     case .add:
       navigationItem.setRightBarButtonItems([addToWishListBarButton, addBookBarButton], animated: true)
-      addToWishListBarButton.tintColor = .bkTabBarTint
-      addBookBarButton.tintColor = .bkTabBarTint
+      addToWishListBarButton.tintColor = .dlTabBarTintColor
+      addBookBarButton.tintColor = .dlTabBarTintColor
     case .move:
       navigationItem.setRightBarButtonItems([deleteButton, moveToBookCaseBarButton], animated: true)
-      moveToBookCaseBarButton.tintColor = .bkTabBarTint
+      moveToBookCaseBarButton.tintColor = .dlTabBarTintColor
     }
     navigationController?.navigationBar.isHidden = false
-    navigationController?.navigationBar.tintColor = .bkTabBarTint
+    navigationController?.navigationBar.tintColor = .dlTabBarTintColor
   }
 
   @objc
@@ -201,35 +200,34 @@ class BookInformationViewController: UIViewController {
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("위시리스트에 추가했어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("위시리스트에 추가했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     } catch (let error) {
-      let bkError = error as? BKError
+      let dlError = error as? DLError
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemRed
-      self.view.makeToast(bkError?.description ?? "다시 시도하거나, 개발자에게 문의해주세요.", duration: 1, position: .center, style: style)
+      self.view.makeToast(dlError?.description ?? "다시 시도하거나, 개발자에게 문의해주세요.", duration: 1, position: .center, style: style)
     }
   }
 
   @objc
   private func addBookBarButtonTapped() {
-
     do {
       try PersistenceManager.shared.addToBookCase(book: book)
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("내 책장에 추가했어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("내 책장에 추가했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     } catch (let error) {
-      let bkError = error as? BKError
+      let dlError = error as? DLError
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemRed
-      self.view.makeToast(bkError?.description ?? "다시 시도하거나, 개발자에게 문의해주세요.", duration: 1, position: .center, style: style)
+      self.view.makeToast(dlError?.description ?? "다시 시도하거나, 개발자에게 문의해주세요.", duration: 1, position: .center, style: style)
     }
   }
 
@@ -241,11 +239,11 @@ class BookInformationViewController: UIViewController {
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("내 책장으로 옮겼어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("내 책장으로 옮겼어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     case .failure(let error):
-      presentBKAlert(title: "책장으로 이동할 수 없어요.", message: error.description, buttonTitle: "확인")
+      presentDLAlert(title: "책장으로 이동할 수 없어요.", message: error.description, buttonTitle: "확인")
     }
   }
 
@@ -257,11 +255,11 @@ class BookInformationViewController: UIViewController {
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("책을 위시리스트에서 삭제했어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("책을 위시리스트에서 삭제했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     case .failure(let error):
-      presentBKAlert(title: "도서를 삭제할 수 없어요.", message: error.description, buttonTitle: "확인")
+      presentDLAlert(title: "도서를 삭제할 수 없어요.", message: error.description, buttonTitle: "확인")
     }
   }
 

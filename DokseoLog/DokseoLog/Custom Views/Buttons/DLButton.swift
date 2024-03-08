@@ -1,13 +1,13 @@
 //
-//  BKButton.swift
-//  Bookie
+//  DLButton.swift
+//  DokseoLog
 //
 //  Created by 박제균 on 11/10/23.
 //
 
 import UIKit
 
-class BKButton: UIButton {
+class DLButton: UIButton {
 
   // MARK: Lifecycle
 
@@ -23,9 +23,7 @@ class BKButton: UIButton {
   convenience init(backgroundColor: UIColor, foregroundColor: UIColor, title: String, systemImage: UIImage) {
     self.init(frame: .zero)
 
-//    self.backgroundColor = color
     configuration?.background.backgroundColor = backgroundColor
-//    configuration?.baseBackgroundColor =
     configuration?.baseForegroundColor = foregroundColor
     configuration?.title = title
 

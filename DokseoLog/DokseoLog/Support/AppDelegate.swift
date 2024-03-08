@@ -1,11 +1,12 @@
 //
 //  AppDelegate.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2023/07/24.
 //
 
 import CoreData
+import FirebaseCore
 import UIKit
 
 @main
@@ -24,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }()
 
   func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
-    true
+    FirebaseApp.configure()
+    return true
   }
 
   // MARK: UISceneSession Lifecycle

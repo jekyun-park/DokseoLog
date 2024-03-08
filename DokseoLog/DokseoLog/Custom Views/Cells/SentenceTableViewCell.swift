@@ -1,6 +1,6 @@
 //
 //  SentenceTableViewCell.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/21/24.
 //
@@ -42,19 +42,19 @@ class SentenceTableViewCell: UITableViewCell {
     return stackView
   }()
 
-  private lazy var pageLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private lazy var pageLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
     return label
   }()
 
-  private lazy var sentenceLabel: BKBodyLabel = {
-    let label = BKBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
+  private lazy var sentenceLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .left, fontSize: 15, fontWeight: .medium)
     label.lineBreakMode = .byCharWrapping
     return label
   }()
 
-  private let dateLabel: BKBodyLabel = {
-    let label = BKBodyLabel(textAlignment: .right, fontSize: 13, fontWeight: .regular)
+  private let dateLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .right, fontSize: 13, fontWeight: .regular)
     return label
   }()
 
@@ -62,7 +62,7 @@ class SentenceTableViewCell: UITableViewCell {
     let padding: CGFloat = 20
 
     selectionStyle = .none
-    backgroundColor = .bkBackgroundColor
+    backgroundColor = .dlBackgroundColor
     contentView.addSubviews(stackView, sentenceLabel)
 
     NSLayoutConstraint.activate([

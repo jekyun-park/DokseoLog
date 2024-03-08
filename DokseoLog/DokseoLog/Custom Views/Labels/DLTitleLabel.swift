@@ -1,13 +1,13 @@
 //
-//  BKTitleLabel.swift
-//  Bookie
+//  DLTitleLabel.swift
+//  DokseoLog
 //
 //  Created by 박제균 on 11/9/23.
 //
 
 import UIKit
 
-class BKTitleLabel: UILabel {
+class DLTitleLabel: UILabel {
 
   // MARK: Lifecycle
 
