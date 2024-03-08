@@ -138,7 +138,6 @@ class AddRecordViewController: UIViewController {
   private func saveButtonTapped() {
     switch style {
     case .sentence:
-      // 페이지, 내용 없을경우 에러처리
       guard let pageString = pageTextField.text, !pageString.isEmpty else {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
@@ -173,7 +172,6 @@ class AddRecordViewController: UIViewController {
       }
 
     case .thought:
-      // text 없을경우 에러처리
       if (textView.text == self.style.placeHolderString) || textView.text.isEmpty {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!

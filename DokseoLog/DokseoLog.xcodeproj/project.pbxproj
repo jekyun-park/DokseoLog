@@ -38,7 +38,6 @@
 		227AFB362B72707800E72F8B /* DLAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AFB352B72707800E72F8B /* DLAlertContainerView.swift */; };
 		227AFB382B7273A600E72F8B /* DLAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AFB322B726EEC00E72F8B /* DLAlertViewController.swift */; };
 		227AFB3B2B7278E700E72F8B /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227AFB3A2B7278E700E72F8B /* UIViewController+.swift */; };
-		227BB42E2B6A8BF1006D7727 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227BB42D2B6A8BF1006D7727 /* UserDefaultsManager.swift */; };
 		2281FED82B8DEC38006EE32E /* DLFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281FED72B8DEC38006EE32E /* DLFloatingButton.swift */; };
 		22861CDF2B6380590080BBA7 /* DLLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22861CDE2B6380590080BBA7 /* DLLoadingViewController.swift */; };
 		22919CEE2B88DC6C00AD609B /* ModifyRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22919CED2B88DC6B00AD609B /* ModifyRecordViewController.swift */; };
@@ -103,7 +102,6 @@
 		227AFB322B726EEC00E72F8B /* DLAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLAlertViewController.swift; sourceTree = "<group>"; };
 		227AFB352B72707800E72F8B /* DLAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLAlertContainerView.swift; sourceTree = "<group>"; };
 		227AFB3A2B7278E700E72F8B /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		227BB42D2B6A8BF1006D7727 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		2281FED72B8DEC38006EE32E /* DLFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLFloatingButton.swift; sourceTree = "<group>"; };
 		22861CDE2B6380590080BBA7 /* DLLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLLoadingViewController.swift; sourceTree = "<group>"; };
 		22919CED2B88DC6B00AD609B /* ModifyRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				2201C7062AF0E8A0001A93B5 /* NetworkManager.swift */,
-				227BB42D2B6A8BF1006D7727 /* UserDefaultsManager.swift */,
 				22EBE5472B7362E70024D620 /* PersistenceManager.swift */,
 			);
 			path = Managers;
@@ -519,7 +516,6 @@
 				22483FBA2AFDD46F00942237 /* SearchViewController.swift in Sources */,
 				227AFB3B2B7278E700E72F8B /* UIViewController+.swift in Sources */,
 				225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */,
-				227BB42E2B6A8BF1006D7727 /* UserDefaultsManager.swift in Sources */,
 				22E08C202B4C34CC002F69A7 /* BookInformationViewController.swift in Sources */,
 				22990C062A6EBF83001CF1B3 /* AppDelegate.swift in Sources */,
 				227A23202A8625EA00BE461E /* Constants.swift in Sources */,

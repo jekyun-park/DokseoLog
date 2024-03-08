@@ -73,7 +73,6 @@ extension SettingsViewController: UITableViewDataSource {
       cell.contentConfiguration = configuration
       return cell
     case 1:
-      // 문의/의견 보내기
       let cell = UITableViewCell()
       var configuration = UIListContentConfiguration.cell()
       cell.backgroundColor = .dlBackground
@@ -82,7 +81,6 @@ extension SettingsViewController: UITableViewDataSource {
       cell.contentConfiguration = configuration
       return cell
     case 2:
-      // 문의/의견 보내기
       let cell = UITableViewCell()
       var configuration = UIListContentConfiguration.cell()
       cell.backgroundColor = .dlBackground
@@ -110,7 +108,6 @@ extension SettingsViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.row {
-      //mailto
     case 1:
       let subject = "독서Log: 문의 및 의견"
       let body = """

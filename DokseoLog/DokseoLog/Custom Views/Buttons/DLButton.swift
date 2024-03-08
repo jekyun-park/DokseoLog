@@ -23,9 +23,7 @@ class DLButton: UIButton {
   convenience init(backgroundColor: UIColor, foregroundColor: UIColor, title: String, systemImage: UIImage) {
     self.init(frame: .zero)
 
-//    self.backgroundColor = color
     configuration?.background.backgroundColor = backgroundColor
-//    configuration?.baseBackgroundColor =
     configuration?.baseForegroundColor = foregroundColor
     configuration?.title = title
 
