@@ -53,6 +53,7 @@
 		22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */; };
 		22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBAF2AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf */; };
 		22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22C1EBB02AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf */; };
+		22C78C1C2B9AAC04001F0EB5 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22C78C1B2B9AAC04001F0EB5 /* Settings.bundle */; };
 		22C810242B7FA56000D91934 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C810232B7FA56000D91934 /* WishListViewController.swift */; };
 		22CA2F462B8466FE00E56329 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA2F452B8466FE00E56329 /* Book.swift */; };
 		22D2E5AD2B85CA1C00ED0455 /* MyBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D2E5AC2B85CA1C00ED0455 /* MyBookViewController.swift */; };
@@ -120,6 +121,7 @@
 		22C1EBAE2AEA462700E4477A /* SpoqaHanSansNeo-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Light.ttf"; sourceTree = "<group>"; };
 		22C1EBAF2AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Thin.ttf"; sourceTree = "<group>"; };
 		22C1EBB02AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Regular.ttf"; sourceTree = "<group>"; };
+		22C78C1B2B9AAC04001F0EB5 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		22C810232B7FA56000D91934 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		22CA2F452B8466FE00E56329 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		22D2E5AC2B85CA1C00ED0455 /* MyBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookViewController.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 		227A23172A860D2500BE461E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				22C78C1B2B9AAC04001F0EB5 /* Settings.bundle */,
 				22C1EBAB2AEA460600E4477A /* Fonts */,
 				22990C0E2A6EBF84001CF1B3 /* DokseoLog.xcdatamodeld */,
 				22BF43F12A6F6D3600AF167C /* DokseoLog.entitlements */,
@@ -447,6 +450,7 @@
 			files = (
 				2201C7092AF0EAD8001A93B5 /* .swiftlint.yml in Resources */,
 				22C1EBB42AEA462800E4477A /* SpoqaHanSansNeo-Thin.ttf in Resources */,
+				22C78C1C2B9AAC04001F0EB5 /* Settings.bundle in Resources */,
 				22551E312B98B27C0008B0C5 /* GoogleService-Info.plist in Resources */,
 				22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
