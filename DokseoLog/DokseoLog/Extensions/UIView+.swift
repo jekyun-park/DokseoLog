@@ -1,6 +1,6 @@
 //
 //  UIView+.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 11/10/23.
 //

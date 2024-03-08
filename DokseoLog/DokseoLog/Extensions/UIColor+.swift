@@ -1,6 +1,6 @@
 //
 //  UIColor+.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2023/08/22.
 //

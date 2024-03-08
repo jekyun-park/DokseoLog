@@ -1,6 +1,6 @@
 //
 //  WishListCollectionViewCell.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/19/24.
 //

@@ -1,6 +1,6 @@
 //
 //  ThoughtTableViewCell.swift
-//  Bookie
+//  DokseoLog
 //
 //  Created by 박제균 on 2/21/24.
 //
