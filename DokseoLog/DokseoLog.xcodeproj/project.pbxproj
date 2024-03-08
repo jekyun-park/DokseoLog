@@ -29,6 +29,7 @@
 		225D0ABC2AF131A1002AD604 /* DLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* DLError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		2260764D2B878B3F000550F8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260764C2B878B3F000550F8 /* Date+.swift */; };
+		2266AB9E2B9AC324003CADD0 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2266AB9D2B9AC323003CADD0 /* appicon.png */; };
 		227A23112A860C3F00BE461E /* BookCaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23102A860C3F00BE461E /* BookCaseViewController.swift */; };
 		227A23132A860C6F00BE461E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23122A860C6F00BE461E /* CalendarViewController.swift */; };
 		227A23152A860C7C00BE461E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A23142A860C7C00BE461E /* SettingsViewController.swift */; };
@@ -94,6 +95,7 @@
 		225D0ABB2AF131A1002AD604 /* DLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2260764C2B878B3F000550F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		2266AB9D2B9AC323003CADD0 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		227A23102A860C3F00BE461E /* BookCaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCaseViewController.swift; sourceTree = "<group>"; };
 		227A23122A860C6F00BE461E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		227A23142A860C7C00BE461E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		227A23172A860D2500BE461E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				2266AB9D2B9AC323003CADD0 /* appicon.png */,
 				22C78C1B2B9AAC04001F0EB5 /* Settings.bundle */,
 				22C1EBAB2AEA460600E4477A /* Fonts */,
 				22990C0E2A6EBF84001CF1B3 /* DokseoLog.xcdatamodeld */,
@@ -448,6 +451,7 @@
 				22551E312B98B27C0008B0C5 /* GoogleService-Info.plist in Resources */,
 				22C1EBB52AEA462800E4477A /* SpoqaHanSansNeo-Regular.ttf in Resources */,
 				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
+				2266AB9E2B9AC324003CADD0 /* appicon.png in Resources */,
 				22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 				22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */,
