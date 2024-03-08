@@ -237,14 +237,15 @@ extension PersistenceManager {
     var sentenceResult: [Sentence] = []
     var thoughtResult: [Thought] = []
 
+    let calendar = Calendar.current
+    let startDate = calendar.startOfDay(for: date)
+    guard let endDate = calendar.date(byAdding: .day, value: 1, to: startDate) else { return .failure(.invalidDate) }
+
     let managedContext = persistentContainer.viewContext
     var request = NSFetchRequest<NSManagedObject>(entityName: "MySentenceEntity")
     var sortDescriptor = NSSortDescriptor(key: #keyPath(MySentenceEntity.createdAt), ascending: false)
     request.sortDescriptors = [sortDescriptor]
 
-    let calendar = Calendar.current
-    let startDate = calendar.startOfDay(for: date)
-    guard let endDate = calendar.date(byAdding: .day, value: 1, to: startDate) else { return .failure(.invalidDate) }
     // NSFetchRequest 생성 및 NSPredicate 설정
     request.predicate = NSPredicate(format: "(createdAt >= %@) AND (createdAt < %@)", startDate as NSDate, endDate as NSDate)
 
@@ -277,6 +278,7 @@ extension PersistenceManager {
     request = NSFetchRequest<NSManagedObject>(entityName: "MyThoughtEntity")
     sortDescriptor = NSSortDescriptor(key: #keyPath(MyThoughtEntity.createdAt), ascending: false)
     request.sortDescriptors = [sortDescriptor]
+    request.predicate = NSPredicate(format: "(createdAt >= %@) AND (createdAt < %@)", startDate as NSDate, endDate as NSDate)
 
     do {
       let fetched = try managedContext.fetch(request) as? [MyThoughtEntity] ?? []
