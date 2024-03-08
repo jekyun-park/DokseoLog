@@ -29,5 +29,5 @@ extension Date {
 
     return selfDate == compareDate
   }
-  
+
 }

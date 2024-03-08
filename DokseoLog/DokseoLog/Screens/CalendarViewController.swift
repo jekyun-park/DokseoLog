@@ -9,18 +9,11 @@ import FSCalendar
 import Toast
 import UIKit
 
+// MARK: - CalendarViewController
+
 class CalendarViewController: UIViewController {
 
-  private lazy var calendar: FSCalendar = {
-    let width = self.view.bounds.width
-    let height: CGFloat = UIDevice.current.model.hasPrefix("iPad") ? 450 : 300
-
-    let rect = CGRect(x: 0, y: 150, width: width, height: height)
-    let calendar = FSCalendar(frame: CGRect(x: 0, y: 150, width: width, height: height))
-    calendar.delegate = self
-    calendar.dataSource = self
-    return calendar
-  }()
+  // MARK: Internal
 
   var recordDates: [Date] = []
 
@@ -36,9 +29,21 @@ class CalendarViewController: UIViewController {
     getRecords()
   }
 
-  private func configureCalendarView() {
+  // MARK: Private
 
-    self.view.addSubview(calendar)
+  private lazy var calendar: FSCalendar = {
+    let width = self.view.bounds.width
+    let height: CGFloat = UIDevice.current.model.hasPrefix("iPad") ? 450 : 300
+
+    let rect = CGRect(x: 0, y: 150, width: width, height: height)
+    let calendar = FSCalendar(frame: CGRect(x: 0, y: 150, width: width, height: height))
+    calendar.delegate = self
+    calendar.dataSource = self
+    return calendar
+  }()
+
+  private func configureCalendarView() {
+    view.addSubview(calendar)
     calendar.scope = .month
     calendar.locale = Locale(identifier: "ko_KR")
     calendar.allowsMultipleSelection = false
@@ -66,7 +71,7 @@ class CalendarViewController: UIViewController {
   }
 
   private func configureNavigationController() {
-    self.navigationController?.navigationBar.prefersLargeTitles = false
+    navigationController?.navigationBar.prefersLargeTitles = false
     guard let font = UIFont(name: Fonts.HanSansNeo.medium.description, size: 18) else { return }
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: font]
   }
@@ -76,64 +81,70 @@ class CalendarViewController: UIViewController {
     let sentencesResult = PersistenceManager.shared.fetchSentences()
     switch sentencesResult {
     case .success(let sentences):
-      sentences.forEach { recordDates.append($0.createdAt) }
+      for sentence in sentences {
+        recordDates.append(sentence.createdAt)
+      }
     case .failure(let error):
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemRed
-      self.view.makeToast(error.description, duration: 1, position: .center, style: style)
+      view.makeToast(error.description, duration: 1, position: .center, style: style)
     }
 
     let thoughtsResult = PersistenceManager.shared.fetchThoughts()
     switch thoughtsResult {
     case .success(let thoughts):
-      thoughts.forEach { recordDates.append($0.createdAt) }
+      for thought in thoughts {
+        recordDates.append(thought.createdAt)
+      }
     case .failure(let error):
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemRed
-      self.view.makeToast(error.description, duration: 1, position: .center, style: style)
+      view.makeToast(error.description, duration: 1, position: .center, style: style)
     }
     calendar.reloadData()
   }
 
 }
 
+// MARK: FSCalendarDelegate
+
 extension CalendarViewController: FSCalendarDelegate {
 
-  func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+  func calendar(_: FSCalendar, didSelect date: Date, at _: FSCalendarMonthPosition) {
     let result = PersistenceManager.shared.fetchRecords(date)
     switch result {
     case .success(let results):
       if !(results.sentences.isEmpty && results.thoughts.isEmpty) {
         let viewController = DateRecordViewController(date: date)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
       } else {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast("해당 날짜에 기록이 없습니다.", duration: 1, position: .center, style: style)
+        view.makeToast("해당 날짜에 기록이 없습니다.", duration: 1, position: .center, style: style)
       }
     case .failure(let error):
-      self.presentDLAlert(title: "불러올 수 없습니다.", message: error.description, buttonTitle: "확인")
+      presentDLAlert(title: "불러올 수 없습니다.", message: error.description, buttonTitle: "확인")
     }
-
   }
 
-  func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-    return true
+  func calendar(_: FSCalendar, shouldDeselect _: Date, at _: FSCalendarMonthPosition) -> Bool {
+    true
   }
 
 }
 
+// MARK: FSCalendarDataSource
+
 extension CalendarViewController: FSCalendarDataSource {
 
-  func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-
-    if self.recordDates.contains(where: { $0.isSameDay(date)}) {
-      return 1
+  func calendar(_: FSCalendar, numberOfEventsFor date: Date) -> Int {
+    if recordDates.contains(where: { $0.isSameDay(date) }) {
+      1
     } else {
-      return 0
+      0
     }
   }
 

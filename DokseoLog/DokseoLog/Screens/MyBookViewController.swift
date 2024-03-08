@@ -173,13 +173,12 @@ class MyBookViewController: UIViewController {
 
   @objc
   private func floatingButtonTapped() {
-    var viewController: AddRecordViewController
-
-    if currentPage == 0 {
-      viewController = AddRecordViewController(book: book, style: .sentence)
-    } else {
-      viewController = AddRecordViewController(book: book, style: .thought)
-    }
+    var viewController =
+      if currentPage == 0 {
+        AddRecordViewController(book: book, style: .sentence)
+      } else {
+        AddRecordViewController(book: book, style: .thought)
+      }
 
     if
       let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

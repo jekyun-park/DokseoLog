@@ -438,7 +438,7 @@ extension PersistenceManager {
     let request = NSFetchRequest<NSManagedObject>(entityName: "MyThoughtEntity")
     let sortDescriptor = NSSortDescriptor(key: #keyPath(MyThoughtEntity.createdAt), ascending: false)
     request.sortDescriptors = [sortDescriptor]
-    
+
     do {
       let fetched = try managedContext.fetch(request) as? [MyThoughtEntity] ?? []
       result = fetched.map {

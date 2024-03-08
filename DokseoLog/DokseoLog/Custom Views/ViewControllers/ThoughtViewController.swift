@@ -28,12 +28,6 @@ class ThoughtViewController: UIViewController {
   let tableView = UITableView()
   var thoughts = [Thought]()
 
-  private lazy var emptyLabel: DLBodyLabel = {
-    let label = DLBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
-    label.text = "책을 읽으며 했던 생각을 추가해보세요."
-    return label
-  }()
-
   override func viewDidLoad() {
     super.viewDidLoad()
     getThoughts()
@@ -47,6 +41,12 @@ class ThoughtViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private lazy var emptyLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
+    label.text = "책을 읽으며 했던 생각을 추가해보세요."
+    return label
+  }()
 
   private func getThoughts() {
     thoughts.removeAll()
@@ -71,14 +71,14 @@ class ThoughtViewController: UIViewController {
   }
 
   private func setupEmptyState() {
-      view.addSubviews(emptyLabel)
-      NSLayoutConstraint.activate([
-        emptyLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-        emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-        emptyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-        emptyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-        emptyLabel.heightAnchor.constraint(equalToConstant: 24),
-      ])
+    view.addSubviews(emptyLabel)
+    NSLayoutConstraint.activate([
+      emptyLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+      emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+      emptyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+      emptyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+      emptyLabel.heightAnchor.constraint(equalToConstant: 24),
+    ])
   }
 
   private func configureViewController() {

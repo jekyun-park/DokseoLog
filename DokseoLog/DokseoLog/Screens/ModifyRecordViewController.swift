@@ -17,16 +17,16 @@ class ModifyRecordViewController: UIViewController {
   init(sentence: Sentence, style: ModifyRecordViewController.ViewStyle) {
     self.sentence = sentence
     thought = nil
-    self.recordStyle = .sentence
-    self.viewStyle = style
+    recordStyle = .sentence
+    viewStyle = style
     super.init(nibName: nil, bundle: nil)
   }
 
   init(thought: Thought, style: ModifyRecordViewController.ViewStyle) {
     sentence = nil
     self.thought = thought
-    self.recordStyle = .thought
-    self.viewStyle = style
+    recordStyle = .thought
+    viewStyle = style
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -40,6 +40,7 @@ class ModifyRecordViewController: UIViewController {
   let thought: Thought?
   let recordStyle: ModifyRecordViewController.RecordStyle
   let viewStyle: ModifyRecordViewController.ViewStyle
+
   var book: Book? {
     if let book = self.sentence?.book {
       return book
@@ -53,7 +54,7 @@ class ModifyRecordViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .dlBackground
     setupNavigationController()
-    self.recordStyle == .sentence ? setupSentenceUI() : setupThoughtUI()
+    recordStyle == .sentence ? setupSentenceUI() : setupThoughtUI()
     hideKeyboardWhenTappedAround()
   }
 
@@ -132,7 +133,7 @@ class ModifyRecordViewController: UIViewController {
     action: #selector(bookInformationButtonTapped))
 
   private func setupSentenceUI() {
-    switch self.viewStyle {
+    switch viewStyle {
     case .withBookInformation:
       navigationItem.rightBarButtonItems = [deleteButton, updateButton, bookInformationButton]
     case .withoutBookInformation: break
@@ -159,11 +160,10 @@ class ModifyRecordViewController: UIViewController {
       textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
       textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
     ])
-
   }
 
   private func setupThoughtUI() {
-    switch self.viewStyle {
+    switch viewStyle {
     case .withBookInformation:
       navigationItem.rightBarButtonItems = [deleteButton, updateButton, bookInformationButton]
     case .withoutBookInformation: break
@@ -180,7 +180,6 @@ class ModifyRecordViewController: UIViewController {
       textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
       textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
     ])
-
   }
 
   private func setupNavigationController() {
@@ -191,21 +190,21 @@ class ModifyRecordViewController: UIViewController {
 
   @objc
   private func updateButtonTapped() {
-    switch self.recordStyle {
+    switch recordStyle {
     case .sentence:
       guard let pageString = pageTextField.text, !pageString.isEmpty else {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemGreen
-        self.view.makeToast(DLError.noPageInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noPageInput.description, duration: 1, position: .center, style: style)
         return
       }
 
-      if (textView.text == self.recordStyle.placeHolderString) || textView.text.isEmpty {
+      if (textView.text == recordStyle.placeHolderString) || textView.text.isEmpty {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemGreen
-        self.view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -213,7 +212,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(DLError.pageInputInvalid.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.pageInputInvalid.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -223,7 +222,7 @@ class ModifyRecordViewController: UIViewController {
         memo: textView.text,
         id: sentence!.id,
         createdAt: sentence!.createdAt)
-      
+
       let update = PersistenceManager.shared.updateSentence(sentence)
 
       switch update {
@@ -231,7 +230,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemGreen
-        self.view.makeToast("수정되었습니다.", duration: 1, position: .center, style: style) { _ in
+        view.makeToast("수정되었습니다.", duration: 1, position: .center, style: style) { _ in
           self.navigationController?.popViewController(animated: true)
         }
       case .failure(let error):
@@ -240,11 +239,11 @@ class ModifyRecordViewController: UIViewController {
       }
 
     case .thought:
-      if (textView.text == self.recordStyle.placeHolderString) || textView.text.isEmpty {
+      if (textView.text == recordStyle.placeHolderString) || textView.text.isEmpty {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -256,7 +255,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemGreen
-        self.view.makeToast("수정되었습니다.", duration: 1, position: .center, style: style) { _ in
+        view.makeToast("수정되었습니다.", duration: 1, position: .center, style: style) { _ in
           self.navigationController?.popViewController(animated: true)
         }
       case .failure(let error):
@@ -268,8 +267,7 @@ class ModifyRecordViewController: UIViewController {
 
   @objc
   private func deleteButtonTapped() {
-
-    switch self.recordStyle {
+    switch recordStyle {
     case .sentence:
       presentDLAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "수집한 문장을 삭제합니다.", buttonTitle: "삭제") {
         let result = PersistenceManager.shared.deleteSentence(self.sentence!)
@@ -305,10 +303,10 @@ class ModifyRecordViewController: UIViewController {
 
   @objc
   private func bookInformationButtonTapped() {
-    if let book = self.book {
+    if let book {
       navigationController?.pushViewController(BookInformationViewController(book: book, style: .add), animated: true)
     } else {
-      self.presentDLAlert(title: "책 정보를 찾지 못했어요.", message: DLError.failToFindData.description, buttonTitle: "확인")
+      presentDLAlert(title: "책 정보를 찾지 못했어요.", message: DLError.failToFindData.description, buttonTitle: "확인")
     }
   }
 
@@ -324,9 +322,9 @@ extension ModifyRecordViewController {
     var placeHolderString: String {
       switch self {
       case .sentence:
-        return "인상깊었던 문장을 입력하세요"
+        "인상깊었던 문장을 입력하세요"
       case .thought:
-        return "책을 읽으며 했던 생각이나 느꼈던 감정을 입력하세요"
+        "책을 읽으며 했던 생각이나 느꼈던 감정을 입력하세요"
       }
     }
   }
@@ -341,7 +339,7 @@ extension ModifyRecordViewController {
 extension ModifyRecordViewController: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.text == self.recordStyle.placeHolderString {
+    if textView.text == recordStyle.placeHolderString {
       textView.text = nil
       textView.textColor = .black
     }
@@ -349,7 +347,7 @@ extension ModifyRecordViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-      textView.text = self.recordStyle.placeHolderString
+      textView.text = recordStyle.placeHolderString
       textView.textColor = .lightGray
     }
   }

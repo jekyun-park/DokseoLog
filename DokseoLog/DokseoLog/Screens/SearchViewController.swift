@@ -66,8 +66,8 @@ class SearchViewController: DLLoadingViewController {
     navigationController?.navigationItem.hidesSearchBarWhenScrolling = false
     UINavigationBar.appearance().titleTextAttributes = [
       NSAttributedString.Key.font: UIFont(
-      name: Fonts.HanSansNeo.medium.description,
-      size: 18)!
+        name: Fonts.HanSansNeo.medium.description,
+        size: 18)!,
     ]
   }
 

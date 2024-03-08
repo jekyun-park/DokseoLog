@@ -34,7 +34,7 @@ class AddRecordViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .dlBackground
     setupNavigationController()
-    self.style == .sentence ? setupSentenceUI() : setupThoughtUI()
+    style == .sentence ? setupSentenceUI() : setupThoughtUI()
     hideKeyboardWhenTappedAround()
   }
 
@@ -142,7 +142,7 @@ class AddRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(DLError.noPageInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noPageInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -150,15 +150,15 @@ class AddRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
-        return        
+        view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
+        return
       }
 
       guard let page = Int(pageString) else {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(DLError.pageInputInvalid.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.pageInputInvalid.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -176,7 +176,7 @@ class AddRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
+        view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -193,15 +193,14 @@ class AddRecordViewController: UIViewController {
     var style = ToastStyle()
     style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
     style.backgroundColor = .systemGreen
-    self.view.makeToast("저장되었습니다.", duration: 1, position: .center, style: style) { _ in
+    view.makeToast("저장되었습니다.", duration: 1, position: .center, style: style) { _ in
       self.navigationController?.popViewController(animated: true)
     }
-
   }
 
 }
 
-// MARK: AddRecordViewController.style
+// MARK: AddRecordViewController.recordStyle
 
 extension AddRecordViewController {
   enum recordStyle {
@@ -210,9 +209,9 @@ extension AddRecordViewController {
     var placeHolderString: String {
       switch self {
       case .sentence:
-        return "인상깊었던 문장을 입력하세요"
+        "인상깊었던 문장을 입력하세요"
       case .thought:
-        return "책을 읽으며 했던 생각이나 느꼈던 감정을 입력하세요"
+        "책을 읽으며 했던 생각이나 느꼈던 감정을 입력하세요"
       }
     }
   }
@@ -223,7 +222,7 @@ extension AddRecordViewController {
 extension AddRecordViewController: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.text == self.style.placeHolderString {
+    if textView.text == style.placeHolderString {
       textView.text = nil
       textView.textColor = .black
     }
@@ -231,7 +230,7 @@ extension AddRecordViewController: UITextViewDelegate {
 
   func textViewDidEndEditing(_ textView: UITextView) {
     if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-      textView.text = self.style.placeHolderString
+      textView.text = style.placeHolderString
       textView.textColor = .lightGray
     }
   }

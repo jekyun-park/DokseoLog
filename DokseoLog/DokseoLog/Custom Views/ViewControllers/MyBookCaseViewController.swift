@@ -25,12 +25,6 @@ class MyBookCaseViewController: DLLoadingViewController {
     return collectionView
   }()
 
-  private lazy var emptyLabel: DLBodyLabel = {
-    let label = DLBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
-    label.text = "책을 검색하여 책장에 추가해주세요."
-    return label
-  }()
-
   override func viewDidLoad() {
     super.viewDidLoad()
     getMyBooks()
@@ -44,6 +38,12 @@ class MyBookCaseViewController: DLLoadingViewController {
   }
 
   // MARK: Private
+
+  private lazy var emptyLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
+    label.text = "책을 검색하여 책장에 추가해주세요."
+    return label
+  }()
 
   private func getMyBooks() {
     do {
@@ -64,14 +64,14 @@ class MyBookCaseViewController: DLLoadingViewController {
   }
 
   private func setupEmptyState() {
-      view.addSubviews(emptyLabel)
-      NSLayoutConstraint.activate([
-        emptyLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-        emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-        emptyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-        emptyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-        emptyLabel.heightAnchor.constraint(equalToConstant: 24),
-      ])
+    view.addSubviews(emptyLabel)
+    NSLayoutConstraint.activate([
+      emptyLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+      emptyLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+      emptyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+      emptyLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+      emptyLabel.heightAnchor.constraint(equalToConstant: 24),
+    ])
   }
 
   private func setupCollectionView() {

@@ -174,8 +174,7 @@ class BookInformationViewController: UIViewController {
       publisherPlaceholderLabel,
       publisherLabel,
       publishedDatePlaceholderLabel,
-      publishedDateLabel
-    )
+      publishedDateLabel)
     scrollView.backgroundColor = .dlBackgroundColor
     scrollView.isScrollEnabled = true
   }
@@ -201,7 +200,7 @@ class BookInformationViewController: UIViewController {
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("위시리스트에 추가했어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("위시리스트에 추가했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     } catch (let error) {
@@ -215,13 +214,12 @@ class BookInformationViewController: UIViewController {
 
   @objc
   private func addBookBarButtonTapped() {
-
     do {
       try PersistenceManager.shared.addToBookCase(book: book)
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("내 책장에 추가했어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("내 책장에 추가했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     } catch (let error) {
@@ -241,7 +239,7 @@ class BookInformationViewController: UIViewController {
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("내 책장으로 옮겼어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("내 책장으로 옮겼어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     case .failure(let error):
@@ -257,7 +255,7 @@ class BookInformationViewController: UIViewController {
       var style = ToastStyle()
       style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
       style.backgroundColor = .systemGreen
-      self.view.makeToast("책을 위시리스트에서 삭제했어요.", duration: 1, position: .center, style: style) { _ in
+      view.makeToast("책을 위시리스트에서 삭제했어요.", duration: 1, position: .center, style: style) { _ in
         self.navigationController?.popViewController(animated: true)
       }
     case .failure(let error):
