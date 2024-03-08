@@ -5,6 +5,7 @@
 //  Created by 박제균 on 2023/08/11.
 //
 
+import SafariServices
 import UIKit
 
 class SettingsViewController: UIViewController {
@@ -54,7 +55,7 @@ extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 3
   }
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch indexPath.row {
     case 0:
@@ -109,7 +110,7 @@ extension SettingsViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch indexPath.row {
-    //mailto
+      //mailto
     case 1:
       let subject = "독서Log: 문의 및 의견"
       let body = """
@@ -122,7 +123,10 @@ extension SettingsViewController: UITableViewDelegate {
                  """
       showEmailWithTemplate(subject: subject, body: body)
     case 2:
-      break
+      if let url = URL(string: "https://jegyun.notion.site/dd7d6215eb8f4087addc01af3a1f5af2?pvs=4") {
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true)
+      }
     default: break
     }
   }
