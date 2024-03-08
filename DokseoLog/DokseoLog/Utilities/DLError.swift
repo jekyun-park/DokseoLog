@@ -1,5 +1,5 @@
 //
-//  BKError.swift
+//  DLError.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 10/31/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BKError: Error {
+enum DLError: Error {
   case invalidAPIKey
   case invalidURL
   case invalidResponse

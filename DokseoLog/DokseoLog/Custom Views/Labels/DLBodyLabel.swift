@@ -1,5 +1,5 @@
 //
-//  BKBodyLabel.swift
+//  DLBodyLabel.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 11/9/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKBodyLabel: UILabel {
+class DLBodyLabel: UILabel {
 
   // MARK: Lifecycle
 

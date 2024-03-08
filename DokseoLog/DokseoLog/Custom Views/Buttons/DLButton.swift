@@ -1,5 +1,5 @@
 //
-//  BKButton.swift
+//  DLButton.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 11/10/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKButton: UIButton {
+class DLButton: UIButton {
 
   // MARK: Lifecycle
 

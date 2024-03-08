@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - WishListViewController
 
-class WishListViewController: BKLoadingViewController {
+class WishListViewController: DLLoadingViewController {
 
   // MARK: Internal
 
@@ -25,8 +25,8 @@ class WishListViewController: BKLoadingViewController {
     return collectionView
   }()
 
-  private lazy var emptyLabel: BKBodyLabel = {
-    let label = BKBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
+  private lazy var emptyLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .center, fontSize: 16, fontWeight: .medium)
     label.text = "책을 검색하여 위시리스트에 추가해주세요."
     return label
   }()
@@ -49,8 +49,8 @@ class WishListViewController: BKLoadingViewController {
     do {
       wishList = try PersistenceManager.shared.fetchWishList()
     } catch (let error) {
-      guard let bkError = error as? BKError else { return }
-      self.presentBKAlert(title: "도서를 불러올 수 없어요.", message: bkError.description, buttonTitle: "확인")
+      guard let dlError = error as? DLError else { return }
+      self.presentDLAlert(title: "도서를 불러올 수 없어요.", message: dlError.description, buttonTitle: "확인")
     }
   }
 
@@ -76,7 +76,7 @@ class WishListViewController: BKLoadingViewController {
 
   private func setupCollectionView() {
     view.addSubview(collectionView)
-    collectionView.backgroundColor = .bkBackground
+    collectionView.backgroundColor = .dlBackground
     collectionView.frame = view.bounds
     collectionView.delegate = self
     collectionView.dataSource = self
@@ -106,7 +106,7 @@ extension WishListViewController: UICollectionViewDelegate {
     if
       let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
       let window = windowScene.windows.first,
-      let rootViewController = window.rootViewController as? BKTabBarController
+      let rootViewController = window.rootViewController as? DLTabBarController
     {
       let vc = rootViewController.viewControllers?[1] as? UINavigationController
       let pushViewController = BookInformationViewController(book: book, style: .move)

@@ -1,5 +1,5 @@
 //
-//  BKTabBarController.swift
+//  DLTabBarController.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 2023/08/11.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKTabBarController: UITabBarController {
+class DLTabBarController: UITabBarController {
 
   // MARK: Internal
 
@@ -20,12 +20,12 @@ class BKTabBarController: UITabBarController {
 
   private func configureUI() {
     viewControllers = createNavigationControllers()
-    view.backgroundColor = .bkBackgroundColor
-    tabBar.tintColor = .bkTabBarTintColor
+    view.backgroundColor = .dlBackgroundColor
+    tabBar.tintColor = .dlTabBarTintColor
 
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = .bkTabBarBackgroundColor
+    appearance.backgroundColor = .dlTabBarBackgroundColor
     UITabBar.appearance().standardAppearance = appearance
     UITabBar.appearance().scrollEdgeAppearance = appearance
   }
@@ -36,7 +36,7 @@ class BKTabBarController: UITabBarController {
     searchViewController.tabBarItem = UITabBarItem(title: "검색", image: Images.searchTabBarImage, tag: 0)
     let searchNavigationController = UINavigationController(rootViewController: searchViewController)
     searchNavigationController.navigationBar.prefersLargeTitles = false
-    searchNavigationController.view.backgroundColor = .bkBackgroundColor
+    searchNavigationController.view.backgroundColor = .dlBackgroundColor
 
     let bookCaseViewController = BookCaseViewController()
     bookCaseViewController.title = "책장"

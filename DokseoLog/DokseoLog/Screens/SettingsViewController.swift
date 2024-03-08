@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
   }
 
   private func configureTableView() {
-    tableView.backgroundColor = .bkBackground
+    tableView.backgroundColor = .dlBackground
     tableView.translatesAutoresizingMaskIntoConstraints = false
 
     tableView.delegate = self
@@ -62,7 +62,7 @@ extension SettingsViewController: UITableViewDataSource {
       // App version
       let cell = UITableViewCell()
       var configuration = UIListContentConfiguration.cell()
-      cell.backgroundColor = .bkBackground
+      cell.backgroundColor = .dlBackground
       let color = configuration.textProperties.color
       configuration.text = "앱 버전"
       configuration.secondaryText = Versioning.appVersion
@@ -76,7 +76,7 @@ extension SettingsViewController: UITableViewDataSource {
       // 문의/의견 보내기
       let cell = UITableViewCell()
       var configuration = UIListContentConfiguration.cell()
-      cell.backgroundColor = .bkBackground
+      cell.backgroundColor = .dlBackground
       configuration.text = "문의 및 의견 보내기"
       cell.accessoryType = .disclosureIndicator
       cell.contentConfiguration = configuration
@@ -85,7 +85,7 @@ extension SettingsViewController: UITableViewDataSource {
       // 문의/의견 보내기
       let cell = UITableViewCell()
       var configuration = UIListContentConfiguration.cell()
-      cell.backgroundColor = .bkBackground
+      cell.backgroundColor = .dlBackground
       configuration.text = "개인정보 처리방침"
       cell.accessoryType = .disclosureIndicator
       cell.contentConfiguration = configuration

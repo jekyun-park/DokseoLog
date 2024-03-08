@@ -1,5 +1,5 @@
 //
-//  BKCoverImageView.swift
+//  DLCoverImageView.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 11/9/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKCoverImageView: UIImageView {
+class DLCoverImageView: UIImageView {
 
   // MARK: Lifecycle
   private let indicatorView: UIActivityIndicatorView = {

@@ -10,6 +10,6 @@ import Foundation
 extension Bundle {
 
   var APIKey: String {
-    Bundle.main.object(forInfoDictionaryKey: "SEARCH_API_KEY") as? String ?? BKError.invalidAPIKey.description
+    Bundle.main.object(forInfoDictionaryKey: "SEARCH_API_KEY") as? String ?? DLError.invalidAPIKey.description
   }
 }

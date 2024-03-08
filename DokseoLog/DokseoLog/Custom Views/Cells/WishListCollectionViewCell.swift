@@ -38,9 +38,9 @@ class WishListCollectionViewCell: UICollectionViewCell {
 
   // MARK: Private
 
-  private let coverImage = BKCoverImageView(frame: .zero)
-  private let titleLabel = BKTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .bold)
-  private let authorLabel = BKBodyLabel(textAlignment: .center, fontSize: 13, fontWeight: .medium)
+  private let coverImage = DLCoverImageView(frame: .zero)
+  private let titleLabel = DLTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .bold)
+  private let authorLabel = DLBodyLabel(textAlignment: .center, fontSize: 13, fontWeight: .medium)
 
   private func setupUI() {
     let padding: CGFloat = 8

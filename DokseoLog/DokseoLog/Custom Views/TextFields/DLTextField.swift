@@ -1,5 +1,5 @@
 //
-//  BKTextField.swift
+//  DLTextField.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 11/9/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKTextField: UITextField {
+class DLTextField: UITextField {
 
   // MARK: Lifecycle
 
@@ -24,13 +24,10 @@ class BKTextField: UITextField {
 
   private func configureUI() {
     translatesAutoresizingMaskIntoConstraints = false
-
-//    layer.borderWidth = 2
     layer.borderColor = UIColor.systemGray4.cgColor
     borderStyle = .roundedRect
-
-    textColor = .bkText
-    tintColor = .bkTabBarTint
+    textColor = .dlText
+    tintColor = .dlTabBarTint
     textAlignment = .center
     font = UIFont(name: Fonts.HanSansNeo.regular.description, size: UIFont.preferredFont(forTextStyle: .title2).pointSize)
     adjustsFontSizeToFitWidth = true
@@ -42,7 +39,6 @@ class BKTextField: UITextField {
     keyboardType = .numberPad
     returnKeyType = .go
     clearButtonMode = .whileEditing
-//    placeholder = "책 이름을 입력하세요"
   }
 
 }

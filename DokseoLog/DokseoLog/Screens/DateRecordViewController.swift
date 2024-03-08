@@ -42,16 +42,16 @@ class DateRecordViewController: UIViewController {
       data.append(contentsOf: results.sentences)
       data.append(contentsOf: results.thoughts)
     case .failure(let error):
-      presentBKAlert(title: "데이터를 가져오지 못했어요", message: error.description, buttonTitle: "확인")
+      presentDLAlert(title: "데이터를 가져오지 못했어요", message: error.description, buttonTitle: "확인")
       self.navigationController?.popViewController(animated: true)
     }
     tableView.reloadData()
   }
 
   private func configureViewController() {
-    view.backgroundColor = .bkBackgroundColor
+    view.backgroundColor = .dlBackgroundColor
     navigationController?.navigationBar.isHidden = false
-    navigationController?.navigationBar.tintColor = .bkTabBarTint
+    navigationController?.navigationBar.tintColor = .dlTabBarTint
     self.title = "\(date.formattedWithDay()) 의 기록"
   }
 
@@ -62,7 +62,7 @@ class DateRecordViewController: UIViewController {
     tableView.separatorStyle = .singleLine
     tableView.showsVerticalScrollIndicator = false
 
-    tableView.backgroundColor = .bkBackgroundColor
+    tableView.backgroundColor = .dlBackgroundColor
     tableView.translatesAutoresizingMaskIntoConstraints = false
 
     tableView.delegate = self
@@ -89,7 +89,7 @@ extension DateRecordViewController: UITableViewDelegate {
       let viewController = ModifyRecordViewController(thought: thought, style: .withBookInformation)
       self.navigationController?.pushViewController(viewController, animated: true)
     } else {
-      self.presentBKAlert(title: "기록을 가져올 수 없어요.", message: BKError.failToFetchData.description, buttonTitle: "확인")
+      self.presentDLAlert(title: "기록을 가져올 수 없어요.", message: DLError.failToFetchData.description, buttonTitle: "확인")
     }
   }
 }

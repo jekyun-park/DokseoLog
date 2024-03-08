@@ -1,5 +1,5 @@
 //
-//  BKAlertViewController.swift
+//  DLAlertViewController.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 2/6/24.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class BKAlertViewController: UIViewController {
+class DLAlertViewController: UIViewController {
 
   // MARK: Lifecycle
 
-  init(title: String, message: String, buttonTitle: String, style: BKAlertViewController.Style) {
+  init(title: String, message: String, buttonTitle: String, style: DLAlertViewController.Style) {
     super.init(nibName: nil, bundle: nil)
     alertTitle = title
     self.message = message
@@ -23,7 +23,7 @@ class BKAlertViewController: UIViewController {
     title: String,
     message: String,
     buttonTitle: String,
-    style: BKAlertViewController.Style,
+    style: DLAlertViewController.Style,
     action: (() -> Void)?)
   {
     self.init(title: title, message: message, buttonTitle: buttonTitle, style: style)
@@ -44,7 +44,7 @@ class BKAlertViewController: UIViewController {
   var message: String?
   var buttonTitle: String?
   var action: (() -> Void)?
-  var style: BKAlertViewController.Style = .normal
+  var style: DLAlertViewController.Style = .normal
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -60,29 +60,29 @@ class BKAlertViewController: UIViewController {
 
   // MARK: Private
 
-  private let containerView = BKAlertContainerView()
-  private let titleLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .medium)
+  private let containerView = DLAlertContainerView()
+  private let titleLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .center, fontSize: 17, fontWeight: .medium)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
 
-  private let messageLabel: BKBodyLabel = {
-    let label = BKBodyLabel(textAlignment: .center, fontSize: 13, fontWeight: .regular)
+  private let messageLabel: DLBodyLabel = {
+    let label = DLBodyLabel(textAlignment: .center, fontSize: 13, fontWeight: .regular)
     label.numberOfLines = 4
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
 
-  private lazy var actionButton: BKButton = {
-    let button = BKButton(backgroundColor: .black, foregroundColor: .white, title: "OK")
+  private lazy var actionButton: DLButton = {
+    let button = DLButton(backgroundColor: .black, foregroundColor: .white, title: "OK")
     button.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()
 
-  private lazy var normalButton: BKButton = {
-    let button = BKButton(backgroundColor: .black, foregroundColor: .white, title: "OK")
+  private lazy var normalButton: DLButton = {
+    let button = DLButton(backgroundColor: .black, foregroundColor: .white, title: "OK")
     button.addTarget(self, action: #selector(normalButtonTapped), for: .touchUpInside)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button

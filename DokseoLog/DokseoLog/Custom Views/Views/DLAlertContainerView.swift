@@ -1,5 +1,5 @@
 //
-//  BKAlertContainerView.swift
+//  DLAlertContainerView.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 2/6/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKAlertContainerView: UIView {
+class DLAlertContainerView: UIView {
 
   // MARK: Lifecycle
 
@@ -23,7 +23,7 @@ class BKAlertContainerView: UIView {
   // MARK: Private
 
   private func setup() {
-    backgroundColor = .bkBackgroundColor
+    backgroundColor = .dlBackgroundColor
     layer.cornerRadius = 16
     layer.borderWidth = 2
     layer.borderColor = UIColor.white.cgColor

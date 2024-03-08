@@ -1,5 +1,5 @@
 //
-//  BKFloatingButton.swift
+//  DLFloatingButton.swift
 //  DokseoLog
 //
 //  Created by 박제균 on 2/27/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BKFloatingButton: UIButton {
+class DLFloatingButton: UIButton {
 
   // MARK: Lifecycle
 

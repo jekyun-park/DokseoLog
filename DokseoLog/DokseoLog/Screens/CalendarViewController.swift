@@ -115,7 +115,7 @@ extension CalendarViewController: FSCalendarDelegate {
         self.view.makeToast("해당 날짜에 기록이 없습니다.", duration: 1, position: .center, style: style)
       }
     case .failure(let error):
-      self.presentBKAlert(title: "불러올 수 없습니다.", message: error.description, buttonTitle: "확인")
+      self.presentDLAlert(title: "불러올 수 없습니다.", message: error.description, buttonTitle: "확인")
     }
 
   }

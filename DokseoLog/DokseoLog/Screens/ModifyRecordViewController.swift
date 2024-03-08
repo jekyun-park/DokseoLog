@@ -51,7 +51,7 @@ class ModifyRecordViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .bkBackground
+    view.backgroundColor = .dlBackground
     setupNavigationController()
     self.recordStyle == .sentence ? setupSentenceUI() : setupThoughtUI()
     hideKeyboardWhenTappedAround()
@@ -59,14 +59,14 @@ class ModifyRecordViewController: UIViewController {
 
   // MARK: Private
 
-  private lazy var pageTextField: BKTextField = {
-    let textField = BKTextField(frame: .zero)
+  private lazy var pageTextField: DLTextField = {
+    let textField = DLTextField(frame: .zero)
     textField.text = String(self.sentence?.page ?? 0)
     return textField
   }()
 
-  private lazy var pagePlaceholderLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
+  private lazy var pagePlaceholderLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
     label.text = "페이지"
     return label
   }()
@@ -93,14 +93,14 @@ class ModifyRecordViewController: UIViewController {
     return textView
   }()
 
-  private lazy var sentencePlaceholderLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
+  private lazy var sentencePlaceholderLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
     label.text = "문장 수집하기"
     return label
   }()
 
-  private lazy var thoughtPlaceholderLabel: BKTitleLabel = {
-    let label = BKTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
+  private lazy var thoughtPlaceholderLabel: DLTitleLabel = {
+    let label = DLTitleLabel(textAlignment: .left, fontSize: 17, fontWeight: .medium)
     label.text = "내 생각 적기"
     return label
   }()
@@ -121,7 +121,7 @@ class ModifyRecordViewController: UIViewController {
       style: .done,
       target: self,
       action: #selector(updateButtonTapped))
-    button.tintColor = .bkTabBarTintColor
+    button.tintColor = .dlTabBarTintColor
     return button
   }()
 
@@ -198,7 +198,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemGreen
-        self.view.makeToast(BKError.noPageInput.description, duration: 1, position: .center, style: style)
+        self.view.makeToast(DLError.noPageInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -206,7 +206,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemGreen
-        self.view.makeToast(BKError.noContentInput.description, duration: 1, position: .center, style: style)
+        self.view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -214,7 +214,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(BKError.pageInputInvalid.description, duration: 1, position: .center, style: style)
+        self.view.makeToast(DLError.pageInputInvalid.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -236,7 +236,7 @@ class ModifyRecordViewController: UIViewController {
           self.navigationController?.popViewController(animated: true)
         }
       case .failure(let error):
-        presentBKAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
+        presentDLAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
         return
       }
 
@@ -246,7 +246,7 @@ class ModifyRecordViewController: UIViewController {
         var style = ToastStyle()
         style.messageFont = UIFont(name: Fonts.HanSansNeo.medium.description, size: 16)!
         style.backgroundColor = .systemRed
-        self.view.makeToast(BKError.noContentInput.description, duration: 1, position: .center, style: style)
+        self.view.makeToast(DLError.noContentInput.description, duration: 1, position: .center, style: style)
         return
       }
 
@@ -262,7 +262,7 @@ class ModifyRecordViewController: UIViewController {
           self.navigationController?.popViewController(animated: true)
         }
       case .failure(let error):
-        presentBKAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
+        presentDLAlert(title: "저장에 실패했어요.", message: error.description , buttonTitle: "확인")
         return
       }
     }
@@ -273,7 +273,7 @@ class ModifyRecordViewController: UIViewController {
 
     switch self.recordStyle {
     case .sentence:
-      presentBKAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "수집한 문장을 삭제합니다.", buttonTitle: "삭제") {
+      presentDLAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "수집한 문장을 삭제합니다.", buttonTitle: "삭제") {
         let result = PersistenceManager.shared.deleteSentence(self.sentence!)
         switch result {
         case .success:
@@ -284,11 +284,11 @@ class ModifyRecordViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
           }
         case .failure(let error):
-          self.presentBKAlert(title: "문장을 삭제하지 못했어요.", message: error.description, buttonTitle: "확인")
+          self.presentDLAlert(title: "문장을 삭제하지 못했어요.", message: error.description, buttonTitle: "확인")
         }
       }
     case .thought:
-      presentBKAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "기록을 삭제합니다.", buttonTitle: "삭제") {
+      presentDLAlertWithDestructiveAction(title: "정말 삭제할까요?", message: "기록을 삭제합니다.", buttonTitle: "삭제") {
         let result = PersistenceManager.shared.deleteThought(self.thought!)
         switch result {
         case .success:
@@ -299,7 +299,7 @@ class ModifyRecordViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
           }
         case .failure(let error):
-          self.presentBKAlert(title: "기록을 삭제하지 못했어요.", message: error.description, buttonTitle: "확인")
+          self.presentDLAlert(title: "기록을 삭제하지 못했어요.", message: error.description, buttonTitle: "확인")
         }
       }
     }
@@ -310,7 +310,7 @@ class ModifyRecordViewController: UIViewController {
     if let book = self.book {
       navigationController?.pushViewController(BookInformationViewController(book: book, style: .add), animated: true)
     } else {
-      self.presentBKAlert(title: "책 정보를 찾지 못했어요.", message: BKError.failToFindData.description, buttonTitle: "확인")
+      self.presentDLAlert(title: "책 정보를 찾지 못했어요.", message: DLError.failToFindData.description, buttonTitle: "확인")
     }
   }
 

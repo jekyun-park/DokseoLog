@@ -22,7 +22,7 @@ final class NetworkManager {
   let cache = NSCache<NSString, UIImage>()
 
   // MARK: - Methods
-  func searchBookInformation(for keyword: String, page: Int, completion: @escaping (Result<SearchResult, BKError>) -> Void) {
+  func searchBookInformation(for keyword: String, page: Int, completion: @escaping (Result<SearchResult, DLError>) -> Void) {
     let endPoint = searchBookBaseURL + "&Query=\(keyword)&Cover=Big&start=\(page)&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {
@@ -59,7 +59,7 @@ final class NetworkManager {
     task.resume()
   }
 
-  func fetchBookDetailInformation(with isbn: String, completion: @escaping (Result<BookDTO, BKError>) -> Void) {
+  func fetchBookDetailInformation(with isbn: String, completion: @escaping (Result<BookDTO, DLError>) -> Void) {
     let endPoint = searchBookDetailBaseURL + "&itemIdType=ISBN13&ItemId=\(isbn)&Cover=Big&output=js&Version=20131101"
 
     guard let url = URL(string: endPoint) else {
