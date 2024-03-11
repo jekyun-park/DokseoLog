@@ -55,11 +55,11 @@ class WishListViewController: DLLoadingViewController {
   }
 
   private func setupUI() {
+    collectionView.reloadData()
     if wishList.isEmpty {
       setupEmptyState()
     } else {
       setupCollectionView()
-      collectionView.reloadData()
     }
   }
 

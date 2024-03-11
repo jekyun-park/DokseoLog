@@ -55,11 +55,11 @@ class MyBookCaseViewController: DLLoadingViewController {
   }
 
   private func setupUI() {
+    collectionView.reloadData()
     if myBooks.isEmpty {
       setupEmptyState()
     } else {
       setupCollectionView()
-      collectionView.reloadData()
     }
   }
 
