@@ -224,7 +224,7 @@ extension AddRecordViewController: UITextViewDelegate {
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textView.text == style.placeHolderString {
       textView.text = nil
-      textView.textColor = .black
+      textView.textColor = .label
     }
   }
 
