@@ -11,12 +11,12 @@ echo "Stage: PRE-Xcode Build is activated .... "
 # for future reference
 # https://developer.apple.com/documentation/xcode/environment-variable-reference
 
-cd ../DokseoLog/
-
-plutil -replace SEARCH_API_KEY -string $SEARCH_API_KEY Info.plist
-
-plutil -p Info.plist
-
+#cd ../DokseoLog/
+#
+#plutil -replace SEARCH_API_KEY -string $SEARCH_API_KEY Info.plist
+#plutil -p Info.plist
+echo $GOOGLE_SERVICE_INFO > ../DokseoLog/GoogleService-Info.plist
+echo $SEARCH_API_KEY > ../DokseoLog/Secrets.xcconfig
 echo "Stage: PRE-Xcode Build is DONE .... "
 
 exit 0
