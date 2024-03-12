@@ -1,139 +1,62 @@
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-<!--
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
--->
-
-
-<!-- PROJECT LOGO -->
-<!--
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/37dff957-eeb0-4310-989c-3be86f4c43d6" alt="Logo" width="80" height="80">
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">독서Log</h3>
 
   <p align="center">
-    책 읽는 습관을 형성하고, 읽은 책을 기록하세요
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    당신의 독서생활을 기록해보세요
+    <br/>
+    <br/>
+      <a href="mailto:jegyun@icloud.com">문의 및 의견 보내기</a>
+      ·
+      <a href="https://jegyun.notion.site/dd7d6215eb8f4087addc01af3a1f5af2?pvs=4">개인정보 처리방침</a>
   </p>
+  
 </p>
--->
+
+## 프로젝트 소개
+우리의 기억과 지식은 빠르게 휘발됩니다. 독서Log를 통해 독서 후 인상 깊었던 문장, 내 생각이나 감정을 기록하세요.
+
+### 주요기능
+- 책을 검색하여 내 책장에 추가할 수 있습니다. (국내도서 지원)
+- 읽고싶은 책은 검색하여 위시리스트에 추가할 수 있습니다.
+- 책을 읽고 인상깊었던 문장이나 구절을 기록할 수 있습니다.
+- 책을 읽으며 들었던 생각이나 감정을 기록할 수 있습니다.
+- 달력을 통해 해당 날짜의 독서기록을 볼 수 있습니다.
 
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
+### 스크린샷
+<p align="center" width="100%">
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/7bda9b66-91f0-4b48-a9b8-5ac008faa875" width="30%">
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/3f003164-dc50-4c91-8f11-730cf977540b" width="30%">
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/405b5939-efee-4ce3-8861-789de68706ed" width="30%">
+</p>
+<p align="center" width="100%">
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/b591ca56-daa5-401c-a591-089dbc69a2bf" width="30%">
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/ac3f1d69-d8f4-4a5e-832f-ace67e4ac8cb" width="30%">
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/d7dd0524-9791-4155-99f5-0537ce3a9197" width="30%">
+</p>
 
+## Tech Stacks
+### Frameworks
+- UIKit(Code-Based)
+- Core Data
+- CloudKit
+<!-- Firebase Analytics, Crashlytics -->
 
+### Libraries
+- SwiftLint, SwiftFormat
+- FSCalendar
+- Toast
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+### Architecture
+- MVC
 
-<!--
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
--->
-
-읽은 책을 기록하고, 책 읽는 습관을 형성할 수 있도록 도와줍니다.
-
-### Built With
-
-#### Frameworks
-- [UIKit]()
-- [Core Data]()
-- [CloudKit]()
-
-#### Libraries
-- [SwiftLint]()
-- [SwiftFormat]()
-- [Airbnb Swift Style Guide](https://github.com/airbnb/swift)
-
-#### API
+### API
 - [알라딘 Open API](https://blog.aladin.co.kr/openapi/popup/6695306)
 
-#### Architecture
-- MVC
-<!--(will be) MVVM -->
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-<!-- 프로젝트 사용법 및 스크린샷 -->
-
-<!-- LICENSE -->
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
-
-<!-- CONTACT -->
-## Contact
-
-[![Gmail](https://img.shields.io/badge/Gmail-EA4335?style=flat-square&logo=Gmail&logoColor=white)](mailto:parkjekyun@gmail.com)
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-<!--
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
--->
-
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+<br/>
+<a href="https://apps.apple.com/kr/app/%EB%8F%85%EC%84%9Clog/id6479166313"> 
+  <img src="https://github.com/jekyun-park/DokseoLog/assets/19788294/b07ae7f1-6db0-4b7e-9c07-29dd6f75aa58">
+</a>
