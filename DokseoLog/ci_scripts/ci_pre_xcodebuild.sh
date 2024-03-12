@@ -15,8 +15,8 @@ echo "Stage: PRE-Xcode Build is activated .... "
 #
 #plutil -replace SEARCH_API_KEY -string $SEARCH_API_KEY Info.plist
 #plutil -p Info.plist
-echo $GOOGLE_SERVICE_INFO > ../DokseoLog/GoogleService-Info.plist
-echo $SEARCH_API_KEY > ../DokseoLog/Secrets.xcconfig
+echo $GOOGLE_SERVICE_INFO > ../DokseoLog/Support/GoogleService-Info.plist
+echo $SEARCH_API_KEY > ../DokseoLog/Support/Secrets.xcconfig
 echo "Stage: PRE-Xcode Build is DONE .... "
 
 exit 0
