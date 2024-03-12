@@ -27,6 +27,7 @@
 		22551E362B98B4530008B0C5 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22551E352B98B4530008B0C5 /* FirebaseCrashlytics */; };
 		225C80F72BA0A9240002B866 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 225C80F62BA0A9240002B866 /* Secrets.xcconfig */; };
 		225C80F92BA0ABF00002B866 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225C80F82BA0ABF00002B866 /* GoogleService-Info.plist */; };
+		225C80FE2BA0BA110002B866 /* ci_pre_xcodebuild.sh in Resources */ = {isa = PBXBuildFile; fileRef = 225C80FD2BA0BA0D0002B866 /* ci_pre_xcodebuild.sh */; };
 		225D0ABC2AF131A1002AD604 /* DLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D0ABB2AF131A1002AD604 /* DLError.swift */; };
 		225EC4BF2A948973002FC0B6 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225EC4BE2A948973002FC0B6 /* UIColor+.swift */; };
 		2260764D2B878B3F000550F8 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260764C2B878B3F000550F8 /* Date+.swift */; };
@@ -93,6 +94,7 @@
 		225C80F42BA0A9030002B866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225C80F62BA0A9240002B866 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		225C80F82BA0ABF00002B866 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		225C80FD2BA0BA0D0002B866 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		225D0ABB2AF131A1002AD604 /* DLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLError.swift; sourceTree = "<group>"; };
 		225EC4BE2A948973002FC0B6 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		2260764C2B878B3F000550F8 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
@@ -217,6 +219,14 @@
 			path = SegmentedControls;
 			sourceTree = "<group>";
 		};
+		225C80FC2BA0B9AE0002B866 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				225C80FD2BA0BA0D0002B866 /* ci_pre_xcodebuild.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		225D0ABD2AF13B60002AD604 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +345,7 @@
 		22990BF92A6EBF83001CF1B3 = {
 			isa = PBXGroup;
 			children = (
+				225C80FC2BA0B9AE0002B866 /* ci_scripts */,
 				22990C042A6EBF83001CF1B3 /* DokseoLog */,
 				22990C032A6EBF83001CF1B3 /* Products */,
 			);
@@ -454,6 +465,7 @@
 				225C80F92BA0ABF00002B866 /* GoogleService-Info.plist in Resources */,
 				22C1EBB32AEA462800E4477A /* SpoqaHanSansNeo-Light.ttf in Resources */,
 				2266AB9E2B9AC324003CADD0 /* appicon.png in Resources */,
+				225C80FE2BA0BA110002B866 /* ci_pre_xcodebuild.sh in Resources */,
 				22C1EBB22AEA462800E4477A /* SpoqaHanSansNeo-Bold.ttf in Resources */,
 				22C1EBB12AEA462800E4477A /* SpoqaHanSansNeo-Medium.ttf in Resources */,
 				22990C152A6EBF8B001CF1B3 /* LaunchScreen.storyboard in Resources */,
