@@ -46,11 +46,6 @@
 - CloudKit
 <!-- Firebase Analytics, Crashlytics -->
 
-### Libraries
-- SwiftLint, SwiftFormat
-- FSCalendar
-- Toast
-
 ### Architecture
 - MVC
 
